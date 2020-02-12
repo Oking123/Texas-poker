@@ -1,6 +1,7 @@
 class card:
 
     def __init__(self, suit, point, index=-1):
+        print("hello world")
         if index == -1:
             self.index = suit*13 + point
             self.suit = suit
