@@ -14,6 +14,33 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //view.bringSubviewToFront(a1)
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let title_lable1 = UILabel()
+        title_lable1.text = "Texas"
+        title_lable1.font = UIFont(name: "Marker Felt", size: 17)
+        title_lable1.sizeToFit()
+        
+        let title_lable2 = UILabel()
+        title_lable2.text = "Poker"
+        title_lable2.font = UIFont(name: "Menlo", size: 30)
+        title_lable2.sizeToFit()
+        
+        let stackView = UIStackView(arrangedSubviews: [title_lable1,title_lable2])
+        stackView.axis = .horizontal
+        stackView.frame.size.width = title_lable1.frame.width + title_lable2.frame.width
+        stackView.frame.size.height = max(title_lable1.frame.height,title_lable2.frame.height)
+        
+        
+        navigationItem.titleView = stackView
+        setCustomerBackImage()
+        
+        
+    }
+    
+    func setCustomerBackImage(){
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target: nil, action: nil)
     }
     
     @IBOutlet weak var image_1: UIImageView!
