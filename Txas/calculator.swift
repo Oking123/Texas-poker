@@ -172,8 +172,110 @@ class Calculate{
     }
     
     func calculate(player_number: Int) -> Float{
-            self.player_number = player_number
-            return self.win_rate
+        self.player_number = player_number
+//      pick 5 from 7 cards
+        func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
+            var final:[Card] = table
+            for i in 0...5{
+                for j in i+1...6{
+                    var temp:[Card] = playerhand+table
+                    temp.remove(at: j)
+                    temp.remove(at: i)
+                    if if_p1_win(player1: temp, player2: final) == 1{
+                        final = temp
+                    }
+                }
+            }
+            return final
+        }
+        
+        
+        var player1_win:Int = 0
+
+//        loop for 1000 times
+        for _ in 1...1000{
+//             all chosen cards
+            var cardpool:[Card] = player_hand!
+            var card1 = player_hand
+//             other player's cards
+            var players:[[Card]] = []
+            var table = [Card]()
+//            get five cards on table
+            
+//            get flop
+            if let threecards = flop{
+                table += threecards
+                cardpool += threecards
+            }
+            else{
+                while table.count < 3{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !cardpool.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+            
+//            get turn
+            if let fourthcard = turn{
+                table.append(fourthcard)
+                cardpool.append(fourthcard)
+            }
+            else{
+                while table.count < 4{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !card1!.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+//             get river
+            if let fifth = river{
+                table.append(fifth)
+                cardpool.append(fifth)
+            }
+            else{
+                while table.count < 5{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !card1!.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+//            get cards for players
+            for _ in 2...self.player_number{
+                var player:[Card] = []
+                while player.count < 2{
+                    let newcard = Card(index:Int.random(in: 0...51))
+                    if !cardpool.contains(newcard){
+                        player.append(newcard)
+                        cardpool.append(newcard)
+                    }
+                }
+                players.append(player)
+            }
+//            select 5 from 7 for all players
+            card1 = five_in_seven(playerhand: card1!, table: table)
+            for i in 0...self.player_number-2{
+                players[i] = five_in_seven(playerhand: players[i], table: table)
+            }
+            
+            //judge player1 win
+            var count = 0
+            for i in 0...self.player_number-2{
+                if if_p1_win(player1: card1!, player2: players[i]) == 1{
+                    count += 1
+                }
+            }
+            if count == self.player_number-1{
+                player1_win += 1
+            }
+        }
+        win_rate = Float(player1_win)/1000.0
+        return self.win_rate
         }
     
 }
