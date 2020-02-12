@@ -47,6 +47,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var hand1: UIImageView!
     
     @IBOutlet weak var hand2: UIImageView!
+
+    
+    
     @IBAction func spadeButton(_ sender: UIButton) {
         image_1.image = #imageLiteral(resourceName: "a1");
         image_2.image = #imageLiteral(resourceName: "a2") ;
@@ -64,6 +67,8 @@ class ViewController: UIViewController {
         
     }
     @IBAction func heartsButton(_ sender: UIButton) {
+        print (a1.frame)
+        print (a2.frame)
         image_1.image = #imageLiteral(resourceName: "b1") ;
         image_2.image = #imageLiteral(resourceName: "b2") ;
         image_3.image = #imageLiteral(resourceName: "b3") ;
@@ -110,13 +115,28 @@ class ViewController: UIViewController {
     }
     
     var fileViewOrigin: CGPoint!
+    func setParameret(view:UIView,X:CGFloat,Y:CGFloat)
+    {
+        view.center = CGPoint(x:view.center.x + X,y:view.center.y + Y)
+    }
     @IBAction func pan_button1(_ sender: UIPanGestureRecognizer) {
+        var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
+        var images_2 = [UIImageView](arrayLiteral: hand1,hand2)
+        /*
+        for items in images_5
+        {
+            setParameret(view: items, X: 57, Y: 236)
+        }
+        for items in images_2
+        {
+            setParameret(view: items, X: 57, Y: 311)
+        }
+ */
+        //var convertedRect: CGRect
+        //convertedRect = [[self.superview].convertRect:view.frame.fromView:[view superview]];
         guard sender.view! != nil else{return}
         let piece = sender.view!
-        view.bringSubviewToFront(image_1)
         let translation = sender.translation(in:view)
-        //view.bringSubviewToFront(a1)
-        fileViewOrigin = a1.frame.origin
         if sender.state == .began || sender.state == .changed
         {
             piece.center = CGPoint(x:piece.center.x + translation.x,y:piece.center.y + translation.y)
@@ -124,12 +144,21 @@ class ViewController: UIViewController {
         }
         if sender.state == .ended
         {
-            if piece.frame.intersects(image_1.frame)
+            //let temp: UIImageView
+            //temp.center = CGPoint(x:piece.center.x + 40,y:piece.center.y + 645)
+            print(piece.bounds)
+
+            for it in images_5
             {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.a1.alpha = 0.0
-                })
+                if it.frame.intersects(piece.convert(it.frame, from: it))
+                //if piece.frame.intersects(convert(it.bounds, from: it))
+                {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        it.alpha = 0.0
+                    })
+                }
             }
+ 
         }
         
     }
