@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //view.bringSubviewToFront(a1)
@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.frame.size.width = title_lable1.frame.width + title_lable2.frame.width
         stackView.frame.size.height = max(title_lable1.frame.height,title_lable2.frame.height)
-        
         
         navigationItem.titleView = stackView
         setCustomerBackImage()

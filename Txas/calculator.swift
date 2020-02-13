@@ -29,6 +29,7 @@ class Calculate{
         self.player_hand = player
     }
     
+    //
     func set_flop(use flop:[Card]){
         self.flop = flop
     }
