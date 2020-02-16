@@ -178,7 +178,10 @@ class ViewController: UIViewController {
 //pangesture for pokers
     var fileViewOrigin: CGPoint!
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
-        guard sender.view! != nil else{return}
+        // this statement was: guard sender.view! != nil else{return}
+        // if sender.view = nil, then force unwrapping here should break the code here
+        // remove force unwrapping for sender.view
+        guard sender.view != nil else{return}
 //start the drag version
         let piece = sender.view!
         let translation = sender.translation(in:view)
@@ -190,12 +193,12 @@ class ViewController: UIViewController {
 
         if sender.state == .ended
         {
-            var flag = 0
+//            var flag: Bool = false
             for it in images_5
             {
                 if (it.convert(piece.frame, from: piece)).contains(piece.center)
                 {
-                    flag = 1
+//                    flag = true
                     it.image = drag_item.image
                     UIView.animate(withDuration: 0.3, animations: {
                         piece.alpha = 0.0
@@ -207,7 +210,7 @@ class ViewController: UIViewController {
             {
                 if (piece.convert(it.frame, from: it)).contains(it.center)
                 {
-                    flag = 1
+//                    flag = true
                     it.image = drag_item.image
                     UIView.animate(withDuration: 0.3, animations: {
                         piece.alpha = 0.0
