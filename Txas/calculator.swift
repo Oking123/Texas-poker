@@ -34,6 +34,7 @@ class Calculate{
         self.player_hand = player
     }
     
+
     /// set the flop of the table with 3 Card object
     /// - Parameter flop: [Card] with size of 3 should not be duplicate with other input
     func set_flop(use flop:[Card]){
