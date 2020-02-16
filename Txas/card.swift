@@ -17,6 +17,11 @@ class Card:CustomStringConvertible,Equatable{
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.index == rhs.index
     }
+    
+    /// initialize the card with its suit and point
+    /// - Parameters:
+    ///   - suit: an integer where [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
+    ///   - point: from 1~13
     init(suit:Int, point:Int) {
         self.suit = suit
         if point == 1{
@@ -26,6 +31,9 @@ class Card:CustomStringConvertible,Equatable{
         }
         self.index = suit * 13 + point
     }
+    
+    /// initialize the card with its index from 0~51
+    /// - Parameter index: the card from ♠A to♦k, index from 0-51
     init(index:Int){
         self.index = index
         self.suit = index/13
