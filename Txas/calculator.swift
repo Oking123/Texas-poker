@@ -6,22 +6,27 @@
 //  Copyright © 2020 陈彦廷. All rights reserved.
 //
 
+
+
 import Foundation
 
+/// initial with two Card object as [Card, Card], has function set_flop, set_turn, set_river, clear
 class Calculate{
-    var player_hand:[Card]?
-    var win_rate:Float = 0
-    var draw_rate:Float = 0
-    var lose_rate:Float = 0
-    var player_number = 2
-    var flop:[Card]? = nil
-    var turn:Card? = nil
-    var river:Card? = nil
+    private var player_hand:[Card]?
+    private var win_rate:Float = 0
+    private var draw_rate:Float = 0
+    private var lose_rate:Float = 0
+    private var player_number = 2
+    private var flop:[Card]? = nil
+    private var turn:Card? = nil
+    private var river:Card? = nil
     
     let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
     
     
+    /// initialize the Callulate class with two original cards in player's hand
+    /// - Parameter player: [Card] with a size of 2 and should not be duplicate
     init(_ player:[Card]) {
         if player.count != 2{
             fputs("The number of input hands is not 2", stderr)
@@ -29,27 +34,36 @@ class Calculate{
         self.player_hand = player
     }
     
+    /// set the flop of the table with 3 Card object
+    /// - Parameter flop: [Card] with size of 3 should not be duplicate with other input
     func set_flop(use flop:[Card]){
         self.flop = flop
     }
     
+    /// set the turn of the table with a Card object
+    /// - Parameter turn: Card type should not be duplicate with other input
     func set_turn(use turn:Card){
         self.turn = turn
     }
     
+    /// set the river of the table with a Card object
+    /// - Parameter river: Card type should not be duplicate with other input
     func set_river(use river:Card){
         self.river = river
     }
     
-    func clear(){
+    
+    /// clear all the flop, turn, river data and reset the card in player's hand
+    /// - Parameter player_hand: [Card] type with size of 2
+    func reset(use player_hand:[Card]){
         self.flop = nil
         self.turn = nil
         self.river = nil
-        self.player_hand = nil
+        self.player_hand = player_hand
     }
     
 //  check the type of the player_hands, return[type ID, highest card]
-    func check_hands(player:[Card]) -> [Int]{
+    private func check_hands(player:[Card]) -> [Int]{
         //chech if the cards is flush
         func check_flush(_ cards:[Card]) -> Bool{
             let temp = cards[0].suit
@@ -144,12 +158,12 @@ class Calculate{
 //        high card
         return [0, numbers[4]]
     }
-    func outputanswer(_ result:[Int])->String{
+    private func outputanswer(_ result:[Int])->String{
         return types[result[0]]!+" with highest card number of "+String(result[1])
     }
     
 //    input two hands and judge if player1 wins,   0:lose;1:win;2:draw
-    func if_p1_win(player1:[Card],player2:[Card]) -> Int{
+    private func if_p1_win(player1:[Card],player2:[Card]) -> Int{
         let p1_result = check_hands(player: player1)
         let p2_result = check_hands(player: player2)
         if p1_result[0] < p2_result[0]{
@@ -277,5 +291,11 @@ class Calculate{
         win_rate = Float(player1_win)/1000.0
         return self.win_rate
         }
+    
+    
+    /// get the present win_rate of the table
+    func get_winrate() -> Float{
+        return self.win_rate
+    }
     
 }
