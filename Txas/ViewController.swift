@@ -10,10 +10,57 @@ import UIKit
 
 class ViewController: UIViewController {
 
+      //variances of poker
+        @IBOutlet weak var image_1: UIImageView!
+        @IBOutlet weak var image_2: UIImageView!
+        
+        @IBOutlet weak var image_3: UIImageView!
+        
+        @IBOutlet weak var image_4: UIImageView!
+        
+        @IBOutlet weak var image_5: UIImageView!
+        
+        @IBOutlet weak var image_6: UIImageView!
+        @IBOutlet weak var image_7: UIImageView!
+        
+        @IBOutlet weak var image_8: UIImageView!
+        @IBOutlet weak var image_9: UIImageView!
+        
+        @IBOutlet weak var image_10: UIImageView!
+        
+        @IBOutlet weak var image_11: UIImageView!
+        
+        @IBOutlet weak var image_12: UIImageView!
+        
+        @IBOutlet weak var image_13: UIImageView!
+    //variance of deliever pokers
+        @IBOutlet weak var a1: UIImageView!
+        @IBOutlet weak var a2: UIImageView!
+        @IBOutlet weak var a3: UIImageView!
+        @IBOutlet weak var a4: UIImageView!
+        @IBOutlet weak var a5: UIImageView!
+    //variance of hand pokers
+        @IBOutlet weak var hand1: UIImageView!
+        
+        @IBOutlet weak var hand2: UIImageView!
+    
+    lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
+    lazy var images_2 = [UIImageView](arrayLiteral: hand1,hand2)
+    lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
+    var original = [UIImageView:CGPoint]()
+    var original_images_5 = [UIImageView:CGPoint]()
+    var original_images_2 = [UIImageView:CGPoint]()
+    var drag_item:UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.bringSubviewToFront(a1)
-        // Do any additional setup after loading the view.
+        //addPanGesture()
+        view.isMultipleTouchEnabled = true
+        // Do any additional setup after loading the view
+        for item in images
+        {
+            original[item] = item.center
+        }
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -32,51 +79,15 @@ class ViewController: UIViewController {
         stackView.frame.size.width = title_lable1.frame.width + title_lable2.frame.width
         stackView.frame.size.height = max(title_lable1.frame.height,title_lable2.frame.height)
         
-        
         navigationItem.titleView = stackView
         setCustomerBackImage()
-        
-        
     }
     
     func setCustomerBackImage(){
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target: nil, action: nil)
     }
-    
-    @IBOutlet weak var image_1: UIImageView!
-    @IBOutlet weak var image_2: UIImageView!
-    
-    @IBOutlet weak var image_3: UIImageView!
-    
-    @IBOutlet weak var image_4: UIImageView!
-    
-    @IBOutlet weak var image_5: UIImageView!
-    
-    @IBOutlet weak var image_6: UIImageView!
-    @IBOutlet weak var image_7: UIImageView!
-    
-    @IBOutlet weak var image_8: UIImageView!
-    @IBOutlet weak var image_9: UIImageView!
-    
-    @IBOutlet weak var image_10: UIImageView!
-    
-    @IBOutlet weak var image_11: UIImageView!
-    
-    @IBOutlet weak var image_12: UIImageView!
-    
-    @IBOutlet weak var image_13: UIImageView!
-    
-    @IBOutlet weak var a1: UIImageView!
-    @IBOutlet weak var a2: UIImageView!
-    @IBOutlet weak var a3: UIImageView!
-    @IBOutlet weak var a4: UIImageView!
-    @IBOutlet weak var a5: UIImageView!
-    @IBOutlet weak var hand1: UIImageView!
-    
-    @IBOutlet weak var hand2: UIImageView!
 
-    
-    
+//control button of changing color
     @IBAction func spadeButton(_ sender: UIButton) {
         image_1.image = #imageLiteral(resourceName: "a1");
         image_2.image = #imageLiteral(resourceName: "a2") ;
@@ -140,28 +151,38 @@ class ViewController: UIViewController {
         image_12.image = #imageLiteral(resourceName: "d12") ;
         image_13.image = #imageLiteral(resourceName: "d13") ;
     }
-    
-    var fileViewOrigin: CGPoint!
-    func setParameret(view:UIView,X:CGFloat,Y:CGFloat)
+    func addPanGesture(view:UIView)
     {
-        view.center = CGPoint(x:view.center.x + X,y:view.center.y + Y)
+        let pan = UIPanGestureRecognizer(target:self,action:#selector(ViewController.handlePan(_:)))
+        view.addGestureRecognizer(pan)
+
     }
-    @IBAction func pan_button1(_ sender: UIPanGestureRecognizer) {
-        var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
-        var images_2 = [UIImageView](arrayLiteral: hand1,hand2)
-        /*
-        for items in images_5
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self.view)
+        //print(location)
+        for item in images
         {
-            setParameret(view: items, X: 57, Y: 236)
+            //var p = item.convert(item.frame, to: self.view)
+            let point = item.convert(location,from:touch.view)
+            if (point == location)
+            {
+                print("OK")
+                drag_item = item
+                addPanGesture(view: item)
+                break
+            }
         }
-        for items in images_2
-        {
-            setParameret(view: items, X: 57, Y: 311)
-        }
- */
-        //var convertedRect: CGRect
-        //convertedRect = [[self.superview].convertRect:view.frame.fromView:[view superview]];
-        guard sender.view! != nil else{return}
+    }
+//pangesture for pokers
+    var fileViewOrigin: CGPoint!
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        // this statement was: guard sender.view! != nil else{return}
+        // if sender.view = nil, then force unwrapping here should break the code here
+        // remove force unwrapping for sender.view
+        guard sender.view != nil else{return}
+//start the drag version
         let piece = sender.view!
         let translation = sender.translation(in:view)
         if sender.state == .began || sender.state == .changed
@@ -169,27 +190,38 @@ class ViewController: UIViewController {
             piece.center = CGPoint(x:piece.center.x + translation.x,y:piece.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in:view)
         }
+
         if sender.state == .ended
         {
-            //let temp: UIImageView
-            //temp.center = CGPoint(x:piece.center.x + 40,y:piece.center.y + 645)
-            print(piece.bounds)
-
+//            var flag: Bool = false
             for it in images_5
             {
-                if it.frame.intersects(piece.convert(it.frame, from: it))
-                //if piece.frame.intersects(convert(it.bounds, from: it))
+                if (it.convert(piece.frame, from: piece)).contains(piece.center)
                 {
+//                    flag = true
+                    it.image = drag_item.image
                     UIView.animate(withDuration: 0.3, animations: {
-                        it.alpha = 0.0
+                        piece.alpha = 0.0
+                    })
+                }
+                
+            }
+            for it in images_2
+            {
+                if (piece.convert(it.frame, from: it)).contains(it.center)
+                {
+//                    flag = true
+                    it.image = drag_item.image
+                    UIView.animate(withDuration: 0.3, animations: {
+                        piece.alpha = 0.0
                     })
                 }
             }
- 
+            piece.center = original[drag_item]!
+            piece.alpha = 1.0
         }
-        
     }
-
+    
     
 }
 
