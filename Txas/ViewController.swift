@@ -10,7 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-      //variances of poker
+    @IBOutlet weak var NumberOfPlayer: UILabel!
+    var player = ""
+    
+    @IBOutlet weak var dropPlayer: UITextField!
+    
+    //variances of poker
         @IBOutlet weak var image_1: UIImageView!
         @IBOutlet weak var image_2: UIImageView!
         
@@ -54,8 +59,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addPanGesture()
-        view.isMultipleTouchEnabled = true
+        //number of player
+        NumberOfPlayer.text = "Number of player: " + player
         // Do any additional setup after loading the view
         for item in images
         {
@@ -82,6 +87,14 @@ class ViewController: UIViewController {
         navigationItem.titleView = stackView
         setCustomerBackImage()
     }
+    
+    @IBAction func done(_ sender: Any) {
+        let NumberOfPlayer = Int(player)!
+        let NumberDrop:Int? = Int(dropPlayer.text!)
+        let PlayerInGame = NumberOfPlayer - NumberDrop!
+        player = String(PlayerInGame)
+    }
+    
     
     func setCustomerBackImage(){
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target: nil, action: nil)
@@ -223,5 +236,13 @@ class ViewController: UIViewController {
     }
     
     
+//    @IBAction func help(_ sender: Any) {
+//        performSegue(withIdentifier: "help", sender: self)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let vc = segue.destination as! simple_inputViewController
+//        vc.numberPlayer = player
+//    }
 }
 
