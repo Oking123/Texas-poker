@@ -10,7 +10,6 @@ import UIKit
 
 class simple_inputViewController: UIViewController,UITextFieldDelegate {
 
-    
     @IBOutlet weak var card1: UITextField!
     @IBOutlet weak var card2: UITextField!
     @IBOutlet weak var flop: UITextField!
@@ -63,7 +62,7 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
         cal.set_flop1(use: Card(index:my_flop1))
         cal.set_flop2(use: Card(index:my_flop2))
         }
-        
+       
         
         if turn.text != ""{
             cal.set_turn(use: Card(index:Int(turn.text!)!))
@@ -73,20 +72,11 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
             cal.set_river(use: Card(index:Int(river.text!)!))
         }
         
-        
-//        temp = turn.text!.components(separatedBy: ",")
-        
-//        temp = river.text!.components(separatedBy: ",")
-        
-//        viewResult.text = "card1 suit: \(my_card1_suit!)\ncard1 point: \(my_card1_point!)\n"
-        
+              
         let result = cal.calculate()*100
-        
         
         viewResult.text = "my winning change is: \(result)%.\n"
     }
-    
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         card1.resignFirstResponder()

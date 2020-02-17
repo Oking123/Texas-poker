@@ -10,29 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+//    let cal = Calculate([Card])
+    var table_suit: [Int] = []
+    var table_point: [Int] = []
+    var hand_suit: [Int] = []
+    var hand_point: [Int] = []
+    
+    var suit: Int = 0 //defalut suit is spade
+    var point: Int = 0
+    
       //variances of poker
         @IBOutlet weak var image_1: UIImageView!
         @IBOutlet weak var image_2: UIImageView!
-        
         @IBOutlet weak var image_3: UIImageView!
-        
         @IBOutlet weak var image_4: UIImageView!
-        
         @IBOutlet weak var image_5: UIImageView!
-        
         @IBOutlet weak var image_6: UIImageView!
         @IBOutlet weak var image_7: UIImageView!
-        
         @IBOutlet weak var image_8: UIImageView!
         @IBOutlet weak var image_9: UIImageView!
-        
         @IBOutlet weak var image_10: UIImageView!
-        
         @IBOutlet weak var image_11: UIImageView!
-        
         @IBOutlet weak var image_12: UIImageView!
-        
         @IBOutlet weak var image_13: UIImageView!
+    
     //variance of deliever pokers
         @IBOutlet weak var a1: UIImageView!
         @IBOutlet weak var a2: UIImageView!
@@ -44,9 +45,13 @@ class ViewController: UIViewController {
         
         @IBOutlet weak var hand2: UIImageView!
     
+    /// placeholder for table cards
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
+    /// place holder for hand cards
     lazy var images_2 = [UIImageView](arrayLiteral: hand1,hand2)
     lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
+    
+    //CGPoint defines coordinates in 2D space. It's composed of two CGFloats: X and Y.
     var original = [UIImageView:CGPoint]()
     var original_images_5 = [UIImageView:CGPoint]()
     var original_images_2 = [UIImageView:CGPoint]()
@@ -55,12 +60,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //addPanGesture()
+        
         view.isMultipleTouchEnabled = true
-        // Do any additional setup after loading the view
+        
+        //add initial coordiantes to every canadiate card when initializing
         for item in images
         {
             original[item] = item.center
         }
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -102,11 +110,11 @@ class ViewController: UIViewController {
         image_11.image = #imageLiteral(resourceName: "a11") ;
         image_12.image = #imageLiteral(resourceName: "a12") ;
         image_13.image = #imageLiteral(resourceName: "a13") ;
-        
+        suit = 0
     }
     @IBAction func heartsButton(_ sender: UIButton) {
-        print (a1.frame)
-        print (a2.frame)
+//        print (a1.frame)
+//        print (a2.frame)
         image_1.image = #imageLiteral(resourceName: "b1") ;
         image_2.image = #imageLiteral(resourceName: "b2") ;
         image_3.image = #imageLiteral(resourceName: "b3") ;
@@ -120,6 +128,7 @@ class ViewController: UIViewController {
         image_11.image = #imageLiteral(resourceName: "b11") ;
         image_12.image = #imageLiteral(resourceName: "b12") ;
         image_13.image = #imageLiteral(resourceName: "b13") ;
+        suit = 1
     }
     @IBAction func plumButton(_ sender: UIButton) {
         image_1.image = #imageLiteral(resourceName: "c1") ;
@@ -135,6 +144,7 @@ class ViewController: UIViewController {
         image_11.image = #imageLiteral(resourceName: "c11") ;
         image_12.image = #imageLiteral(resourceName: "c12") ;
         image_13.image = #imageLiteral(resourceName: "c13") ;
+        suit = 2
     }
     @IBAction func squareButton(_ sender: UIButton) {
         image_1.image = #imageLiteral(resourceName: "d1") ;
@@ -150,12 +160,13 @@ class ViewController: UIViewController {
         image_11.image = #imageLiteral(resourceName: "d11") ;
         image_12.image = #imageLiteral(resourceName: "d12") ;
         image_13.image = #imageLiteral(resourceName: "d13") ;
+        suit = 3
     }
+    
     func addPanGesture(view:UIView)
     {
         let pan = UIPanGestureRecognizer(target:self,action:#selector(ViewController.handlePan(_:)))
         view.addGestureRecognizer(pan)
-
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -168,13 +179,26 @@ class ViewController: UIViewController {
             let point = item.convert(location,from:touch.view)
             if (point == location)
             {
-                print("OK")
+//                print("OK")
                 drag_item = item
                 addPanGesture(view: item)
                 break
             }
         }
     }
+    
+    // use to find which card is dragged
+    func find(value searchValue: UIImageView, in array: [UIImageView]) -> Int?
+    {
+        for (index, value) in array.enumerated()
+        {
+            if value == searchValue {
+                return index
+            }
+        }
+        return nil
+    }
+    
 //pangesture for pokers
     var fileViewOrigin: CGPoint!
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
@@ -182,7 +206,8 @@ class ViewController: UIViewController {
         // if sender.view = nil, then force unwrapping here should break the code here
         // remove force unwrapping for sender.view
         guard sender.view != nil else{return}
-//start the drag version
+
+        //start the drag version
         let piece = sender.view!
         let translation = sender.translation(in:view)
         if sender.state == .began || sender.state == .changed
@@ -193,35 +218,51 @@ class ViewController: UIViewController {
 
         if sender.state == .ended
         {
-//            var flag: Bool = false
+            var not_used : Bool  = true
+        
+            // flop, turn, river
             for it in images_5
             {
                 if (it.convert(piece.frame, from: piece)).contains(piece.center)
                 {
-//                    flag = true
                     it.image = drag_item.image
-                    UIView.animate(withDuration: 0.3, animations: {
-                        piece.alpha = 0.0
-                    })
+                    UIView.animate(withDuration: 0.3, animations: { piece.alpha = 0.0 })
+                    point = find(value: drag_item, in: images)! + 1
+                    
+//                    print(find(value: drag_item, in: images)!)
+                    
+                    not_used = false
+                    
+                    // add values
+                    table_suit.append(suit)
+                    table_point.append(point)
+                    print("Add to table \(suit),\(point)")
+                    // add return value of the card
                 }
-                
             }
-            for it in images_2
-            {
-                if (piece.convert(it.frame, from: it)).contains(it.center)
+            
+            if (not_used){
+                // hand 1, hand 2
+                for it in images_2
                 {
-//                    flag = true
-                    it.image = drag_item.image
-                    UIView.animate(withDuration: 0.3, animations: {
-                        piece.alpha = 0.0
-                    })
+                    if (piece.convert(it.frame, from: it)).contains(it.center)
+                    {
+                        it.image = drag_item.image
+                        UIView.animate(withDuration: 0.3, animations: { piece.alpha = 0.0} )
+                        point = find(value: drag_item, in: images)! + 1
+//                        print(find(value: drag_item, in: images)!)
+                        
+//                        add value
+                        hand_suit.append(suit)
+                        hand_point.append(point)
+                        print("Add to hand \(suit),\(point)")
+                    }
                 }
             }
+            
             piece.center = original[drag_item]!
             piece.alpha = 1.0
         }
     }
-    
-    
 }
 
