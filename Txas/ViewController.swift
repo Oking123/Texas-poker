@@ -251,7 +251,6 @@ class ViewController: UIViewController {
                         UIView.animate(withDuration: 0.3, animations: { piece.alpha = 0.0} )
                         point = find(value: drag_item, in: images)! + 1
 //                        print(find(value: drag_item, in: images)!)
-                        
 //                        add value
                         hand_suit.append(suit)
                         hand_point.append(point)
