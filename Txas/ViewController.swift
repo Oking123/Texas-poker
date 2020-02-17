@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-//    let cal = Calculate([Card])
-    var table_suit: [Int] = []
-    var table_point: [Int] = []
-    var hand_suit: [Int] = []
-    var hand_point: [Int] = []
+    let cal = Calculate()
+//    var table_suit: [Int] = []
+//    var table_point: [Int] = []
+//    var hand_suit: [Int] = []
+//    var hand_point: [Int] = []
     
     var suit: Int = 0 //defalut suit is spade
     var point: Int = 0
@@ -234,9 +234,13 @@ class ViewController: UIViewController {
                     not_used = false
                     
                     // add values
-                    table_suit.append(suit)
-                    table_point.append(point)
-                    print("Add to table \(suit),\(point)")
+//                    print("Add to table \(suit),\(point)")
+//                    table_suit.append(suit)
+//                    table_point.append(point)
+                    
+                    let table_index = find(value: it, in: images_5)!
+//                    print("table index: \(table_index)")
+                    storeValue(my_suit: suit, my_point: point, table_or_hand: 0, index: table_index)
                     // add return value of the card
                 }
             }
@@ -252,16 +256,66 @@ class ViewController: UIViewController {
                         point = find(value: drag_item, in: images)! + 1
 //                        print(find(value: drag_item, in: images)!)
 //                        add value
-                        hand_suit.append(suit)
-                        hand_point.append(point)
-                        print("Add to hand \(suit),\(point)")
+                        not_used = false
+//                        print("Add to hand \(suit),\(point)")
+//                        hand_suit.append(suit)
+//                        hand_point.append(point)
+                        
+                        
+                        let hand_index = find(value: it, in: images_2)!
+//                        print("hand index: \(hand_index)")
+                        storeValue(my_suit: suit, my_point: point, table_or_hand: 1, index: hand_index)
                     }
                 }
+            }
+            
+            if (!not_used){
+                if(cal.check_can_be_calculated()){
+                    let result = cal.calculate()
+                    print("This is my result: \(result)")
+                }
+                else{
+                    print("Can not calculate")
+                }
+                   
             }
             
             piece.center = original[drag_item]!
             piece.alpha = 1.0
         }
     }
+    
+    func storeValue(my_suit:Int, my_point:Int, table_or_hand: Int, index:Int){
+        switch table_or_hand {
+        case 0:
+            switch index{
+                case 0:
+                    cal.set_flop0(use: Card(suit:my_suit, point: my_point))
+                case 1:
+                    cal.set_flop1(use: Card(suit:my_suit, point: my_point))
+                case 2:
+                    cal.set_flop2(use: Card(suit:my_suit, point: my_point))
+                case 3:
+                    cal.set_turn(use: Card(suit:my_suit, point: my_point))
+                case 5:
+                    cal.set_river(use: Card(suit:my_suit, point: my_point))
+            default:
+                print("invalid table")
+            }
+        case 1:
+            switch index{
+                case 0:
+                    cal.set_playerhand0(use: Card(suit:my_suit, point: my_point))
+                case 1:
+                    cal.set_playerhand1(use: Card(suit:my_suit, point: my_point))
+            default:
+                print("invalid hand")
+            }
+        default:
+            print("invalid input")
+        }
+    }
+    
+    
 }
 
