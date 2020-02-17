@@ -12,11 +12,16 @@ import Foundation
 
 /// initial with two Card object as [Card, Card], has function set_flop, set_turn, set_river, clear
 class Calculate{
-    private var player_hand:[Card]?
+    private var player_hand:[Card]? = nil
+    private var player_hand0:Card? = nil
+    private var player_hand1:Card? = nil
     private var win_rate:Float = 0
     private var draw_rate:Float = 0
     private var lose_rate:Float = 0
     private var player_number = 2
+    private var flop0:Card? = nil
+    private var flop1:Card? = nil
+    private var flop2:Card? = nil
     private var flop:[Card]? = nil
     private var turn:Card? = nil
     private var river:Card? = nil
@@ -34,6 +39,53 @@ class Calculate{
         self.player_hand = player
     }
     
+    init() {
+    }
+    
+    /// set the first card of player
+    /// - Parameter c: card object
+    func set_playerhand0(use c:Card){
+        self.player_hand0 = c
+        if self.player_hand0 != nil && self.player_hand1 != nil{
+            self.player_hand = [self.player_hand0!, self.player_hand1!]
+        }
+    }
+    
+    /// set the second card of the player
+    /// - Parameter c: card object
+    func set_playerhand1(use c:Card){
+        self.player_hand1 = c
+        if self.player_hand0 != nil && self.player_hand1 != nil{
+            self.player_hand = [self.player_hand0!, self.player_hand1!]
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop0(use flop:Card){
+        self.flop0 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop1(use flop:Card){
+        self.flop1 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop2(use flop:Card){
+        self.flop2 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
 
     /// set the flop of the table with 3 Card object
     /// - Parameter flop: [Card] with size of 3 should not be duplicate with other input
@@ -54,13 +106,21 @@ class Calculate{
     }
     
     
-    /// clear all the flop, turn, river data and reset the card in player's hand
-    /// - Parameter player_hand: [Card] type with size of 2
-    func reset(use player_hand:[Card]){
+    /// clear all the flop, turn, river data and the card in player's hand
+    func reset(){
         self.flop = nil
         self.turn = nil
         self.river = nil
-        self.player_hand = player_hand
+        self.player_hand = nil
+        self.flop0 = nil
+        self.flop1 = nil
+        self.flop2 = nil
+    }
+    
+    /// set player_number
+    /// - Parameter player_number: int
+    func set_playernumber(use player_number:Int){
+        self.player_number = player_number
     }
     
 //  check the type of the player_hands, return[type ID, highest card]
@@ -186,8 +246,33 @@ class Calculate{
             return 2}
     }
     
-    func calculate(player_number: Int) -> Float{
-        self.player_number = player_number
+    /// check if the data can be processed
+    func check_can_be_calculated() -> Bool{
+        if self.player_hand == nil{
+            return false
+        }else{
+            if self.flop == nil && self.turn == nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn == nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn != nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn != nil && self.river != nil{
+                return true
+            }
+        }
+        return false
+    }
+    
+    /// calculate the win rate of the player given the number of players
+    /// - Parameter player_number: the player number left on the table
+    func calculate() -> Float{
+        if !check_can_be_calculated(){
+            return -1
+        }
 //      pick 5 from 7 cards
         func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
             var final:[Card] = table
