@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+
     @IBOutlet weak var NumberTextField: UITextField!
     var NumberText = ""
     
@@ -23,11 +24,11 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func Comfirm(_ sender: Any) {
+
+    @IBAction func comfirm(_ sender: Any) {
         self.NumberText = NumberTextField.text!
         performSegue(withIdentifier: "player", sender: self)
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ViewController
@@ -35,3 +36,4 @@ class MainViewController: UIViewController {
     }
 
 }
+

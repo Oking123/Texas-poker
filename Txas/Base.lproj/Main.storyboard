@@ -27,7 +27,7 @@
                                 </constraints>
                                 <state key="normal" title="Comfirm"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="player" id="p9m-Qr-NAq"/>
+                                    <action selector="comfirm:" destination="yjQ-AW-0zG" eventType="touchUpInside" id="LoT-bN-tTp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,6 +43,10 @@
                         <viewLayoutGuide key="safeArea" id="CSZ-jh-nU8"/>
                     </view>
                     <navigationItem key="navigationItem" title="Texas Poker" id="O4p-KY-OVN"/>
+                    <connections>
+                        <outlet property="NumberTextField" destination="HMU-gW-ibP" id="6P0-YI-gFn"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="player" id="kbO-Ur-MgA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkU-Vp-DHq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -359,6 +363,7 @@
                         <outlet property="a3" destination="WY4-0R-Rfd" id="ATh-UP-w1z"/>
                         <outlet property="a4" destination="GBh-o4-yES" id="jzJ-ux-bVV"/>
                         <outlet property="a5" destination="MCt-IB-Ssw" id="FAF-OK-cop"/>
+                        <outlet property="drop" destination="QzQ-Mz-T9H" id="531-c2-2gt"/>
                         <outlet property="hand1" destination="qms-eh-9sg" id="ik0-Pm-mvE"/>
                         <outlet property="hand2" destination="RGh-y6-F1c" id="fC1-Jy-wFj"/>
                         <outlet property="image_1" destination="puO-NO-ZmV" id="hXX-Gq-tdq"/>

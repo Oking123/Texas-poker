@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var drop: UITextField!
     @IBOutlet weak var num: UILabel!
-    var player = ""
+    var player:String? = nil
+    var DropPlayer:Int = 0
     let cal = Calculate()
 //    var table_suit: [Int] = []
 //    var table_point: [Int] = []
@@ -263,6 +265,14 @@ class ViewController: UIViewController {
             
             if (!not_used){
                 if(cal.check_can_be_calculated()){
+                    if drop.text != ""{
+                        DropPlayer = Int(String(drop.text!))!
+                    }
+                    if player != nil{
+                        let playerNumber = Int(player!)!
+                        cal.set_playernumber(use: playerNumber-DropPlayer)
+                    }
+                    
                     let result = cal.calculate()
                     Result.text = "Winning rate: \(result*100)%"
                 }
@@ -278,8 +288,6 @@ class ViewController: UIViewController {
     }
     
     func storeValue(my_suit:Int, my_point:Int, table_or_hand: Int, index:Int){
-        print("hello world")
-        print(player)
         switch table_or_hand {
         case 0:
             switch index{
