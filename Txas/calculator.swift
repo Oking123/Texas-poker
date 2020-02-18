@@ -325,7 +325,7 @@ class Calculate{
             else{
                 while table.count < 4{
                     let tempcard = Card(index: Int.random(in: 0...51))
-                    if !card1!.contains(tempcard){
+                    if !cardpool.contains(tempcard){
                         table.append(tempcard)
                         cardpool.append(tempcard)
                     }
@@ -339,7 +339,7 @@ class Calculate{
             else{
                 while table.count < 5{
                     let tempcard = Card(index: Int.random(in: 0...51))
-                    if !card1!.contains(tempcard){
+                    if !cardpool.contains(tempcard){
                         table.append(tempcard)
                         cardpool.append(tempcard)
                     }
