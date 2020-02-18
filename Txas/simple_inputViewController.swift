@@ -84,9 +84,9 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
     }
 }
 
-extension ViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+//extension ViewController: UITextFieldDelegate{
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//}

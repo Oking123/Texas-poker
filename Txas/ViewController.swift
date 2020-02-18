@@ -267,10 +267,12 @@ class ViewController: UIViewController {
                 if(cal.check_can_be_calculated()){
                     if drop.text != ""{
                         DropPlayer = Int(String(drop.text!))!
+                        
                     }
                     if player != nil{
                         let playerNumber = Int(player!)!
                         cal.set_playernumber(use: playerNumber-DropPlayer)
+                        num.text = String(playerNumber - DropPlayer)
                     }
                     
                     let result = cal.calculate()
@@ -281,7 +283,7 @@ class ViewController: UIViewController {
                 }
                    
             }
-            
+
             piece.center = original[drag_item]!
             piece.alpha = 1.0
         }
@@ -317,7 +319,12 @@ class ViewController: UIViewController {
             print("invalid input")
         }
     }
-    
-    
 }
 
+extension ViewController: UITextFieldDelegate{
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        drop.resignFirstResponder()
+        return true
+    }
+}
