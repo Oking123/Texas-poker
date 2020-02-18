@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  Txas
 //
-//  Created by Weng Yu on 2020-02-17.
+//  Created by Shiyun Qin on 2020-02-17.
 //  Copyright © 2020 陈彦廷. All rights reserved.
 //
 
