@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		084AA61F23FB185300103BB5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AA61E23FB185300103BB5 /* MainViewController.swift */; };
+		084AA62123FB456400103BB5 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AA62023FB456400103BB5 /* HelpViewController.swift */; };
 		5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB623F3916100DB2AA4 /* card.swift */; };
 		5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB823F391BA00DB2AA4 /* calculator.swift */; };
 		9F2C964D23D39F8A006A5B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		084AA61E23FB185300103BB5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		084AA62023FB456400103BB5 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		5B2DBDB623F3916100DB2AA4 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		5B2DBDB823F391BA00DB2AA4 /* calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculator.swift; sourceTree = "<group>"; };
 		9F2C964923D39F8A006A5B63 /* Txas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Txas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +70,7 @@
 			children = (
 				9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */,
 				9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */,
+				084AA61E23FB185300103BB5 /* MainViewController.swift */,
 				9F2C965023D39F8B006A5B63 /* ViewController.swift */,
 				CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */,
 				CCB72C0623FB15FF009B04B4 /* item.swift */,
@@ -75,6 +80,7 @@
 				9F2C965A23D39F8D006A5B63 /* Info.plist */,
 				5B2DBDB623F3916100DB2AA4 /* card.swift */,
 				5B2DBDB823F391BA00DB2AA4 /* calculator.swift */,
+				084AA62023FB456400103BB5 /* HelpViewController.swift */,
 			);
 			path = Txas;
 			sourceTree = "<group>";
@@ -150,9 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				084AA61F23FB185300103BB5 /* MainViewController.swift in Sources */,
 				9F2C965123D39F8B006A5B63 /* ViewController.swift in Sources */,
 				9F2C964D23D39F8A006A5B63 /* AppDelegate.swift in Sources */,
+
+				084AA62123FB456400103BB5 /* HelpViewController.swift in Sources */,
+
 				CCB72C0723FB15FF009B04B4 /* item.swift in Sources */,
+
 				9F2C964F23D39F8B006A5B63 /* SceneDelegate.swift in Sources */,
 				5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */,
 				CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */,

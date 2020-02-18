@@ -10,40 +10,44 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
+    @IBOutlet weak var NumberOfPlayer: UILabel!
+    var player = ""
+    
+    @IBOutlet weak var dropPlayer: UITextField!
+    
+    //variances of poker
+
     let cal = Calculate()
-//    var table_suit: [Int] = []
-//    var table_point: [Int] = []
-//    var hand_suit: [Int] = []
-//    var hand_point: [Int] = []
     
     var suit: Int = 0 //defalut suit is spade
     var point: Int = 0
     
       //variances of poker
-        @IBOutlet weak var image_1: UIImageView!
-        @IBOutlet weak var image_2: UIImageView!
-        @IBOutlet weak var image_3: UIImageView!
-        @IBOutlet weak var image_4: UIImageView!
-        @IBOutlet weak var image_5: UIImageView!
-        @IBOutlet weak var image_6: UIImageView!
-        @IBOutlet weak var image_7: UIImageView!
-        @IBOutlet weak var image_8: UIImageView!
-        @IBOutlet weak var image_9: UIImageView!
-        @IBOutlet weak var image_10: UIImageView!
-        @IBOutlet weak var image_11: UIImageView!
-        @IBOutlet weak var image_12: UIImageView!
-        @IBOutlet weak var image_13: UIImageView!
+      @IBOutlet weak var image_1: UIImageView!
+      @IBOutlet weak var image_2: UIImageView!
+      @IBOutlet weak var image_3: UIImageView!
+      @IBOutlet weak var image_4: UIImageView!
+      @IBOutlet weak var image_5: UIImageView!
+      @IBOutlet weak var image_6: UIImageView!
+      @IBOutlet weak var image_7: UIImageView!
+      @IBOutlet weak var image_8: UIImageView!
+      @IBOutlet weak var image_9: UIImageView!
+      @IBOutlet weak var image_10: UIImageView!
+      @IBOutlet weak var image_11: UIImageView!
+      @IBOutlet weak var image_12: UIImageView!
+      @IBOutlet weak var image_13: UIImageView!
     
     //variance of deliever pokers
-        @IBOutlet weak var a1: UIImageView!
-        @IBOutlet weak var a2: UIImageView!
-        @IBOutlet weak var a3: UIImageView!
-        @IBOutlet weak var a4: UIImageView!
-        @IBOutlet weak var a5: UIImageView!
+      @IBOutlet weak var a1: UIImageView!
+      @IBOutlet weak var a2: UIImageView!
+      @IBOutlet weak var a3: UIImageView!
+      @IBOutlet weak var a4: UIImageView!
+      @IBOutlet weak var a5: UIImageView!
     //variance of hand pokers
-        @IBOutlet weak var hand1: UIImageView!
-        
-        @IBOutlet weak var hand2: UIImageView!
+      @IBOutlet weak var hand1: UIImageView!
+
+      @IBOutlet weak var hand2: UIImageView!
     
     /// placeholder for table cards
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
@@ -59,6 +63,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //number of player
+        NumberOfPlayer.text = "Number of player: " + player
+        // Do any additional setup after loading the view
         //addPanGesture()
         
         view.isMultipleTouchEnabled = true
@@ -90,6 +97,14 @@ class ViewController: UIViewController {
         navigationItem.titleView = stackView
         setCustomerBackImage()
     }
+    
+    @IBAction func done(_ sender: Any) {
+        let NumberOfPlayer = Int(player)!
+        let NumberDrop:Int? = Int(dropPlayer.text!)
+        let PlayerInGame = NumberOfPlayer - NumberDrop!
+        player = String(PlayerInGame)
+    }
+    
     
     func setCustomerBackImage(){
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target: nil, action: nil)
@@ -317,5 +332,13 @@ class ViewController: UIViewController {
     }
     
     
+//    @IBAction func help(_ sender: Any) {
+//        performSegue(withIdentifier: "help", sender: self)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let vc = segue.destination as! simple_inputViewController
+//        vc.numberPlayer = player
+//    }
 }
 
