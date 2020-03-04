@@ -248,6 +248,9 @@ class Calculate{
     
     /// check if the data can be processed
     func check_can_be_calculated() -> Bool{
+        if (self.flop == nil) && (self.flop0 != nil || self.flop1 != nil || self.flop2 != nil){
+            return false
+        }
         if self.player_hand == nil{
             return false
         }else{
