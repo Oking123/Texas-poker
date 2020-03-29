@@ -16,6 +16,7 @@
 		9F2C965623D39F8D006A5B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965523D39F8D006A5B63 /* Assets.xcassets */; };
 		9F2C965923D39F8D006A5B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965723D39F8D006A5B63 /* LaunchScreen.storyboard */; };
 		CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */; };
+		CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54F57423FB69F0001943FC /* MainViewController.swift */; };
 		CCB72C0723FB15FF009B04B4 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB72C0623FB15FF009B04B4 /* item.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		9F2C965823D39F8D006A5B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F2C965A23D39F8D006A5B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simple_inputViewController.swift; sourceTree = "<group>"; };
+		CC54F57423FB69F0001943FC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CCB72C0623FB15FF009B04B4 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 			children = (
 				9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */,
 				9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */,
+				CC54F57423FB69F0001943FC /* MainViewController.swift */,
 				9F2C965023D39F8B006A5B63 /* ViewController.swift */,
 				CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */,
 				CCB72C0623FB15FF009B04B4 /* item.swift */,
@@ -157,6 +160,7 @@
 				5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */,
 				CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */,
 				5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */,
+				CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

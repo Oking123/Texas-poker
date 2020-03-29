@@ -62,8 +62,6 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
         cal.set_flop1(use: Card(index:my_flop1))
         cal.set_flop2(use: Card(index:my_flop2))
         }
-       
-        
         if turn.text != ""{
             cal.set_turn(use: Card(index:Int(turn.text!)!))
         }
@@ -71,8 +69,7 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
         if river.text != ""{
             cal.set_river(use: Card(index:Int(river.text!)!))
         }
-        
-              
+
         let result = cal.calculate()*100
         
         viewResult.text = "my winning change is: \(result)%.\n"
@@ -87,9 +84,9 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
     }
 }
 
-extension ViewController: UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+//extension ViewController: UITextFieldDelegate{
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//}
