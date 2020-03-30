@@ -15,9 +15,8 @@ class Calculate{
     private var player_hand:[Card]? = nil
     private var player_hand0:Card? = nil
     private var player_hand1:Card? = nil
-    private var win_rate:Float = 0
-    private var draw_rate:Float = 0
-    private var lose_rate:Float = 0
+    private var win_rate:[Float] = [0,0,0,0,0,0]
+    private var draw_rate:[Float] = [0,0,0,0,0,0]
     private var player_number = 2
     private var flop0:Card? = nil
     private var flop1:Card? = nil
@@ -25,6 +24,25 @@ class Calculate{
     private var flop:[Card]? = nil
     private var turn:Card? = nil
     private var river:Card? = nil
+    
+    private var cardlist:[Card]? = nil
+    
+    private var player1_hand:[Card]? = nil
+    private var player1_hand0:Card? = nil
+    private var player1_hand1:Card? = nil
+    private var player2_hand:[Card]? = nil
+    private var player2_hand0:Card? = nil
+    private var player2_hand1:Card? = nil
+    private var player3_hand:[Card]? = nil
+    private var player3_hand0:Card? = nil
+    private var player3_hand1:Card? = nil
+    private var player4_hand:[Card]? = nil
+    private var player4_hand0:Card? = nil
+    private var player4_hand1:Card? = nil
+    private var player5_hand:[Card]? = nil
+    private var player5_hand0:Card? = nil
+    private var player5_hand1:Card? = nil
+    private var players:[[Card]?] = []
     
     let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
@@ -37,11 +55,30 @@ class Calculate{
             fputs("The number of input hands is not 2", stderr)
         }
         self.player_hand = player
+//        init cardlist
+        var tempcardlist:[Card] = []
+        for i in 0...51{
+            let tempcard = Card(index: i)
+            tempcardlist.append(tempcard)
+        }
+        cardlist = tempcardlist
+        self.players = [self.player1_hand,self.player2_hand,self.player3_hand,self.player4_hand,self.player5_hand]
     }
     
     init() {
+//        init cardlist
+        var tempcardlist:[Card] = []
+        for i in 0...51{
+            let tempcard = Card(index: i)
+            tempcardlist.append(tempcard)
+        }
+        cardlist = tempcardlist
+        self.players = [self.player1_hand,self.player2_hand,self.player3_hand,self.player4_hand,self.player5_hand]
     }
-    
+    func removeplayer(remove number:Int, from  players:[[Card]?]){
+        
+        
+    }
     /// set the first card of player
     /// - Parameter c: card object
     func set_playerhand0(use c:Card){
@@ -294,15 +331,19 @@ class Calculate{
         
         
         var player1_win:Int = 0
+        var player1_draw:Int = 0
 
 //        loop for 1000 times
-        for _ in 1...1000{
+        for _ in 1...250{
 //             all chosen cards
             var cardpool:[Card] = player_hand!
             var card1 = player_hand
 //             other player's cards
             var players:[[Card]] = []
             var table = [Card]()
+//            shuffle
+            cardlist?.shuffle()
+            var cardindex = 0
 //            get five cards on table
             
 //            get flop
@@ -312,11 +353,12 @@ class Calculate{
             }
             else{
                 while table.count < 3{
-                    let tempcard = Card(index: Int.random(in: 0...51))
+                    let tempcard = self.cardlist![cardindex]
                     if !cardpool.contains(tempcard){
                         table.append(tempcard)
                         cardpool.append(tempcard)
                     }
+                    cardindex += 1
                 }
             }
             
@@ -327,11 +369,12 @@ class Calculate{
             }
             else{
                 while table.count < 4{
-                    let tempcard = Card(index: Int.random(in: 0...51))
+                    let tempcard = self.cardlist![cardindex]
                     if !cardpool.contains(tempcard){
                         table.append(tempcard)
                         cardpool.append(tempcard)
                     }
+                    cardindex += 1
                 }
             }
 //             get river
@@ -341,22 +384,24 @@ class Calculate{
             }
             else{
                 while table.count < 5{
-                    let tempcard = Card(index: Int.random(in: 0...51))
+                    let tempcard = self.cardlist![cardindex]
                     if !cardpool.contains(tempcard){
                         table.append(tempcard)
                         cardpool.append(tempcard)
                     }
+                    cardindex += 1
                 }
             }
 //            get cards for players
             for _ in 2...self.player_number{
                 var player:[Card] = []
                 while player.count < 2{
-                    let newcard = Card(index:Int.random(in: 0...51))
+                    let newcard = self.cardlist![cardindex]
                     if !cardpool.contains(newcard){
                         player.append(newcard)
                         cardpool.append(newcard)
                     }
+                    cardindex += 1
                 }
                 players.append(player)
             }
@@ -367,24 +412,40 @@ class Calculate{
             }
             
             //judge player1 win
-            var count = 0
+            var win_count = 0
+            var draw_count = 0
+            var lose_count = 0
             for i in 0...self.player_number-2{
                 if if_p1_win(player1: card1!, player2: players[i]) == 1{
-                    count += 1
+                    win_count += 1
+                }
+                else if if_p1_win(player1: card1!, player2: players[i]) == 2{
+                    draw_count += 1
+                }
+                else if if_p1_win(player1: card1!, player2: players[i]) == 0{
+                    lose_count += 1
                 }
             }
-            if count == self.player_number-1{
+            if win_count == self.player_number-1{
                 player1_win += 1
             }
+            if lose_count == 0 && draw_count > 0{
+                player1_draw += 1
+            }
         }
-        win_rate = Float(player1_win)/1000.0
-        return self.win_rate
+        win_rate = Float(player1_win)/250.0
+        draw_rate = Float(player1_draw)/250.0
         }
     
     
     /// get the present win_rate of the table
-    func get_winrate() -> Float{
+    func get_winrate(player_number number:Int) -> [Float]{
         return self.win_rate
     }
+    
+    func get_drawrate() -> [Float]{
+        return self.draw_rate
+    }
+    
     
 }
