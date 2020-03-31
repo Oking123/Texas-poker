@@ -26,23 +26,7 @@ class Calculate{
     private var river:Card? = nil
     
     private var cardlist:[Card]? = nil
-    
-    private var player1_hand:[Card]? = nil
-    private var player1_hand0:Card? = nil
-    private var player1_hand1:Card? = nil
-    private var player2_hand:[Card]? = nil
-    private var player2_hand0:Card? = nil
-    private var player2_hand1:Card? = nil
-    private var player3_hand:[Card]? = nil
-    private var player3_hand0:Card? = nil
-    private var player3_hand1:Card? = nil
-    private var player4_hand:[Card]? = nil
-    private var player4_hand0:Card? = nil
-    private var player4_hand1:Card? = nil
-    private var player5_hand:[Card]? = nil
-    private var player5_hand0:Card? = nil
-    private var player5_hand1:Card? = nil
-    private var players:[[Card]?] = []
+    private var players:[[Card?]] = []
     
     let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
@@ -62,7 +46,13 @@ class Calculate{
             tempcardlist.append(tempcard)
         }
         cardlist = tempcardlist
-        self.players = [self.player1_hand,self.player2_hand,self.player3_hand,self.player4_hand,self.player5_hand]
+        let player0_hand:[Card?] = [nil,nil]
+        let player1_hand:[Card?] = [nil,nil]
+        let player2_hand:[Card?] = [nil,nil]
+        let player3_hand:[Card?] = [nil,nil]
+        let player4_hand:[Card?] = [nil,nil]
+        let player5_hand:[Card?] = [nil,nil]
+        self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
     }
     
     init() {
@@ -73,12 +63,42 @@ class Calculate{
             tempcardlist.append(tempcard)
         }
         cardlist = tempcardlist
-        self.players = [self.player1_hand,self.player2_hand,self.player3_hand,self.player4_hand,self.player5_hand]
+        let player0_hand:[Card?] = [nil,nil]
+        let player1_hand:[Card?] = [nil,nil]
+        let player2_hand:[Card?] = [nil,nil]
+        let player3_hand:[Card?] = [nil,nil]
+        let player4_hand:[Card?] = [nil,nil]
+        let player5_hand:[Card?] = [nil,nil]
+        self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
     }
-    func removeplayer(remove number:Int, from  players:[[Card]?]){
-        
+    
+    /// remove a player from table
+    /// - Parameter number: remove which player
+    func removeplayer(remove number:Int){
+        self.players[number] = [nil,nil]
+        self.player_number -= 1
+        for _ in number...4{
+            self.players[number] = self.players[number+1]
+        }
         
     }
+    
+    /// add a player
+    func addplayer(){
+        self.player_number += 1
+    }
+    
+    
+    /// set  a player's hand
+    /// - Parameters:
+    ///   - player: which player
+    ///   - hand: wich hand
+    ///   - card: the card
+    func set_playerhand(set player:Int, which hand:Int ,use card:Card){
+        self.players[player][hand] = card
+    }
+    
+    
     /// set the first card of player
     /// - Parameter c: card object
     func set_playerhand0(use c:Card){
@@ -274,7 +294,7 @@ class Calculate{
             else if p1_result[1] > p2_result[1]{
                 return 1}
             else{
-//                 if the highest card an the type are all the same, compare the two cards one by one to find a winner
+//                 if the highest card and the type are all the same, compare the two cards one by one to find a winner
                 for i in 0...4{
                     if player1[4-i].point < player2[4-i].point{
                         return 0}
@@ -309,9 +329,9 @@ class Calculate{
     
     /// calculate the win rate of the player given the number of players
     /// - Parameter player_number: the player number left on the table
-    func calculate() -> Float{
+    func calculate(){
         if !check_can_be_calculated(){
-            return -1
+            
         }
 //      pick 5 from 7 cards
         func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
@@ -330,10 +350,11 @@ class Calculate{
         }
         
         
+        
         var player1_win:Int = 0
         var player1_draw:Int = 0
 
-//        loop for 1000 times
+//        loop for 250 times
         for _ in 1...250{
 //             all chosen cards
             var cardpool:[Card] = player_hand!
@@ -433,18 +454,18 @@ class Calculate{
                 player1_draw += 1
             }
         }
-        win_rate = Float(player1_win)/250.0
-        draw_rate = Float(player1_draw)/250.0
+        self.win_rate[0] = Float(player1_win)/250.0
+        self.draw_rate[0] = Float(player1_draw)/250.0
         }
     
     
     /// get the present win_rate of the table
-    func get_winrate(player_number number:Int) -> [Float]{
-        return self.win_rate
+    func get_winrate(player_number number:Int) -> Float{
+        return self.win_rate[number]
     }
     
-    func get_drawrate() -> [Float]{
-        return self.draw_rate
+    func get_drawrate(player_number number:Int) -> Float{
+        return self.draw_rate[number]
     }
     
     
