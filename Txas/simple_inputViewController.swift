@@ -28,6 +28,17 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
         flop.delegate = self
         turn.delegate = self
         river.delegate = self
+        
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(simple_inputViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+    }
+    
+    @objc func back(sender: UIBarButtonItem) {
+        // Perform your custom actions
+        // ...
+        // Go back to the previous ViewController
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,6 +93,8 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
         turn.resignFirstResponder()
         river.resignFirstResponder()
     }
+    
+    
 }
 
 //extension ViewController: UITextFieldDelegate{
