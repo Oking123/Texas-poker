@@ -12,9 +12,6 @@ import Foundation
 
 /// initial with two Card object as [Card, Card], has function set_flop, set_turn, set_river, clear
 class Calculate{
-    private var player_hand:[Card]? = nil
-    private var player_hand0:Card? = nil
-    private var player_hand1:Card? = nil
     private var win_rate:[Float] = [0,0,0,0,0,0]
     private var draw_rate:[Float] = [0,0,0,0,0,0]
     private var player_number = 2
@@ -32,29 +29,6 @@ class Calculate{
     let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
     
     
-    /// initialize the Callulate class with two original cards in player's hand
-    /// - Parameter player: [Card] with a size of 2 and should not be duplicate
-    init(_ player:[Card]) {
-        if player.count != 2{
-            fputs("The number of input hands is not 2", stderr)
-        }
-        self.player_hand = player
-//        init cardlist
-        var tempcardlist:[Card] = []
-        for i in 0...51{
-            let tempcard = Card(index: i)
-            tempcardlist.append(tempcard)
-        }
-        cardlist = tempcardlist
-        let player0_hand:[Card?] = [nil,nil]
-        let player1_hand:[Card?] = [nil,nil]
-        let player2_hand:[Card?] = [nil,nil]
-        let player3_hand:[Card?] = [nil,nil]
-        let player4_hand:[Card?] = [nil,nil]
-        let player5_hand:[Card?] = [nil,nil]
-        self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
-    }
-    
     init() {
 //        init cardlist
         var tempcardlist:[Card] = []
@@ -70,6 +44,7 @@ class Calculate{
         let player4_hand:[Card?] = [nil,nil]
         let player5_hand:[Card?] = [nil,nil]
         self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
+        self.player_number = 2
     }
     
     /// remove a player from table
@@ -96,25 +71,6 @@ class Calculate{
     ///   - card: the card
     func set_playerhand(set player:Int, which hand:Int ,use card:Card){
         self.players[player][hand] = card
-    }
-    
-    
-    /// set the first card of player
-    /// - Parameter c: card object
-    func set_playerhand0(use c:Card){
-        self.player_hand0 = c
-        if self.player_hand0 != nil && self.player_hand1 != nil{
-            self.player_hand = [self.player_hand0!, self.player_hand1!]
-        }
-    }
-    
-    /// set the second card of the player
-    /// - Parameter c: card object
-    func set_playerhand1(use c:Card){
-        self.player_hand1 = c
-        if self.player_hand0 != nil && self.player_hand1 != nil{
-            self.player_hand = [self.player_hand0!, self.player_hand1!]
-        }
     }
     
     /// set the first card of the game
@@ -168,7 +124,6 @@ class Calculate{
         self.flop = nil
         self.turn = nil
         self.river = nil
-        self.player_hand = nil
         self.flop0 = nil
         self.flop1 = nil
         self.flop2 = nil
@@ -304,35 +259,33 @@ class Calculate{
     }
     
     /// check if the data can be processed
-    func check_can_be_calculated() -> Bool{
-        if (self.flop == nil) && (self.flop0 != nil || self.flop1 != nil || self.flop2 != nil){
-            return false
-        }
-        if self.player_hand == nil{
-            return false
-        }else{
-            if self.flop == nil && self.turn == nil && self.river == nil{
-                return true
-            }
-            if self.flop != nil && self.turn == nil && self.river == nil{
-                return true
-            }
-            if self.flop != nil && self.turn != nil && self.river == nil{
-                return true
-            }
-            if self.flop != nil && self.turn != nil && self.river != nil{
-                return true
-            }
-        }
-        return false
-    }
+//    func check_can_be_calculated() -> Bool{
+//        if (self.flop == nil) && (self.flop0 != nil || self.flop1 != nil || self.flop2 != nil){
+//            return false
+//        }
+//        if self.player_hand == nil{
+//            return false
+//        }else{
+//            if self.flop == nil && self.turn == nil && self.river == nil{
+//                return true
+//            }
+//            if self.flop != nil && self.turn == nil && self.river == nil{
+//                return true
+//            }
+//            if self.flop != nil && self.turn != nil && self.river == nil{
+//                return true
+//            }
+//            if self.flop != nil && self.turn != nil && self.river != nil{
+//                return true
+//            }
+//        }
+//        return false
+//    }
     
     /// calculate the win rate of the player given the number of players
     /// - Parameter player_number: the player number left on the table
     func calculate(){
-        if !check_can_be_calculated(){
-            
-        }
+        
 //      pick 5 from 7 cards
         func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
             var final:[Card] = table
@@ -349,18 +302,25 @@ class Calculate{
             return final
         }
         
+        var wintimes:[Int] = [Int](repeating:0,count:player_number)
+        var drawtimes:[Int] = [Int](repeating:0,count:player_number)
         
-        
-        var player1_win:Int = 0
-        var player1_draw:Int = 0
-
 //        loop for 250 times
         for _ in 1...250{
 //             all chosen cards
-            var cardpool:[Card] = player_hand!
-            var card1 = player_hand
-//             other player's cards
-            var players:[[Card]] = []
+            var cardpool:[Card] = []
+//             other player's card
+            var playerhands = self.players
+            
+            for i in 0...self.player_number-1{
+                if let tempcard1 = playerhands[i][0]{
+                    cardpool.append(tempcard1)
+                }
+                if let tempcard2 = playerhands[i][1]{
+                    cardpool.append(tempcard2)
+                }
+            }
+            
             var table = [Card]()
 //            shuffle
             cardlist?.shuffle()
@@ -414,49 +374,91 @@ class Calculate{
                 }
             }
 //            get cards for players
-            for _ in 2...self.player_number{
-                var player:[Card] = []
-                while player.count < 2{
-                    let newcard = self.cardlist![cardindex]
-                    if !cardpool.contains(newcard){
-                        player.append(newcard)
-                        cardpool.append(newcard)
+            for i in 0...self.player_number-1{
+                for j in 0...1{
+                    while playerhands[i][j] == nil{
+                        let tempcard = self.cardlist![cardindex]
+                        if !cardpool.contains(tempcard){
+                            playerhands[i][0] = tempcard
+                            cardpool.append(tempcard)
+                        }
                     }
                     cardindex += 1
                 }
-                players.append(player)
             }
 //            select 5 from 7 for all players
-            card1 = five_in_seven(playerhand: card1!, table: table)
-            for i in 0...self.player_number-2{
-                players[i] = five_in_seven(playerhand: players[i], table: table)
+            var final_hand:[[Card]] = []
+            for i in 0...self.player_number-1{
+                final_hand.append(five_in_seven(playerhand: playerhands[i] as! [Card], table:table))
             }
             
-            //judge player1 win
-            var win_count = 0
-            var draw_count = 0
-            var lose_count = 0
+            //calculate winplayer and drawplayer
+            var wincount:[Int] = [Int](repeating: 0, count: self.player_number)
+            var drawcount:[Int] = [Int](repeating: 0, count: self.player_number)
+            var losecount:[Int] = [Int](repeating: 0, count: self.player_number)
+            
             for i in 0...self.player_number-2{
-                if if_p1_win(player1: card1!, player2: players[i]) == 1{
-                    win_count += 1
-                }
-                else if if_p1_win(player1: card1!, player2: players[i]) == 2{
-                    draw_count += 1
-                }
-                else if if_p1_win(player1: card1!, player2: players[i]) == 0{
-                    lose_count += 1
+                if losecount[i] == 0{
+                    for j in i+1...self.player_number-1{
+                        if if_p1_win(player1: final_hand[i], player2: final_hand[j]) == 1{
+                            wincount[i] += 1
+                            losecount[i] += 1
+                        }
+                        else if if_p1_win(player1: final_hand[i], player2: final_hand[j]) == 2{
+                            drawcount[i] += 1
+                            drawcount[j] += 1
+                        }
+                        else if if_p1_win(player1: final_hand[i], player2: final_hand[j]) == 0{
+                            losecount[i] += 1
+                            wincount[j] += 1
+                            break
+                        }
+                    }
                 }
             }
-            if win_count == self.player_number-1{
-                player1_win += 1
+            var win_player = 0
+            for i in 0...self.player_number-1{
+                if wincount[i]>0 && losecount[i] == 0 && drawcount[i] == 0{
+                    wintimes[i] += 1
+                    win_player += 1
+                }
             }
-            if lose_count == 0 && draw_count > 0{
-                player1_draw += 1
+            if win_player == 0{
+                for i in 0...self.player_number-1{
+                    if losecount[i] == 0 && drawcount[i]>0{
+                        drawtimes[i] += 1
+                    }
+                }
+            }
+
+        }
+        
+        var hasnocard:[Int] = []
+        
+        for i in 0...self.player_number-1{
+            if self.players[i][0] == nil && self.players[i][1] == nil{
+                hasnocard.append(i)
             }
         }
-        self.win_rate[0] = Float(player1_win)/250.0
-        self.draw_rate[0] = Float(player1_draw)/250.0
+        var no_card_win = 0
+        var no_card_draw = 0
+        for i in 0...self.player_number-1{
+            if hasnocard.contains(i){
+                no_card_win += wintimes[i]
+                no_card_draw += drawtimes[i]
+            }
+            else{
+                self.win_rate[i] = Float(wintimes[i]) / 250.0
+                self.draw_rate[i] = Float(drawtimes[i]) / 250.0
+            }
         }
+        for item in hasnocard{
+            self.win_rate[item] = Float(no_card_win/hasnocard.count) / 250.0
+            self.draw_rate[item] = Float(no_card_draw/hasnocard.count) / 250.0
+        }
+        
+        
+    }
     
     
     /// get the present win_rate of the table
