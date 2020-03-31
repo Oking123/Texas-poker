@@ -13,6 +13,7 @@ import UIKit
 //}
 
 
+
 class ImageCell: UITableViewCell {
 
     @IBOutlet weak var Image1: UIImageView!
@@ -25,14 +26,13 @@ class ImageCell: UITableViewCell {
 //    var CardItem: ImageCards!
 
     
+    /// <#Description#> User cell in the table view,
+    /// - Parameter picture: ImageCards
     func setImage(picture: ImageCards){
         Image1.image = picture.image1
         Image2.image = picture.image2
         Win_Rate.text = picture.win_rate
         Tips.text = picture.tips
     }
-    
-    @IBAction func AddCards(_ sender: Any) {
-//        delegate?.didTapAddCards()
-    }
+
 }

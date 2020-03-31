@@ -9,18 +9,26 @@
 import Foundation
 import UIKit
 
+
+/// image card instance class
 class ImageCards {
     var image1: UIImage
     var image2: UIImage
     var win_rate: String
     var tips: String
-    var player: Int
+    var image1_index: Int?
+    var image2_idnex: Int?
+//    var player: Int
     
-    init(image1: UIImage, image2: UIImage, win_rate: String, tips: String, player: Int){
+    /// Description initialize ImageCards
+    /// - Parameters:
+    ///   - image1: UIImage
+    ///   - image2: UIImage
+    ///   - win_rate: String
+    ///   - tips: String
+    init(image1: UIImage, image2: UIImage, win_rate: String, tips: String){
         self.image1 = image1
         self.image2 = image2
         self.win_rate = win_rate
-        self.tips = tips
-        self.player = player
-    }
+        self.tips = tips    }
 }
