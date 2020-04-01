@@ -74,18 +74,26 @@ class SelectHandController:UIViewController{
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Int]? = []
+        var temp_values: [Any]? = []
         for item in images_2
         {
-            temp_values!.append(Int(someDict[item]!)!)
+            if(someDict[item] == nil){
+                temp_values?.append(-1)
+            }
+            else{
+                temp_values?.append(Int(someDict[item]!)!)
+            }
         }
-        local_ImageCard!.image1_index = temp_values![0]
-        local_ImageCard!.image2_idnex = temp_values![1]
-
+        
+        if (temp_values?[0] != nil){
+            local_ImageCard!.image1_index = (temp_values![0] as! Int)
+        }
+        if (temp_values?[1] != nil){
+            local_ImageCard!.image2_idnex = (temp_values![1] as! Int)
+        }
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
-
     
     @IBAction func DidPokerChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
