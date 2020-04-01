@@ -7,6 +7,11 @@
 //
 
 import UIKit
+
+protocol SendHandDelegate{
+    func sendHand(message: ImageCards, index: Int, result: [Card])
+}
+
 class SelectHandController:UIViewController{
     
     @IBOutlet weak var a1: UIImageView!
@@ -27,8 +32,9 @@ class SelectHandController:UIViewController{
     
     var local_ImageCard : ImageCards?
     var local_ImageCard_index: Int?
-    let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(simple_inputViewController.back(sender:)))
-    var delegate : SendMessageDelegate?
+    
+    var delegate : SendHandDelegate?
+    var resultCards: [Card] = []
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2)
     lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
@@ -63,40 +69,29 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
-        
-//        self.navigationItem.hidesBackButton = true
-//        self.navigationItem.leftBarButtonItem = newBackButton
-        
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        // Perform your custom actions
-        // ...
-        // Go back to the previous ViewController
+        self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!, result: resultCards)
         _ = navigationController?.popViewController(animated: true)
     }
-    
-//    @objc func back(sender: UIBarButtonItem) {
-//            if(local_ImageCard_index != nil){
-////                if card1.text != ""{
-////                    local_ImageCard?.image1_index = Int(card1.text!)
-////                }
-////                if card2.text != ""{
-////                    local_ImageCard?.image2_idnex = Int(card2.text!)
-////                }
-//                self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
-//            }
-//            print("hello")
-//            _ = navigationController?.popViewController(animated: true)
-//        }
-        
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let vc = segue.destination as! tableViewController
-            vc.ImageCard_reciever = self.local_ImageCard
+//
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! tableViewController
+        // need to change a way of initialize list of cards
+        for item in images_5
+        {
+            let temp_value: Int = Int(someDict[item]!)!
+            let my_suit = temp_value / 100
+            let my_point = temp_value % 100
+            let tempCard = Card(suit: my_suit, point: my_point)
+            resultCards.append(tempCard)
         }
+        vc.temp_reciever = self.someDict
+    }
     
     @IBAction func DidPokerChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -114,7 +109,7 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
-            
+
         case 1:
             suit = 1
             for (index,item) in images.enumerated()
@@ -129,7 +124,7 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
-            
+
         case 2:
             suit = 2
             for (index,item) in images.enumerated()
@@ -144,7 +139,7 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
-            
+
         case 3:
             suit = 3
             for (index,item) in images.enumerated()
@@ -159,13 +154,13 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
-            
+
         default:
             for (_,item) in images.enumerated()
             {
                 item.image = nil
             }
-            
+
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -194,8 +189,7 @@ class SelectHandController:UIViewController{
             for item in images_5
             {
                 //var p = item.convert(item.frame, to: self.view)
-                let point = item.convert(location,from:touch.view)
-                if (point == location)
+                if (item.frame.contains(location))
                 {
                     tap_item = item
                     item.alpha = 0.5
@@ -208,10 +202,13 @@ class SelectHandController:UIViewController{
         
     }
     
+    // return results
     @IBAction func finishSelect(_ sender: UIButton) {
+        
         for item in images_5
         {
-            print(someDict[item])
+//            print(someDict[item])
+            continue
 
         }
     }

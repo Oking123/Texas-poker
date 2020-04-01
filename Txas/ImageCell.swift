@@ -12,8 +12,6 @@ import UIKit
 //    func didTapAddCards(num: Int)
 //}
 
-
-
 class ImageCell: UITableViewCell {
 
     @IBOutlet weak var Image1: UIImageView!

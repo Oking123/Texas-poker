@@ -12,29 +12,25 @@
             <objects>
                 <viewController id="idn-LO-RIm" customClass="SelectHandController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBi-Wy-B7h">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" id="J3k-Q2-uyv">
-                                <rect key="frame" x="157" y="155" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" id="tNx-cy-Nxi" userLabel="a1">
+                                <rect key="frame" x="165" y="203" width="50" height="98.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tNx-cy-Nxi" userLabel="a1">
-                                        <rect key="frame" x="0.0" y="-7.1054273576010019e-15" width="50" height="98.666666666666657"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Pvb-3q-HC7"/>
-                                            <constraint firstAttribute="width" constant="50" id="vQI-ow-zdo"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g6X-EH-hOT" userLabel="a2">
-                                        <rect key="frame" x="50" y="-7.1054273576010019e-15" width="50" height="98.666666666666657"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="0VJ-IF-GnD"/>
-                                            <constraint firstAttribute="height" constant="100" id="sCy-aW-kgd"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Pvb-3q-HC7"/>
+                                    <constraint firstAttribute="width" constant="50" id="vQI-ow-zdo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" id="g6X-EH-hOT" userLabel="a2">
+                                <rect key="frame" x="215" y="203" width="50" height="98.666666666666657"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="0VJ-IF-GnD"/>
+                                    <constraint firstAttribute="height" constant="100" id="sCy-aW-kgd"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="kF0-wM-Nxs">
                                 <rect key="frame" x="40" y="645" width="350" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,22 +127,6 @@
                                     <constraint firstAttribute="height" constant="200" id="OrZ-nW-FbE"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDF-Wf-0Eg">
-                                <rect key="frame" x="133" y="373" width="164" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="finishSelect:" destination="idn-LO-RIm" eventType="touchUpInside" id="tYG-i0-kt1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAz-xj-hYj">
-                                <rect key="frame" x="305" y="333" width="44" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="reset"/>
-                                <connections>
-                                    <action selector="resetPoker:" destination="idn-LO-RIm" eventType="touchUpInside" id="spu-Qq-Okk"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="jxU-5z-92z">
                                 <rect key="frame" x="38" y="558" width="354" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,6 +140,14 @@
                                     <action selector="DidPokerChanged:" destination="idn-LO-RIm" eventType="valueChanged" id="bhy-gx-EFw"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAz-xj-hYj">
+                                <rect key="frame" x="193" y="344" width="44" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="reset"/>
+                                <connections>
+                                    <action selector="resetPoker:" destination="idn-LO-RIm" eventType="touchUpInside" id="spu-Qq-Okk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="11D-Ve-vtC"/>
@@ -363,8 +351,8 @@
                         <outlet property="river" destination="O8m-uu-xp3" id="N2y-9D-YIj"/>
                         <outlet property="tableView" destination="idy-hp-rKv" id="Vn9-2a-izi"/>
                         <outlet property="turn" destination="5qf-eg-cij" id="Aer-eI-LIm"/>
-                        <segue destination="7v9-WN-a9F" kind="show" identifier="selectTableCard" id="6Wb-DP-1zJ"/>
-                        <segue destination="idn-LO-RIm" kind="show" identifier="selectCard" id="zkb-eh-AJk"/>
+                        <segue destination="7v9-WN-a9F" kind="show" identifier="toTable" id="6Wb-DP-1zJ"/>
+                        <segue destination="idn-LO-RIm" kind="show" identifier="toPlayer" id="zkb-eh-AJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76z-8O-WxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

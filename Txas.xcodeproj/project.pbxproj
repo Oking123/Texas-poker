@@ -16,6 +16,7 @@
 		9F2C965423D39F8B006A5B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965223D39F8B006A5B63 /* Main.storyboard */; };
 		9F2C965623D39F8D006A5B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965523D39F8D006A5B63 /* Assets.xcassets */; };
 		9F2C965923D39F8D006A5B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965723D39F8D006A5B63 /* LaunchScreen.storyboard */; };
+		CC1AC48E243500E200AB78D4 /* check_hands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1AC48D243500E200AB78D4 /* check_hands.swift */; };
 		CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */; };
 		CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54F57423FB69F0001943FC /* MainViewController.swift */; };
 		CC6596E9243270150041B9A7 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6596E8243270150041B9A7 /* tableViewController.swift */; };
@@ -36,6 +37,7 @@
 		9F2C965523D39F8D006A5B63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F2C965823D39F8D006A5B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F2C965A23D39F8D006A5B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC1AC48D243500E200AB78D4 /* check_hands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = check_hands.swift; sourceTree = "<group>"; };
 		CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simple_inputViewController.swift; sourceTree = "<group>"; };
 		CC54F57423FB69F0001943FC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC6596E8243270150041B9A7 /* tableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		9F2C964B23D39F8A006A5B63 /* Txas */ = {
 			isa = PBXGroup;
 			children = (
+				CC1AC48D243500E200AB78D4 /* check_hands.swift */,
 				9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */,
 				9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */,
 				CC54F57423FB69F0001943FC /* MainViewController.swift */,
@@ -175,6 +178,7 @@
 				CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */,
 				9F15F549243449A1000229AD /* selectHandController.swift in Sources */,
 				CC6596E9243270150041B9A7 /* tableViewController.swift in Sources */,
+				CC1AC48E243500E200AB78D4 /* check_hands.swift in Sources */,
 				5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */,
 				CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */,
 			);
