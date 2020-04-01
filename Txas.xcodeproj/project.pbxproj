@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB623F3916100DB2AA4 /* card.swift */; };
 		5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB823F391BA00DB2AA4 /* calculator.swift */; };
+		5BEDF0FF243525710080E2CB /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDF0FE243525710080E2CB /* CalculatorTests.swift */; };
+		5BEDF103243526170080E2CB /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDF102243526170080E2CB /* CardTests.swift */; };
 		9F2C964D23D39F8A006A5B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */; };
 		9F2C964F23D39F8B006A5B63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */; };
 		9F2C965123D39F8B006A5B63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C965023D39F8B006A5B63 /* ViewController.swift */; };
@@ -21,9 +23,23 @@
 		CCB72C0723FB15FF009B04B4 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB72C0623FB15FF009B04B4 /* item.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5BEDF0F9243525350080E2CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F2C964123D39F8A006A5B63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F2C964823D39F8A006A5B63;
+			remoteInfo = Txas;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5B2DBDB623F3916100DB2AA4 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		5B2DBDB823F391BA00DB2AA4 /* calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculator.swift; sourceTree = "<group>"; };
+		5BEDF0F4243525350080E2CB /* TxasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TxasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BEDF0F8243525350080E2CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BEDF0FE243525710080E2CB /* CalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		5BEDF102243526170080E2CB /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		9F2C964923D39F8A006A5B63 /* Txas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Txas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +55,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5BEDF0F1243525350080E2CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F2C964623D39F8A006A5B63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,10 +72,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BEDF0F5243525350080E2CB /* TxasTests */ = {
+			isa = PBXGroup;
+			children = (
+				5BEDF102243526170080E2CB /* CardTests.swift */,
+				5BEDF0FE243525710080E2CB /* CalculatorTests.swift */,
+				5BEDF0F8243525350080E2CB /* Info.plist */,
+			);
+			path = TxasTests;
+			sourceTree = "<group>";
+		};
 		9F2C964023D39F8A006A5B63 = {
 			isa = PBXGroup;
 			children = (
 				9F2C964B23D39F8A006A5B63 /* Txas */,
+				5BEDF0F5243525350080E2CB /* TxasTests */,
 				9F2C964A23D39F8A006A5B63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				9F2C964923D39F8A006A5B63 /* Txas.app */,
+				5BEDF0F4243525350080E2CB /* TxasTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +123,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5BEDF0F3243525350080E2CB /* TxasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BEDF0FD243525350080E2CB /* Build configuration list for PBXNativeTarget "TxasTests" */;
+			buildPhases = (
+				5BEDF0F0243525350080E2CB /* Sources */,
+				5BEDF0F1243525350080E2CB /* Frameworks */,
+				5BEDF0F2243525350080E2CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BEDF0FA243525350080E2CB /* PBXTargetDependency */,
+			);
+			name = TxasTests;
+			productName = TxasTests;
+			productReference = 5BEDF0F4243525350080E2CB /* TxasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9F2C964823D39F8A006A5B63 /* Txas */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F2C965D23D39F8D006A5B63 /* Build configuration list for PBXNativeTarget "Txas" */;
@@ -111,10 +164,14 @@
 		9F2C964123D39F8A006A5B63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "陈彦廷";
 				TargetAttributes = {
+					5BEDF0F3243525350080E2CB = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 9F2C964823D39F8A006A5B63;
+					};
 					9F2C964823D39F8A006A5B63 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -134,11 +191,19 @@
 			projectRoot = "";
 			targets = (
 				9F2C964823D39F8A006A5B63 /* Txas */,
+				5BEDF0F3243525350080E2CB /* TxasTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5BEDF0F2243525350080E2CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F2C964723D39F8A006A5B63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +217,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5BEDF0F0243525350080E2CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BEDF0FF243525710080E2CB /* CalculatorTests.swift in Sources */,
+				5BEDF103243526170080E2CB /* CardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F2C964523D39F8A006A5B63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +243,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BEDF0FA243525350080E2CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F2C964823D39F8A006A5B63 /* Txas */;
+			targetProxy = 5BEDF0F9243525350080E2CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9F2C965223D39F8B006A5B63 /* Main.storyboard */ = {
@@ -190,6 +272,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5BEDF0FB243525350080E2CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GSB7NTG9P8;
+				INFOPLIST_FILE = TxasTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jin.TxasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Txas.app/Txas";
+			};
+			name = Debug;
+		};
+		5BEDF0FC243525350080E2CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GSB7NTG9P8;
+				INFOPLIST_FILE = TxasTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jin.TxasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Txas.app/Txas";
+			};
+			name = Release;
+		};
 		9F2C965B23D39F8D006A5B63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -345,6 +469,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5BEDF0FD243525350080E2CB /* Build configuration list for PBXNativeTarget "TxasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BEDF0FB243525350080E2CB /* Debug */,
+				5BEDF0FC243525350080E2CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9F2C964423D39F8A006A5B63 /* Build configuration list for PBXProject "Txas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
