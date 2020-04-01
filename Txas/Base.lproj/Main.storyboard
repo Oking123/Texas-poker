@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="idn-LO-RIm" customClass="SelectHandController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBi-Wy-B7h">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" id="tNx-cy-Nxi" userLabel="a1">
@@ -295,7 +295,6 @@
                                             <outlet property="Image2" destination="e4A-9Z-8da" id="kkj-9t-MAe"/>
                                             <outlet property="Tips" destination="p48-DX-yeF" id="0ci-Ty-L2g"/>
                                             <outlet property="Win_Rate" destination="PHp-3b-1i0" id="f25-Bz-RWR"/>
-                                            <segue destination="idn-LO-RIm" kind="show" identifier="toPlayer" id="YCS-5J-kmE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -361,6 +360,8 @@
                         <outlet property="river" destination="O8m-uu-xp3" id="N2y-9D-YIj"/>
                         <outlet property="tableView" destination="idy-hp-rKv" id="Vn9-2a-izi"/>
                         <outlet property="turn" destination="5qf-eg-cij" id="Aer-eI-LIm"/>
+                        <segue destination="7v9-WN-a9F" kind="show" identifier="toTable" id="6Wb-DP-1zJ"/>
+                        <segue destination="idn-LO-RIm" kind="show" identifier="toPlayer" id="zkb-eh-AJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76z-8O-WxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -566,7 +567,7 @@
             <objects>
                 <viewController id="7v9-WN-a9F" customClass="selectCardController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B72-nu-mB4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="Fmo-lS-NiA">
@@ -627,34 +628,34 @@
                                         <rect key="frame" x="0.0" y="100" width="350" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a8" translatesAutoresizingMaskIntoConstraints="NO" id="yXQ-RL-8Un">
-                                                <rect key="frame" x="25" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="25" y="0.0" width="50" height="66"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a9" translatesAutoresizingMaskIntoConstraints="NO" id="faL-u1-35e">
-                                                <rect key="frame" x="75" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="75" y="0.0" width="50" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="sF0-I0-df4"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a10" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-mR-LAA">
-                                                <rect key="frame" x="125" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="125" y="0.0" width="50" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="CY0-VA-4aR"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a11" translatesAutoresizingMaskIntoConstraints="NO" id="JQw-cs-LSe">
-                                                <rect key="frame" x="175" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="175" y="0.0" width="50" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Mgq-Dj-abN"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a12" translatesAutoresizingMaskIntoConstraints="NO" id="cIv-GL-1rw">
-                                                <rect key="frame" x="225" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="225" y="0.0" width="50" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="hGW-xj-eTx"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a13" translatesAutoresizingMaskIntoConstraints="NO" id="PLA-gU-cGV">
-                                                <rect key="frame" x="275" y="0.0" width="50" height="100"/>
+                                                <rect key="frame" x="275" y="0.0" width="50" height="66"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Mwf-rI-KBl"/>
                                                 </constraints>
@@ -800,7 +801,6 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YCS-5J-kmE"/>
         <segue reference="JEk-pm-9I7"/>
     </inferredMetricsTieBreakers>
 </document>

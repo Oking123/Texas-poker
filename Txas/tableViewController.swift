@@ -34,13 +34,30 @@ class tableViewController: UIViewController{
         tableView.delegate = self
         
         let UITap1 = UITapGestureRecognizer()
-//        UITap1.delegate = self as! UIGestureRecognizerDelegate
         self.floop1.addGestureRecognizer(UITap1)
         UITap1.addTarget(self, action: #selector(tapclick))
+        
+        let UITap2 = UITapGestureRecognizer()
+        self.floop2.addGestureRecognizer(UITap2)
+        UITap2.addTarget(self, action: #selector(tapclick))
+        
+        let UITap3 = UITapGestureRecognizer()
+        self.floop3.addGestureRecognizer(UITap3)
+        UITap3.addTarget(self, action: #selector(tapclick))
+        
+        let UITap4 = UITapGestureRecognizer()
+        self.turn.addGestureRecognizer(UITap4)
+        UITap4.addTarget(self, action: #selector(tapclick))
+        
+        let UITap5 = UITapGestureRecognizer()
+        self.river.addGestureRecognizer(UITap1)
+        UITap5.addTarget(self, action: #selector(tapclick))
+        
+        
     }
     @objc func tapclick()
     {
-        performSegue(withIdentifier: "selectCard", sender: self)
+        performSegue(withIdentifier: "toTable", sender: self)
     }
     
     

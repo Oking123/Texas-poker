@@ -75,8 +75,9 @@ class SelectHandController:UIViewController{
     }
     
     @objc func back(sender: UIBarButtonItem) {
+        print("hello")
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!, result: resultCards)
-            _ = navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 //
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -208,6 +209,7 @@ class SelectHandController:UIViewController{
         for item in images_5
         {
             print(someDict[item])
+
         }
     }
     
