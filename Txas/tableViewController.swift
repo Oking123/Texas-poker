@@ -12,7 +12,10 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-    
+//    var hand1: Any?
+//    var hand2: Any?
+    var ImageCard_reciever: ImageCards?
+    var sender_index: Int?
     var Cards: [ImageCards] = []
 
     override func viewDidLoad() {
@@ -37,22 +40,20 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     /// insert a need player in the table view list
     func inserNewPlayer(){
-        let tempCard = Cards[Cards.count - 1]
-        print(Cards.count)
+        let image = ImageCards(image1:#imageLiteral(resourceName: "cardBackground"), image2:#imageLiteral(resourceName: "cardBackground"), win_rate: "100%", tips: "0%")
+//        print(Cards.count)
 //        tempCard.player += 1
-        Cards.append(tempCard)
+        Cards.append(image)
         let temp_winrate = 100/Cards.count
         
         for player in 0...Cards.count - 1{
             
             Cards[player].win_rate = String(temp_winrate)+"%"
-            print(Cards[player].win_rate)
+//            print(Cards[player].win_rate)
         }
             
         let indexPath = IndexPath(row: Cards.count - 1, section: 0)
@@ -106,6 +107,34 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
 //        tableView.deselectRow(at: indexPath, animated: true)
         let image = Cards[indexPath.row]
+        sender_index = indexPath.row
         performSegue(withIdentifier: "selectCard", sender: image)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "selectCard"){
+            let reciever:simple_inputViewController = segue.destination as! simple_inputViewController
+            reciever.delegate = self
+            reciever.local_ImageCard = sender as? ImageCards
+            reciever.local_ImageCard_index = sender_index
+        }
+    }
+}
+
+extension tableViewController: SendMessageDelegate{
+    func sendWord(message: ImageCards, index: Int ) {
+        print(index)
+//        print(message.image1_index,message.image2_idnex)
+        let position = IndexPath(row: index, section: 0)
+        Cards[index].image1 = #imageLiteral(resourceName: "d5")
+        Cards[index].image2 = #imageLiteral(resourceName: "d8")
+        
+        tableView.beginUpdates()
+        self.tableView.reloadRows(at: [position], with: .right)
+        tableView.endUpdates()
+//        hand1 = message["LeftHand"]!
+//        hand2 = message["RightHand"]!
+//        print(hand1!)
+//        print(hand2!)
     }
 }
