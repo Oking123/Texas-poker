@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SendHandDelegate{
-    func sendHand(message: ImageCards, index: Int, result: [Card])
+    func sendHand(message: ImageCards, index: Int)
 }
 
 class SelectHandController:UIViewController{
@@ -34,9 +34,8 @@ class SelectHandController:UIViewController{
     var local_ImageCard_index: Int?
     
     var delegate : SendHandDelegate?
-    var resultCards: [Card] = []
     
-    lazy var images_5 = [UIImageView](arrayLiteral: a1,a2)
+    lazy var images_2 = [UIImageView](arrayLiteral: a1,a2)
     lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
     lazy var image_poker = [UIImage]()
     var someDict:[UIImageView:String] = [:]
@@ -75,23 +74,31 @@ class SelectHandController:UIViewController{
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!, result: resultCards)
+        var temp_values: [Int]? = []
+        for item in images_2
+        {
+            temp_values!.append(Int(someDict[item]!)!)
+        }
+        local_ImageCard!.image1_index = temp_values![0]
+        local_ImageCard!.image2_idnex = temp_values![1]
+
+        self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
 //
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! tableViewController
-        // need to change a way of initialize list of cards
-        for item in images_5
-        {
-            let temp_value: Int = Int(someDict[item]!)!
-            let my_suit = temp_value / 100
-            let my_point = temp_value % 100
-            let tempCard = Card(suit: my_suit, point: my_point)
-            resultCards.append(tempCard)
-        }
-        vc.temp_reciever = self.someDict
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let vc = segue.destination as! tableViewController
+//        // need to change a way of initialize list of cards
+//        var temp_values: [Int]? = []
+//        for item in images_2
+//        {
+//            temp_values?.append(Int(someDict[item]!)!)
+//        }
+//        print(temp_values![0])
+//        vc.ImageCard_reciever?.image1_index = temp_values![0]
+//        vc.ImageCard_reciever?.image2_idnex = temp_values![1]
+//        
+//    }
     
     @IBAction func DidPokerChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -186,7 +193,7 @@ class SelectHandController:UIViewController{
         }
         if state == 0
         {
-            for item in images_5
+            for item in images_2
             {
                 //var p = item.convert(item.frame, to: self.view)
                 if (item.frame.contains(location))
@@ -203,15 +210,15 @@ class SelectHandController:UIViewController{
     }
     
     // return results
-    @IBAction func finishSelect(_ sender: UIButton) {
-        
-        for item in images_5
-        {
-//            print(someDict[item])
-            continue
-
-        }
-    }
+//    @IBAction func finishSelect(_ sender: UIButton) {
+//
+//        for item in images_5
+//        {
+////            print(someDict[item])
+//            continue
+//
+//        }
+//    }
     
     @IBAction func resetPoker(_ sender: UIButton) {
         choose_item.image = tap_item.image

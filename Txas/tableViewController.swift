@@ -17,7 +17,6 @@ class tableViewController: UIViewController{
     var ImageCard_reciever: ImageCards?
     var sender_index: Int?
     var Cards: [ImageCards] = []
-    var temp_reciever:[UIImageView:String] = [:]
     
     @IBOutlet weak var floop1: UIImageView!
     @IBOutlet weak var floop2: UIImageView!
@@ -179,12 +178,12 @@ extension tableViewController: SendMessageDelegate{
 }
 
 extension tableViewController: SendHandDelegate{
-    func sendHand(message: ImageCards, index: Int, result: [Card]) {
-        print(index)
+    func sendHand(message: ImageCards, index: Int) {
+        print(message.image1_index)
+        print(message.image2_idnex)
         let position = IndexPath(row: index, section: 0)
         Cards[index].image1 = #imageLiteral(resourceName: "d5")
         Cards[index].image2 = #imageLiteral(resourceName: "d8")
-        print(result)
         tableView.beginUpdates()
         self.tableView.reloadRows(at: [position], with: .right)
         tableView.endUpdates()

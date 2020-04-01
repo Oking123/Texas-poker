@@ -216,13 +216,13 @@ class selectCardController: UIViewController {
         state = 1
     }
     
-    @IBAction func finishSelect(_ sender: UIButton) {
-        for item in images_5
-        {
-            print(someDict[item])
-        }
-        
-    }
+//    @IBAction func finishSelect(_ sender: UIButton) {
+//        for item in images_5
+//        {
+//            print(someDict[item])
+//        }
+//
+//    }
     
      
     
