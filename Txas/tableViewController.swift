@@ -12,16 +12,54 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-    
+//    var hand1: Any?
+//    var hand2: Any?
+    var ImageCard_reciever: ImageCards?
+    var sender_index: Int?
     var Cards: [ImageCards] = []
-
+    
+    
+    @IBOutlet weak var floop1: UIImageView!
+    @IBOutlet weak var floop2: UIImageView!
+    @IBOutlet weak var floop3: UIImageView!
+    @IBOutlet weak var turn: UIImageView!
+    @IBOutlet weak var river: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let UITap1 = UITapGestureRecognizer()
+        self.floop1.addGestureRecognizer(UITap1)
+        UITap1.addTarget(self, action: #selector(tapclick))
+        
+        let UITap2 = UITapGestureRecognizer()
+        self.floop2.addGestureRecognizer(UITap2)
+        UITap2.addTarget(self, action: #selector(tapclick))
+        
+        let UITap3 = UITapGestureRecognizer()
+        self.floop3.addGestureRecognizer(UITap3)
+        UITap3.addTarget(self, action: #selector(tapclick))
+        
+        let UITap4 = UITapGestureRecognizer()
+        self.turn.addGestureRecognizer(UITap4)
+        UITap4.addTarget(self, action: #selector(tapclick))
+        
+        let UITap5 = UITapGestureRecognizer()
+        self.river.addGestureRecognizer(UITap1)
+        UITap5.addTarget(self, action: #selector(tapclick))
+        
+        
     }
+    @objc func tapclick()
+    {
+        performSegue(withIdentifier: "selectTableCard", sender: self)
+    }
+    
     
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
@@ -37,22 +75,20 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     /// insert a need player in the table view list
     func inserNewPlayer(){
-        let tempCard = Cards[Cards.count - 1]
-        print(Cards.count)
+        let image = ImageCards(image1:#imageLiteral(resourceName: "cardBackground"), image2:#imageLiteral(resourceName: "cardBackground"), win_rate: "100%", tips: "0%")
+//        print(Cards.count)
 //        tempCard.player += 1
-        Cards.append(tempCard)
+        Cards.append(image)
         let temp_winrate = 100/Cards.count
         
         for player in 0...Cards.count - 1{
             
             Cards[player].win_rate = String(temp_winrate)+"%"
-            print(Cards[player].win_rate)
+//            print(Cards[player].win_rate)
         }
             
         let indexPath = IndexPath(row: Cards.count - 1, section: 0)
@@ -106,6 +142,37 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
 //        tableView.deselectRow(at: indexPath, animated: true)
         let image = Cards[indexPath.row]
+        sender_index = indexPath.row
         performSegue(withIdentifier: "selectCard", sender: image)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "selectCard"){
+            let reciever:SelectHandController = segue.destination as! SelectHandController
+            reciever.delegate = self
+            reciever.local_ImageCard = sender as? ImageCards
+            reciever.local_ImageCard_index = sender_index
+        }
+    }
+    
+    
+}
+
+extension tableViewController: SendMessageDelegate{
+    func sendWord(message: ImageCards, index: Int ) {
+        print(index)
+//        print(message.image1_index,message.image2_idnex)
+        let position = IndexPath(row: index, section: 0)
+        Cards[index].image1 = #imageLiteral(resourceName: "d5")
+        Cards[index].image2 = #imageLiteral(resourceName: "d8")
+        
+        tableView.beginUpdates()
+        self.tableView.reloadRows(at: [position], with: .right)
+        tableView.endUpdates()
+//        hand1 = message["LeftHand"]!
+//        hand2 = message["RightHand"]!
+//        print(hand1!)
+//        print(hand2!)
+    }
+    
 }
