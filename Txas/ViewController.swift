@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var drop: UITextField!
+    @IBOutlet weak var num: UILabel!
+    var player:String? = nil
+    var DropPlayer:Int = 0
     let cal = Calculate()
 //    var table_suit: [Int] = []
 //    var table_point: [Int] = []
@@ -19,32 +23,33 @@ class ViewController: UIViewController {
     var suit: Int = 0 //defalut suit is spade
     var point: Int = 0
     
-      //variances of poker
-        @IBOutlet weak var image_1: UIImageView!
-        @IBOutlet weak var image_2: UIImageView!
-        @IBOutlet weak var image_3: UIImageView!
-        @IBOutlet weak var image_4: UIImageView!
-        @IBOutlet weak var image_5: UIImageView!
-        @IBOutlet weak var image_6: UIImageView!
-        @IBOutlet weak var image_7: UIImageView!
-        @IBOutlet weak var image_8: UIImageView!
-        @IBOutlet weak var image_9: UIImageView!
-        @IBOutlet weak var image_10: UIImageView!
-        @IBOutlet weak var image_11: UIImageView!
-        @IBOutlet weak var image_12: UIImageView!
-        @IBOutlet weak var image_13: UIImageView!
+  //variances of poker
+    @IBOutlet weak var image_1: UIImageView!
+    @IBOutlet weak var image_2: UIImageView!
+    @IBOutlet weak var image_3: UIImageView!
+    @IBOutlet weak var image_4: UIImageView!
+    @IBOutlet weak var image_5: UIImageView!
+    @IBOutlet weak var image_6: UIImageView!
+    @IBOutlet weak var image_7: UIImageView!
+    @IBOutlet weak var image_8: UIImageView!
+    @IBOutlet weak var image_9: UIImageView!
+    @IBOutlet weak var image_10: UIImageView!
+    @IBOutlet weak var image_11: UIImageView!
+    @IBOutlet weak var image_12: UIImageView!
+    @IBOutlet weak var image_13: UIImageView!
     
     //variance of deliever pokers
-        @IBOutlet weak var a1: UIImageView!
-        @IBOutlet weak var a2: UIImageView!
-        @IBOutlet weak var a3: UIImageView!
-        @IBOutlet weak var a4: UIImageView!
-        @IBOutlet weak var a5: UIImageView!
+    @IBOutlet weak var a1: UIImageView!
+    @IBOutlet weak var a2: UIImageView!
+    @IBOutlet weak var a3: UIImageView!
+    @IBOutlet weak var a4: UIImageView!
+    @IBOutlet weak var a5: UIImageView!
     //variance of hand pokers
-        @IBOutlet weak var hand1: UIImageView!
-        
-        @IBOutlet weak var hand2: UIImageView!
+    @IBOutlet weak var hand1: UIImageView!
     
+    @IBOutlet weak var hand2: UIImageView!
+    
+    @IBOutlet weak var Result: UITextField!
     /// placeholder for table cards
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
     /// place holder for hand cards
@@ -60,7 +65,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //addPanGesture()
-        
+        num.text = player
         view.isMultipleTouchEnabled = true
         
         //add initial coordiantes to every canadiate card when initializing
@@ -229,19 +234,12 @@ class ViewController: UIViewController {
                     UIView.animate(withDuration: 0.3, animations: { piece.alpha = 0.0 })
                     point = find(value: drag_item, in: images)! + 1
                     
-//                    print(find(value: drag_item, in: images)!)
-                    
                     not_used = false
                     
-                    // add values
-//                    print("Add to table \(suit),\(point)")
-//                    table_suit.append(suit)
-//                    table_point.append(point)
-                    
                     let table_index = find(value: it, in: images_5)!
-//                    print("table index: \(table_index)")
+                    
                     storeValue(my_suit: suit, my_point: point, table_or_hand: 0, index: table_index)
-                    // add return value of the card
+                    break
                 }
             }
             
@@ -254,32 +252,38 @@ class ViewController: UIViewController {
                         it.image = drag_item.image
                         UIView.animate(withDuration: 0.3, animations: { piece.alpha = 0.0} )
                         point = find(value: drag_item, in: images)! + 1
-//                        print(find(value: drag_item, in: images)!)
-//                        add value
-                        not_used = false
-//                        print("Add to hand \(suit),\(point)")
-//                        hand_suit.append(suit)
-//                        hand_point.append(point)
                         
+                        not_used = false
                         
                         let hand_index = find(value: it, in: images_2)!
-//                        print("hand index: \(hand_index)")
+                        
                         storeValue(my_suit: suit, my_point: point, table_or_hand: 1, index: hand_index)
+                        break
                     }
                 }
             }
             
             if (!not_used){
                 if(cal.check_can_be_calculated()){
+                    if drop.text != ""{
+                        DropPlayer = Int(String(drop.text!))!
+                        
+                    }
+                    if player != nil{
+                        let playerNumber = Int(player!)!
+                        cal.set_playernumber(use: playerNumber-DropPlayer)
+                        num.text = String(playerNumber - DropPlayer)
+                    }
+                    
                     let result = cal.calculate()
-                    print("This is my result: \(result)")
+                    Result.text = "Winning rate: \(result*100)%"
                 }
                 else{
                     print("Can not calculate")
                 }
                    
             }
-            
+
             piece.center = original[drag_item]!
             piece.alpha = 1.0
         }
@@ -315,7 +319,12 @@ class ViewController: UIViewController {
             print("invalid input")
         }
     }
-    
-    
 }
 
+extension ViewController: UITextFieldDelegate{
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        drop.resignFirstResponder()
+        return true
+    }
+}
