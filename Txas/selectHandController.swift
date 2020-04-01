@@ -64,22 +64,34 @@ class SelectHandController:UIViewController{
             image_poker.append(tempImage)
         }
         
+//        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.leftBarButtonItem = newBackButton
+        
         self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     @objc func back(sender: UIBarButtonItem) {
-            if(local_ImageCard_index != nil){
-//                if card1.text != ""{
-//                    local_ImageCard?.image1_index = Int(card1.text!)
-//                }
-//                if card2.text != ""{
-//                    local_ImageCard?.image2_idnex = Int(card2.text!)
-//                }
-                self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
-            }
-            _ = navigationController?.popViewController(animated: true)
-        }
+        // Perform your custom actions
+        // ...
+        // Go back to the previous ViewController
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+//    @objc func back(sender: UIBarButtonItem) {
+//            if(local_ImageCard_index != nil){
+////                if card1.text != ""{
+////                    local_ImageCard?.image1_index = Int(card1.text!)
+////                }
+////                if card2.text != ""{
+////                    local_ImageCard?.image2_idnex = Int(card2.text!)
+////                }
+//                self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
+//            }
+//            print("hello")
+//            _ = navigationController?.popViewController(animated: true)
+//        }
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let vc = segue.destination as! tableViewController
