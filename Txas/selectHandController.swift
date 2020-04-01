@@ -32,7 +32,7 @@ class SelectHandController:UIViewController{
     
     var local_ImageCard : ImageCards?
     var local_ImageCard_index: Int?
-    let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
+    
     var delegate : SendHandDelegate?
     var resultCards: [Card] = []
     
@@ -69,13 +69,12 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
-        
+        let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        print("hello")
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!, result: resultCards)
         _ = navigationController?.popViewController(animated: true)
     }
@@ -208,7 +207,8 @@ class SelectHandController:UIViewController{
         
         for item in images_5
         {
-            print(someDict[item])
+//            print(someDict[item])
+            continue
 
         }
     }

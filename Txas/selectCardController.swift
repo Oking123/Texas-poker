@@ -35,7 +35,7 @@ class selectCardController: UIViewController {
     //
     var local_ImageCard : ImageCards?
     var local_ImageCard_index: Int?
-    let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(simple_inputViewController.back(sender:)))
+    
     var delegate : SendMessageDelegate?
     
     
@@ -73,6 +73,7 @@ class selectCardController: UIViewController {
             image_poker.append(tempImage)
         }
         
+        let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(simple_inputViewController.back(sender:)))
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = newBackButton
     }

@@ -184,7 +184,7 @@ extension tableViewController: SendHandDelegate{
         let position = IndexPath(row: index, section: 0)
         Cards[index].image1 = #imageLiteral(resourceName: "d5")
         Cards[index].image2 = #imageLiteral(resourceName: "d8")
-        
+        print(result)
         tableView.beginUpdates()
         self.tableView.reloadRows(at: [position], with: .right)
         tableView.endUpdates()
