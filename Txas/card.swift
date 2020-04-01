@@ -29,7 +29,7 @@ class Card:CustomStringConvertible,Equatable{
         }else{
             self.point = point
         }
-        self.index = suit * 13 + point
+        self.index = suit * 13 + point-1
     }
     
     /// initialize the card with its index from 0~51
