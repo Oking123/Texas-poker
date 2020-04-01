@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB623F3916100DB2AA4 /* card.swift */; };
 		5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB823F391BA00DB2AA4 /* calculator.swift */; };
+		9F15F5452434457C000229AD /* selectCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15F5442434457C000229AD /* selectCardController.swift */; };
 		9F2C964D23D39F8A006A5B63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */; };
 		9F2C964F23D39F8B006A5B63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */; };
-		9F2C965123D39F8B006A5B63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C965023D39F8B006A5B63 /* ViewController.swift */; };
 		9F2C965423D39F8B006A5B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965223D39F8B006A5B63 /* Main.storyboard */; };
 		9F2C965623D39F8D006A5B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965523D39F8D006A5B63 /* Assets.xcassets */; };
 		9F2C965923D39F8D006A5B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2C965723D39F8D006A5B63 /* LaunchScreen.storyboard */; };
@@ -26,10 +26,10 @@
 /* Begin PBXFileReference section */
 		5B2DBDB623F3916100DB2AA4 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		5B2DBDB823F391BA00DB2AA4 /* calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculator.swift; sourceTree = "<group>"; };
+		9F15F5442434457C000229AD /* selectCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectCardController.swift; sourceTree = "<group>"; };
 		9F2C964923D39F8A006A5B63 /* Txas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Txas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9F2C965023D39F8B006A5B63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9F2C965323D39F8B006A5B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F2C965523D39F8D006A5B63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F2C965823D39F8D006A5B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,7 +75,6 @@
 				9F2C964C23D39F8A006A5B63 /* AppDelegate.swift */,
 				9F2C964E23D39F8B006A5B63 /* SceneDelegate.swift */,
 				CC54F57423FB69F0001943FC /* MainViewController.swift */,
-				9F2C965023D39F8B006A5B63 /* ViewController.swift */,
 				CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */,
 				CCB72C0623FB15FF009B04B4 /* item.swift */,
 				9F2C965223D39F8B006A5B63 /* Main.storyboard */,
@@ -87,6 +86,7 @@
 				CC6596E8243270150041B9A7 /* tableViewController.swift */,
 				CCB6CD1F2432B85300E3170A /* ImageCell.swift */,
 				CCB6CD1D2432B67B00E3170A /* ImageCard.swift */,
+				9F15F5442434457C000229AD /* selectCardController.swift */,
 			);
 			path = Txas;
 			sourceTree = "<group>";
@@ -162,10 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F2C965123D39F8B006A5B63 /* ViewController.swift in Sources */,
 				9F2C964D23D39F8A006A5B63 /* AppDelegate.swift in Sources */,
 				CCB6CD202432B85300E3170A /* ImageCell.swift in Sources */,
 				CCB72C0723FB15FF009B04B4 /* item.swift in Sources */,
+				9F15F5452434457C000229AD /* selectCardController.swift in Sources */,
 				9F2C964F23D39F8B006A5B63 /* SceneDelegate.swift in Sources */,
 				5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */,
 				CCB6CD1E2432B67B00E3170A /* ImageCard.swift in Sources */,
