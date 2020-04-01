@@ -11,9 +11,9 @@
 import Foundation
 
 class Calculate{
-    private var win_rate:[Float] = [0,0,0,0,0,0]
+    private var win_rate:[Float] = [1,1,1,1,1,1]
     private var draw_rate:[Float] = [0,0,0,0,0,0]
-    private var player_number = 2
+    private var player_number = 1
     private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
     private var players:[[Card?]] = []
@@ -41,7 +41,7 @@ class Calculate{
         let player4_hand:[Card?] = [nil,nil]
         let player5_hand:[Card?] = [nil,nil]
         self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
-        self.player_number = 2
+        self.player_number = 1
     }
     
     /// set times of calculation
@@ -96,17 +96,21 @@ class Calculate{
         }
     }
     
-    /// set player_number
-    /// - Parameter player_number: int
-    func set_playernumber(use player_number:Int){
-        self.player_number = player_number
+    /// get player_number
+    /// - Returns:player number
+    func get_playernumber() -> Int{
+        return self.player_number
     }
     
     /// calculate the win rate of the player given the number of players
     /// - Parameter player_number: the player number left on the table
     func calculate(){
-        
+        self.win_rate = [1,1,1,1,1,1]
+        self.draw_rate = [0,0,0,0,0,0]
 //      pick 5 from 7 cards
+        if self.player_number == 1{
+            return
+        }
         func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
             var final:[Card] = table
             for i in 0...5{
