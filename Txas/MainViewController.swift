@@ -31,12 +31,8 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! ViewController
-<<<<<<< HEAD
-        vc.player = self.NumberText
-=======
-//        vc.player = self.NumberText
->>>>>>> chj-UI
+//        let vc = segue.destination as! ViewController
+
     }
 
 }

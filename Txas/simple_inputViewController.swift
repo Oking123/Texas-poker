@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol SendMessageDelegate{
-    func sendWord(message: ImageCards, index: Int)
-}
+//protocol SendMessageDelegate{
+//    func sendWord(message: ImageCards, index: Int)
+//}
 
 class simple_inputViewController: UIViewController,UITextFieldDelegate {
 
@@ -107,8 +107,6 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! tableViewController
         vc.ImageCard_reciever = self.local_ImageCard
-//        vc.hand1 = self.return_player_card["LeftHand"]!
-//        vc.hand2 = self.return_player_card["RightHand"]!
     }
     
 }
