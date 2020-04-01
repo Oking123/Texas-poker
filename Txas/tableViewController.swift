@@ -138,15 +138,12 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         if Int(indexPath.row) > 0 {
             if editingStyle == .delete{
                 Cards.remove(at: indexPath.row)
-                print(indexPath.row)
                 
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.endUpdates()
                 cal.removeplayer(remove: indexPath.row)
-                print(cal.players)
                 cal.calculate()
-                print(cal.win_rate)
                 for i in 0...(cal.get_playernumber()-1){
                     Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                     Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
