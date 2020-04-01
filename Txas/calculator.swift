@@ -6,22 +6,32 @@
 //  Copyright © 2020 陈彦廷. All rights reserved.
 //
 
+
+
 import Foundation
 
+/// initial with two Card object as [Card, Card], has function set_flop, set_turn, set_river, clear
 class Calculate{
-    var player_hand:[Card]?
-    var win_rate:Float = 0
-    var draw_rate:Float = 0
-    var lose_rate:Float = 0
-    var player_number = 2
-    var flop:[Card]? = nil
-    var turn:Card? = nil
-    var river:Card? = nil
+    private var player_hand:[Card]? = nil
+    private var player_hand0:Card? = nil
+    private var player_hand1:Card? = nil
+    private var win_rate:Float = 0
+    private var draw_rate:Float = 0
+    private var lose_rate:Float = 0
+    private var player_number = 2
+    private var flop0:Card? = nil
+    private var flop1:Card? = nil
+    private var flop2:Card? = nil
+    private var flop:[Card]? = nil
+    private var turn:Card? = nil
+    private var river:Card? = nil
     
     let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
     
     
+    /// initialize the Callulate class with two original cards in player's hand
+    /// - Parameter player: [Card] with a size of 2 and should not be duplicate
     init(_ player:[Card]) {
         if player.count != 2{
             fputs("The number of input hands is not 2", stderr)
@@ -29,27 +39,92 @@ class Calculate{
         self.player_hand = player
     }
     
+    init() {
+    }
+    
+    /// set the first card of player
+    /// - Parameter c: card object
+    func set_playerhand0(use c:Card){
+        self.player_hand0 = c
+        if self.player_hand0 != nil && self.player_hand1 != nil{
+            self.player_hand = [self.player_hand0!, self.player_hand1!]
+        }
+    }
+    
+    /// set the second card of the player
+    /// - Parameter c: card object
+    func set_playerhand1(use c:Card){
+        self.player_hand1 = c
+        if self.player_hand0 != nil && self.player_hand1 != nil{
+            self.player_hand = [self.player_hand0!, self.player_hand1!]
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop0(use flop:Card){
+        self.flop0 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop1(use flop:Card){
+        self.flop1 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
+    
+    /// set the first card of the game
+    /// - Parameter flop: Card object
+    func set_flop2(use flop:Card){
+        self.flop2 = flop
+        if self.flop0 != nil && self.flop1 != nil && self.flop2 != nil{
+            set_flop(use: [self.flop0!, self.flop1!, self.flop2!])
+        }
+    }
+
+    /// set the flop of the table with 3 Card object
+    /// - Parameter flop: [Card] with size of 3 should not be duplicate with other input
     func set_flop(use flop:[Card]){
         self.flop = flop
     }
     
+    /// set the turn of the table with a Card object
+    /// - Parameter turn: Card type should not be duplicate with other input
     func set_turn(use turn:Card){
         self.turn = turn
     }
     
+    /// set the river of the table with a Card object
+    /// - Parameter river: Card type should not be duplicate with other input
     func set_river(use river:Card){
         self.river = river
     }
     
-    func clear(){
+    
+    /// clear all the flop, turn, river data and the card in player's hand
+    func reset(){
         self.flop = nil
         self.turn = nil
         self.river = nil
         self.player_hand = nil
+        self.flop0 = nil
+        self.flop1 = nil
+        self.flop2 = nil
+    }
+    
+    /// set player_number
+    /// - Parameter player_number: int
+    func set_playernumber(use player_number:Int){
+        self.player_number = player_number
     }
     
 //  check the type of the player_hands, return[type ID, highest card]
-    func check_hands(player:[Card]) -> [Int]{
+    private func check_hands(player:[Card]) -> [Int]{
         //chech if the cards is flush
         func check_flush(_ cards:[Card]) -> Bool{
             let temp = cards[0].suit
@@ -144,12 +219,12 @@ class Calculate{
 //        high card
         return [0, numbers[4]]
     }
-    func outputanswer(_ result:[Int])->String{
+    private func outputanswer(_ result:[Int])->String{
         return types[result[0]]!+" with highest card number of "+String(result[1])
     }
     
 //    input two hands and judge if player1 wins,   0:lose;1:win;2:draw
-    func if_p1_win(player1:[Card],player2:[Card]) -> Int{
+    private func if_p1_win(player1:[Card],player2:[Card]) -> Int{
         let p1_result = check_hands(player: player1)
         let p2_result = check_hands(player: player2)
         if p1_result[0] < p2_result[0]{
@@ -171,9 +246,142 @@ class Calculate{
             return 2}
     }
     
-    func calculate(player_number: Int) -> Float{
-            self.player_number = player_number
-            return self.win_rate
+    /// check if the data can be processed
+    func check_can_be_calculated() -> Bool{
+        if self.player_hand == nil{
+            return false
+        }else{
+            if self.flop == nil && self.turn == nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn == nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn != nil && self.river == nil{
+                return true
+            }
+            if self.flop != nil && self.turn != nil && self.river != nil{
+                return true
+            }
         }
+        return false
+    }
+    
+    /// calculate the win rate of the player given the number of players
+    /// - Parameter player_number: the player number left on the table
+    func calculate() -> Float{
+        if !check_can_be_calculated(){
+            return -1
+        }
+//      pick 5 from 7 cards
+        func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
+            var final:[Card] = table
+            for i in 0...5{
+                for j in i+1...6{
+                    var temp:[Card] = playerhand+table
+                    temp.remove(at: j)
+                    temp.remove(at: i)
+                    if if_p1_win(player1: temp, player2: final) == 1{
+                        final = temp
+                    }
+                }
+            }
+            return final
+        }
+        
+        
+        var player1_win:Int = 0
+
+//        loop for 1000 times
+        for _ in 1...1000{
+//             all chosen cards
+            var cardpool:[Card] = player_hand!
+            var card1 = player_hand
+//             other player's cards
+            var players:[[Card]] = []
+            var table = [Card]()
+//            get five cards on table
+            
+//            get flop
+            if let threecards = flop{
+                table += threecards
+                cardpool += threecards
+            }
+            else{
+                while table.count < 3{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !cardpool.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+            
+//            get turn
+            if let fourthcard = turn{
+                table.append(fourthcard)
+                cardpool.append(fourthcard)
+            }
+            else{
+                while table.count < 4{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !card1!.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+//             get river
+            if let fifth = river{
+                table.append(fifth)
+                cardpool.append(fifth)
+            }
+            else{
+                while table.count < 5{
+                    let tempcard = Card(index: Int.random(in: 0...51))
+                    if !card1!.contains(tempcard){
+                        table.append(tempcard)
+                        cardpool.append(tempcard)
+                    }
+                }
+            }
+//            get cards for players
+            for _ in 2...self.player_number{
+                var player:[Card] = []
+                while player.count < 2{
+                    let newcard = Card(index:Int.random(in: 0...51))
+                    if !cardpool.contains(newcard){
+                        player.append(newcard)
+                        cardpool.append(newcard)
+                    }
+                }
+                players.append(player)
+            }
+//            select 5 from 7 for all players
+            card1 = five_in_seven(playerhand: card1!, table: table)
+            for i in 0...self.player_number-2{
+                players[i] = five_in_seven(playerhand: players[i], table: table)
+            }
+            
+            //judge player1 win
+            var count = 0
+            for i in 0...self.player_number-2{
+                if if_p1_win(player1: card1!, player2: players[i]) == 1{
+                    count += 1
+                }
+            }
+            if count == self.player_number-1{
+                player1_win += 1
+            }
+        }
+        win_rate = Float(player1_win)/1000.0
+        return self.win_rate
+        }
+    
+    
+    /// get the present win_rate of the table
+    func get_winrate() -> Float{
+        return self.win_rate
+    }
     
 }
