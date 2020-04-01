@@ -25,7 +25,6 @@ class Calculate{
     private let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     private let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
     
-    
     init() {
 //        init cardlist
         var tempcardlist:[Card] = []

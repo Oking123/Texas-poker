@@ -12,11 +12,10 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-//    var hand1: Any?
-//    var hand2: Any?
-    var ImageCard_reciever: ImageCards?
+    var ImageCard_reciever: [Any] = []
     var sender_index: Int?
     var Cards: [ImageCards] = []
+    var TableCard: [Any] = []
     
     @IBOutlet weak var floop1: UIImageView!
     @IBOutlet weak var floop2: UIImageView!
@@ -49,7 +48,7 @@ class tableViewController: UIViewController{
         UITap4.addTarget(self, action: #selector(tapclick))
         
         let UITap5 = UITapGestureRecognizer()
-        self.river.addGestureRecognizer(UITap1)
+        self.river.addGestureRecognizer(UITap5)
         UITap5.addTarget(self, action: #selector(tapclick))
         
         
@@ -79,15 +78,11 @@ class tableViewController: UIViewController{
     /// insert a need player in the table view list
     func inserNewPlayer(){
         let image = ImageCards(image1:#imageLiteral(resourceName: "cardBackground"), image2:#imageLiteral(resourceName: "cardBackground"), win_rate: "100%", tips: "0%")
-//        print(Cards.count)
-//        tempCard.player += 1
         Cards.append(image)
         let temp_winrate = 100/Cards.count
         
         for player in 0...Cards.count - 1{
-            
             Cards[player].win_rate = String(temp_winrate)+"%"
-//            print(Cards[player].win_rate)
         }
             
         let indexPath = IndexPath(row: Cards.count - 1, section: 0)
@@ -150,37 +145,25 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
             case "toPlayer":
                 let reciever:SelectHandController = segue.destination as! SelectHandController
                 reciever.delegate = self
-                reciever.local_ImageCard = sender as? ImageCards
                 reciever.local_ImageCard_index = sender_index
             case "toTable":
-                print("to be implemented")
-//                let reciever:SelectCardController = segue.destination as! SelectCardController
-//                reciever.delegate = self
-//                reciever.resultCards = (sender as? [Card])!
+                let reciever:selectCardController = segue.destination as! selectCardController
+                reciever.delegate = self
          default: break
         }
        
     }
 }
 
-extension tableViewController: SendMessageDelegate{
-    func sendWord(message: ImageCards, index: Int ) {
-        print(index)
-//        print(message.image1_index,message.image2_idnex)
-        let position = IndexPath(row: index, section: 0)
-        Cards[index].image1 = #imageLiteral(resourceName: "d5")
-        Cards[index].image2 = #imageLiteral(resourceName: "d8")
-        
-        tableView.beginUpdates()
-        self.tableView.reloadRows(at: [position], with: .right)
-        tableView.endUpdates()
+extension tableViewController: SendTableDelegate{
+    func sendTable(TableCard: [Any]) {
+        print(TableCard)
     }
 }
 
 extension tableViewController: SendHandDelegate{
-    func sendHand(message: ImageCards, index: Int) {
-        print(message.image1_index!)
-        print(message.image2_idnex!)
+    func sendHand(message: [Any], index: Int) {
+        print(message)
         let position = IndexPath(row: index, section: 0)
         Cards[index].image1 = #imageLiteral(resourceName: "d5")
         Cards[index].image2 = #imageLiteral(resourceName: "d8")

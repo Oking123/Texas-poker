@@ -7,8 +7,8 @@
 //
 
 import UIKit
-protocol SendMessageDelegate{
-    func sendWord(message: ImageCards, index: Int)
+protocol SendTableDelegate{
+    func sendTable(TableCard: [Any])
 }
 
 class selectCardController: UIViewController {
@@ -33,10 +33,9 @@ class selectCardController: UIViewController {
         @IBOutlet weak var a4: UIImageView!
         @IBOutlet weak var a5: UIImageView!
     //
-    var local_ImageCard : ImageCards?
-    var local_ImageCard_index: Int?
+    var local_TableCard: [Any]?
     
-    var delegate : SendMessageDelegate?
+    var delegate : SendTableDelegate?
     
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
@@ -79,9 +78,19 @@ class selectCardController: UIViewController {
     }
 
     @objc func back(sender: UIBarButtonItem) {
-        if(local_ImageCard_index != nil){
-            self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
+        var temp_values: [Any]? = []
+        for item in images_5
+        {
+            if(someDict[item] == nil){
+                temp_values?.append(-1)
+            }
+            else{
+                temp_values?.append(Int(someDict[item]!)!)
+            }
         }
+        
+        local_TableCard = temp_values
+        self.delegate!.sendTable(TableCard: local_TableCard!)
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -194,7 +203,6 @@ class selectCardController: UIViewController {
             }
             
         }
-        
     }
     
     

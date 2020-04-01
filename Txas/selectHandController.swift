@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SendHandDelegate{
-    func sendHand(message: ImageCards, index: Int)
+    func sendHand(message: [Any], index: Int)
 }
 
 class SelectHandController:UIViewController{
@@ -30,7 +30,7 @@ class SelectHandController:UIViewController{
     @IBOutlet weak var image_12: UIImageView!
     @IBOutlet weak var image_13: UIImageView!
     
-    var local_ImageCard : ImageCards?
+    var local_ImageCard : [Any]?
     var local_ImageCard_index: Int?
     
     var delegate : SendHandDelegate?
@@ -84,13 +84,14 @@ class SelectHandController:UIViewController{
                 temp_values?.append(Int(someDict[item]!)!)
             }
         }
+        local_ImageCard = temp_values
         
-        if (temp_values?[0] != nil){
-            local_ImageCard!.image1_index = (temp_values![0] as! Int)
-        }
-        if (temp_values?[1] != nil){
-            local_ImageCard!.image2_idnex = (temp_values![1] as! Int)
-        }
+//        if (temp_values?[0] != nil){
+//            local_ImageCard!.image1_index = (temp_values![0] as! Int)
+//        }
+//        if (temp_values?[1] != nil){
+//            local_ImageCard!.image2_idnex = (temp_values![1] as! Int)
+//        }
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
