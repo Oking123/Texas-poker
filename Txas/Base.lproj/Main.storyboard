@@ -131,17 +131,59 @@
                                     <action selector="addButtonTapped:" destination="SM8-hW-WDe" eventType="touchUpInside" id="pNS-YE-149"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tableBackgorund" translatesAutoresizingMaskIntoConstraints="NO" id="XHC-Mo-pKU">
-                                <rect key="frame" x="41" y="117" width="333" height="181"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" id="mjH-SI-S5F">
+                                <rect key="frame" x="82" y="149" width="250" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Hcz-MV-Gjl">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="UnH-Fb-58G"/>
+                                            <constraint firstAttribute="height" constant="100" id="Zho-Zd-KLo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="zON-C4-8SA">
+                                        <rect key="frame" x="50" y="0.0" width="50" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="dnl-87-vJO"/>
+                                            <constraint firstAttribute="height" constant="100" id="wR4-fn-kCu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-F1-71F">
+                                        <rect key="frame" x="100" y="0.0" width="50" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Vs7-m8-wF0"/>
+                                            <constraint firstAttribute="width" constant="50" id="dtc-Sq-oqV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5qf-eg-cij">
+                                        <rect key="frame" x="150" y="0.0" width="50" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="VnP-Ep-LQU"/>
+                                            <constraint firstAttribute="height" constant="100" id="u7R-pg-wjm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="O8m-uu-xp3">
+                                        <rect key="frame" x="200" y="0.0" width="50" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="9oM-Z3-jd5"/>
+                                            <constraint firstAttribute="height" constant="100" id="LND-X9-dcf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="5sp-EN-noB"/>
                     </view>
                     <navigationItem key="navigationItem" id="k5M-kb-PiF"/>
                     <connections>
+                        <outlet property="floop1" destination="Hcz-MV-Gjl" id="oA2-nG-gGL"/>
+                        <outlet property="floop2" destination="zON-C4-8SA" id="4Wn-T2-zVh"/>
+                        <outlet property="floop3" destination="g2s-F1-71F" id="6SO-bj-bgP"/>
+                        <outlet property="river" destination="O8m-uu-xp3" id="N2y-9D-YIj"/>
                         <outlet property="tableView" destination="idy-hp-rKv" id="Vn9-2a-izi"/>
+                        <outlet property="turn" destination="5qf-eg-cij" id="Aer-eI-LIm"/>
                         <segue destination="MLO-CN-7Gm" kind="show" identifier="selectCard" id="fUW-eT-DYg"/>
                     </connections>
                 </viewController>
@@ -697,8 +739,8 @@
         <image name="a7" width="35" height="50"/>
         <image name="a8" width="35" height="50"/>
         <image name="a9" width="35" height="50"/>
+        <image name="cardBackground" width="228.66667175292969" height="325.33334350585938"/>
         <image name="poker-hand-rankings" width="641" height="1268"/>
-        <image name="tableBackgorund" width="293.33334350585938" height="142"/>
         <image name="截屏2020-01-31下午6.07.07" width="521.33331298828125" height="374.66665649414062"/>
         <image name="截屏2020-01-31下午6.11.34" width="326" height="200"/>
     </resources>

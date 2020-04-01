@@ -44,14 +44,15 @@ class simple_inputViewController: UIViewController,UITextFieldDelegate {
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        print(local_ImageCard_index)
-        if card1.text != ""{
-            local_ImageCard?.image1_index = Int(card1.text!)
+        if(local_ImageCard_index != nil){
+            if card1.text != ""{
+                local_ImageCard?.image1_index = Int(card1.text!)
+            }
+            if card2.text != ""{
+                local_ImageCard?.image2_idnex = Int(card2.text!)
+            }
+            self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
         }
-        if card2.text != ""{
-            local_ImageCard?.image2_idnex = Int(card2.text!)
-        }
-        self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
     

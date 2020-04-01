@@ -17,14 +17,32 @@ class tableViewController: UIViewController{
     var ImageCard_reciever: ImageCards?
     var sender_index: Int?
     var Cards: [ImageCards] = []
-
+    
+    
+    @IBOutlet weak var floop1: UIImageView!
+    @IBOutlet weak var floop2: UIImageView!
+    @IBOutlet weak var floop3: UIImageView!
+    @IBOutlet weak var turn: UIImageView!
+    @IBOutlet weak var river: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let UITap1 = UITapGestureRecognizer()
+//        UITap1.delegate = self as! UIGestureRecognizerDelegate
+        self.floop1.addGestureRecognizer(UITap1)
+        UITap1.addTarget(self, action: #selector(tapclick))
     }
+    @objc func tapclick()
+    {
+        performSegue(withIdentifier: "selectCard", sender: self)
+    }
+    
     
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
@@ -112,13 +130,18 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("hello")
         if(segue.identifier == "selectCard"){
             let reciever:simple_inputViewController = segue.destination as! simple_inputViewController
             reciever.delegate = self
             reciever.local_ImageCard = sender as? ImageCards
+            print("1")
             reciever.local_ImageCard_index = sender_index
+            print("2")
         }
     }
+    
+    
 }
 
 extension tableViewController: SendMessageDelegate{
@@ -137,4 +160,5 @@ extension tableViewController: SendMessageDelegate{
 //        print(hand1!)
 //        print(hand2!)
     }
+    
 }
