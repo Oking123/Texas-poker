@@ -154,7 +154,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                 reciever.local_ImageCard_index = sender_index
             case "toTable":
                 print("to be implemented")
-//                let reciever:SelectHandController = segue.destination as! SelectHandController
+//                let reciever:SelectCardController = segue.destination as! SelectCardController
 //                reciever.delegate = self
 //                reciever.resultCards = (sender as? [Card])!
          default: break
@@ -179,8 +179,8 @@ extension tableViewController: SendMessageDelegate{
 
 extension tableViewController: SendHandDelegate{
     func sendHand(message: ImageCards, index: Int) {
-        print(message.image1_index)
-        print(message.image2_idnex)
+        print(message.image1_index!)
+        print(message.image2_idnex!)
         let position = IndexPath(row: index, section: 0)
         Cards[index].image1 = #imageLiteral(resourceName: "d5")
         Cards[index].image2 = #imageLiteral(resourceName: "d8")

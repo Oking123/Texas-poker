@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="idn-LO-RIm" customClass="SelectHandController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBi-Wy-B7h">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" id="tNx-cy-Nxi" userLabel="a1">
@@ -565,54 +565,51 @@
                                 <rect key="frame" x="40" y="645" width="350" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OA9-0c-FZ0">
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-LG-fSH">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a1" translatesAutoresizingMaskIntoConstraints="NO" id="gOM-S2-jUz">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a1" translatesAutoresizingMaskIntoConstraints="NO" id="Csi-vC-GAr">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="dic-eX-NF6"/>
+                                                    <constraint firstAttribute="width" constant="50" id="LFJ-bv-wc2"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a2" translatesAutoresizingMaskIntoConstraints="NO" id="abs-HB-7WN">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a2" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-z2-jbn">
                                                 <rect key="frame" x="50" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="uxk-Rv-rOV"/>
+                                                    <constraint firstAttribute="width" constant="50" id="gKS-RI-72N"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a3" translatesAutoresizingMaskIntoConstraints="NO" id="MhG-Ae-Zyy">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a3" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-3m-sX8">
                                                 <rect key="frame" x="100" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="yYJ-38-oMy"/>
+                                                    <constraint firstAttribute="width" constant="50" id="Ua9-rD-VCi"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a4" translatesAutoresizingMaskIntoConstraints="NO" id="omT-RF-yCf">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a4" translatesAutoresizingMaskIntoConstraints="NO" id="Fzm-Dx-45i">
                                                 <rect key="frame" x="150" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="GkI-oS-0aK"/>
+                                                    <constraint firstAttribute="width" constant="50" id="izZ-Du-aHk"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a5" translatesAutoresizingMaskIntoConstraints="NO" id="11x-WJ-hku">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a5" translatesAutoresizingMaskIntoConstraints="NO" id="WZa-g1-cXi">
                                                 <rect key="frame" x="200" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="h01-8X-qdV"/>
+                                                    <constraint firstAttribute="width" constant="50" id="56y-RR-WB0"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a6" translatesAutoresizingMaskIntoConstraints="NO" id="JQa-3W-Sbl">
-                                                <rect key="frame" x="250" y="0.0" width="100" height="100"/>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a6" translatesAutoresizingMaskIntoConstraints="NO" id="D0U-a0-2bq">
+                                                <rect key="frame" x="250" y="0.0" width="50" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="NaN-W1-8fJ"/>
+                                                    <constraint firstAttribute="width" constant="50" id="0mE-vt-LFq"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a7" translatesAutoresizingMaskIntoConstraints="NO" id="tnP-46-RWA">
-                                                <rect key="frame" x="350" y="0.0" width="0.0" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondAttribute="height" multiplier="1:2" id="baV-hc-vpg"/>
-                                                </constraints>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a7" translatesAutoresizingMaskIntoConstraints="NO" id="2W1-rp-ByX">
+                                                <rect key="frame" x="300" y="0.0" width="50" height="100"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="q3C-Xp-HtR"/>
+                                            <constraint firstAttribute="height" constant="100" id="fFt-Uc-rOi"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ume-6O-3zp">
@@ -656,7 +653,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="EPg-SB-ExF"/>
                                     <constraint firstAttribute="height" constant="200" id="yib-u2-PPw"/>
                                 </constraints>
                             </stackView>
@@ -748,17 +744,17 @@
                         <outlet property="a3" destination="QgU-Ua-Q1A" id="Pxl-uC-551"/>
                         <outlet property="a4" destination="hWd-8N-dLE" id="xSw-Dk-UWP"/>
                         <outlet property="a5" destination="vT6-w0-mHa" id="cd1-29-Owh"/>
-                        <outlet property="image_1" destination="gOM-S2-jUz" id="Xmc-4Y-mzz"/>
+                        <outlet property="image_1" destination="Csi-vC-GAr" id="UJ6-5G-S8n"/>
                         <outlet property="image_10" destination="Thh-mR-LAA" id="hHf-kK-t1K"/>
                         <outlet property="image_11" destination="JQw-cs-LSe" id="VJ3-Id-v8l"/>
                         <outlet property="image_12" destination="cIv-GL-1rw" id="UcK-xg-cBF"/>
                         <outlet property="image_13" destination="PLA-gU-cGV" id="Gbz-6K-MAi"/>
-                        <outlet property="image_2" destination="abs-HB-7WN" id="JcU-fR-GdU"/>
-                        <outlet property="image_3" destination="MhG-Ae-Zyy" id="Plq-Zg-P02"/>
-                        <outlet property="image_4" destination="omT-RF-yCf" id="SnS-6J-R9B"/>
-                        <outlet property="image_5" destination="11x-WJ-hku" id="Ljr-57-LkJ"/>
-                        <outlet property="image_6" destination="JQa-3W-Sbl" id="wHu-lt-OM8"/>
-                        <outlet property="image_7" destination="tnP-46-RWA" id="yDj-tR-DP3"/>
+                        <outlet property="image_2" destination="0ad-z2-jbn" id="0nK-um-MoK"/>
+                        <outlet property="image_3" destination="YU5-3m-sX8" id="fCt-0S-g67"/>
+                        <outlet property="image_4" destination="Fzm-Dx-45i" id="mwH-KH-6xL"/>
+                        <outlet property="image_5" destination="WZa-g1-cXi" id="gJU-RX-Ib3"/>
+                        <outlet property="image_6" destination="D0U-a0-2bq" id="o5s-Nf-2Fa"/>
+                        <outlet property="image_7" destination="2W1-rp-ByX" id="fn0-DB-TfE"/>
                         <outlet property="image_8" destination="yXQ-RL-8Un" id="TKI-6R-vkJ"/>
                         <outlet property="image_9" destination="faL-u1-35e" id="o3d-MX-TWY"/>
                     </connections>

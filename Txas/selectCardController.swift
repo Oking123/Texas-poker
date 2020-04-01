@@ -80,20 +80,9 @@ class selectCardController: UIViewController {
 
     @objc func back(sender: UIBarButtonItem) {
         if(local_ImageCard_index != nil){
-//            if card1.text != ""{
-//                local_ImageCard?.image1_index = Int(card1.text!)
-//            }
-//            if card2.text != ""{
-//                local_ImageCard?.image2_idnex = Int(card2.text!)
-//            }
             self.delegate?.sendWord(message: local_ImageCard!, index: local_ImageCard_index!)
         }
         _ = navigationController?.popViewController(animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! tableViewController
-        vc.ImageCard_reciever = self.local_ImageCard
     }
     
     
@@ -210,22 +199,13 @@ class selectCardController: UIViewController {
     
     
     @IBAction func ResetButton(_ sender: UIButton) {
-        choose_item.image = tap_item.image
-        tap_item.image = #imageLiteral(resourceName: "截屏2020-01-31下午6.07.07")
-        tap_item.alpha = 0.5
-        state = 1
+        if choose_item != nil
+        {
+            choose_item.image = tap_item.image
+            tap_item.image = #imageLiteral(resourceName: "截屏2020-01-31下午6.07.07")
+            tap_item.alpha = 0.5
+            state = 1
+        }
     }
-    
-//    @IBAction func finishSelect(_ sender: UIButton) {
-//        for item in images_5
-//        {
-//            print(someDict[item])
-//        }
-//
-//    }
-    
-     
-    
-    
     
 }

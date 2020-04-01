@@ -85,20 +85,7 @@ class SelectHandController:UIViewController{
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let vc = segue.destination as! tableViewController
-//        // need to change a way of initialize list of cards
-//        var temp_values: [Int]? = []
-//        for item in images_2
-//        {
-//            temp_values?.append(Int(someDict[item]!)!)
-//        }
-//        print(temp_values![0])
-//        vc.ImageCard_reciever?.image1_index = temp_values![0]
-//        vc.ImageCard_reciever?.image2_idnex = temp_values![1]
-//        
-//    }
+
     
     @IBAction func DidPokerChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -209,22 +196,14 @@ class SelectHandController:UIViewController{
         
     }
     
-    // return results
-//    @IBAction func finishSelect(_ sender: UIButton) {
-//
-//        for item in images_5
-//        {
-////            print(someDict[item])
-//            continue
-//
-//        }
-//    }
-    
     @IBAction func resetPoker(_ sender: UIButton) {
-        choose_item.image = tap_item.image
-        tap_item.image = #imageLiteral(resourceName: "截屏2020-01-31下午6.07.07")
-        tap_item.alpha = 0.5
-        state = 1
+        if choose_item != nil
+        {
+            choose_item.image = tap_item.image
+            tap_item.image = #imageLiteral(resourceName: "截屏2020-01-31下午6.07.07")
+            tap_item.alpha = 0.5
+            state = 1
+        }
         
     }
     
