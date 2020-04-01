@@ -17,7 +17,7 @@ class tableViewController: UIViewController{
     var ImageCard_reciever: ImageCards?
     var sender_index: Int?
     var Cards: [ImageCards] = []
-    
+    var temp_reciever:[UIImageView:String] = [:]
     
     @IBOutlet weak var floop1: UIImageView!
     @IBOutlet weak var floop2: UIImageView!
@@ -126,19 +126,25 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
 //        tableView.deselectRow(at: indexPath, animated: true)
         let image = Cards[indexPath.row]
         sender_index = indexPath.row
-        performSegue(withIdentifier: "selectCard", sender: image)
+        performSegue(withIdentifier: "toPlayer", sender: image)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "selectCard"){
-            let reciever:SelectHandController = segue.destination as! SelectHandController
-            reciever.delegate = self
-            reciever.local_ImageCard = sender as? ImageCards
-            reciever.local_ImageCard_index = sender_index
+        switch segue.identifier {
+            case "toPlayer":
+                let reciever:SelectHandController = segue.destination as! SelectHandController
+                reciever.delegate = self
+                reciever.local_ImageCard = sender as? ImageCards
+                reciever.local_ImageCard_index = sender_index
+            case "toTable":
+                print("to be implemented")
+//                let reciever:SelectHandController = segue.destination as! SelectHandController
+//                reciever.delegate = self
+//                reciever.resultCards = (sender as? [Card])!
+         default: break
         }
+       
     }
-    
-    
 }
 
 extension tableViewController: SendMessageDelegate{
@@ -152,10 +158,18 @@ extension tableViewController: SendMessageDelegate{
         tableView.beginUpdates()
         self.tableView.reloadRows(at: [position], with: .right)
         tableView.endUpdates()
-//        hand1 = message["LeftHand"]!
-//        hand2 = message["RightHand"]!
-//        print(hand1!)
-//        print(hand2!)
     }
-    
+}
+
+extension tableViewController: SendHandDelegate{
+    func sendHand(message: ImageCards, index: Int, result: [Card]) {
+        print(index)
+        let position = IndexPath(row: index, section: 0)
+        Cards[index].image1 = #imageLiteral(resourceName: "d5")
+        Cards[index].image2 = #imageLiteral(resourceName: "d8")
+        
+        tableView.beginUpdates()
+        self.tableView.reloadRows(at: [position], with: .right)
+        tableView.endUpdates()
+    }
 }
