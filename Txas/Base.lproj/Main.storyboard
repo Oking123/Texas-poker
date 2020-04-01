@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Seconde View Controller-->
+        <!--Select Hand Controller-->
         <scene sceneID="r0c-Ij-sSX">
             <objects>
-                <viewController id="idn-LO-RIm" customClass="SecondeViewController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="idn-LO-RIm" customClass="SelectHandController" customModule="Txas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBi-Wy-B7h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,6 +164,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="11D-Ve-vtC"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BXP-M6-wuY"/>
                     <connections>
                         <outlet property="a1" destination="tNx-cy-Nxi" id="tUr-F4-mJ6"/>
                         <outlet property="a2" destination="g6X-EH-hOT" id="pFP-TV-442"/>
@@ -184,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8En-sw-phS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2116" y="42"/>
+            <point key="canvasLocation" x="787" y="796"/>
         </scene>
         <!--main-->
         <scene sceneID="Jg4-mr-k46">
@@ -297,6 +298,7 @@
                                             <outlet property="Image2" destination="e4A-9Z-8da" id="kkj-9t-MAe"/>
                                             <outlet property="Tips" destination="p48-DX-yeF" id="0ci-Ty-L2g"/>
                                             <outlet property="Win_Rate" destination="PHp-3b-1i0" id="f25-Bz-RWR"/>
+                                            <segue destination="idn-LO-RIm" kind="show" identifier="selectCard" id="YCS-5J-kmE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -362,7 +364,6 @@
                         <outlet property="river" destination="O8m-uu-xp3" id="N2y-9D-YIj"/>
                         <outlet property="tableView" destination="idy-hp-rKv" id="Vn9-2a-izi"/>
                         <outlet property="turn" destination="5qf-eg-cij" id="Aer-eI-LIm"/>
-                        <segue destination="7v9-WN-a9F" kind="show" identifier="selectCard" id="hjC-4P-j7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76z-8O-WxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -540,7 +541,7 @@
                 <exit id="c3h-eR-W4Q" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVD-gl-G4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785.50724637681162" y="825.66964285714278"/>
+            <point key="canvasLocation" x="2125" y="-259"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="975-ZZ-W1Y">

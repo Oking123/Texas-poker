@@ -131,7 +131,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "selectCard"){
-            let reciever:selectCardController = segue.destination as! selectCardController
+            let reciever:SelectHandController = segue.destination as! SelectHandController
             reciever.delegate = self
             reciever.local_ImageCard = sender as? ImageCards
             reciever.local_ImageCard_index = sender_index
