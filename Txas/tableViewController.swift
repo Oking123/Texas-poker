@@ -135,7 +135,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
-        if Int(indexPath.row) > 0 {
+        if cal.get_playernumber() > 1 {
             if editingStyle == .delete{
                 Cards.remove(at: indexPath.row)
                 
