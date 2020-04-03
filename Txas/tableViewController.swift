@@ -15,7 +15,7 @@ class tableViewController: UIViewController{
     var ImageCard_reciever = [Any] (repeating: -1, count: 2)
     var sender_index: Int?
     var Cards: [ImageCards] = []
-    var TableCard: [Any] = []
+    var TableCard_reciever = [Any] (repeating: -1, count: 5)
     let cal = Calculate()
     
     
@@ -178,6 +178,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
             case "toTable":
                 let reciever:selectCardController = segue.destination as! selectCardController
                 reciever.delegate = self
+                reciever.local_TableCard = TableCard_reciever
          default: break
         }
        
@@ -186,6 +187,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
 
 extension tableViewController: SendTableDelegate{
     func sendTable(TableCard: [Any]) {
+        TableCard_reciever = TableCard
         let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
         let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
         let tabledict:[Int:UIImageView] = [0: floop1, 1: floop2, 2: floop3, 3: turn, 4: river]
@@ -213,6 +215,7 @@ extension tableViewController: SendTableDelegate{
 
 extension tableViewController: SendHandDelegate{
     func sendHand(message: [Any], index: Int) {
+        ImageCard_reciever = message
         let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
         let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
         

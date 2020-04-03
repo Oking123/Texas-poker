@@ -12,6 +12,10 @@ protocol SendTableDelegate{
 }
 
 class selectCardController: UIViewController {
+    let cal = Calculate()
+    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
+    
       //variances of poker
         @IBOutlet weak var image_1: UIImageView!
         @IBOutlet weak var image_2: UIImageView!
@@ -70,6 +74,15 @@ class selectCardController: UIViewController {
         {
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
+        }
+        for i in 0...4{
+            if(local_TableCard![i] as! Int != -1){
+                let table = Card(index:cal.transform_chj(use: local_TableCard![i] as! Int))
+                images_5[i].image = #imageLiteral(resourceName: (suits[table.suit]! + points[table.point]!))
+            }
+            else{
+                images_5[i].image = #imageLiteral(resourceName: "cardBackground")
+            }
         }
         
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(selectCardController.back(sender:)))
