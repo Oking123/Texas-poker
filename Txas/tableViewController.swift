@@ -71,7 +71,6 @@ class tableViewController: UIViewController{
             for i in 0...(cal.get_playernumber()-1){
                 Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                 Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
-                
             }
             self.tableView.reloadData()
         }
@@ -148,7 +147,6 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                     Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                     Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
                 }
-        //        let position = IndexPath(row: index, section: 0)
                 self.tableView.reloadData()
             }
         }
@@ -236,17 +234,11 @@ extension tableViewController: SendHandDelegate{
         cal.calculate()
         print(cal.get_winrate(player_number: index))
 
-        ///   - suit: an integer where [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
-        ///   - point: from 2~14
         for i in 0...(cal.get_playernumber()-1){
             Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
             Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
             
         }
-//        let position = IndexPath(row: index, section: 0)
         self.tableView.reloadData()
-//        tableView.beginUpdates()
-//        self.tableView.reloadRows(at: [position], with: .right)
-//        tableView.endUpdates()
     }
 }
