@@ -13,6 +13,9 @@ protocol SendHandDelegate{
 }
 
 class SelectHandController:UIViewController{
+    let cal = Calculate()
+    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
     
     @IBOutlet weak var a1: UIImageView!
     @IBOutlet weak var a2: UIImageView!
@@ -68,6 +71,20 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
+        
+        print(local_ImageCard![0])
+        print(local_ImageCard![1])
+        
+        if(local_ImageCard![0] as! Int != -1){
+            print("hello 1")
+            let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
+            images_2[0].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
+        }
+        if(local_ImageCard![1] as! Int != -1){
+            print("hello 2")
+            let card =  Card(index:cal.transform_chj(use: local_ImageCard![1] as! Int))
+            images_2[1].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
+        }
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -85,13 +102,6 @@ class SelectHandController:UIViewController{
             }
         }
         local_ImageCard = temp_values
-        
-//        if (temp_values?[0] != nil){
-//            local_ImageCard!.image1_index = (temp_values![0] as! Int)
-//        }
-//        if (temp_values?[1] != nil){
-//            local_ImageCard!.image2_idnex = (temp_values![1] as! Int)
-//        }
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }

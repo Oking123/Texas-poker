@@ -12,7 +12,7 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-    var ImageCard_reciever: [Any] = []
+    var ImageCard_reciever = [Any] (repeating: -1, count: 2)
     var sender_index: Int?
     var Cards: [ImageCards] = []
     var TableCard: [Any] = []
@@ -133,6 +133,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         return true
     }
     
+    //delete table cell
     func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if cal.get_playernumber() > 1 {
             if editingStyle == .delete{
@@ -159,8 +160,9 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
             present(alert, animated: true, completion: nil)
         }
     }
+    
+    // perform segue to select hand card
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
-//        tableView.deselectRow(at: indexPath, animated: true)
         let image = Cards[indexPath.row]
         sender_index = indexPath.row
         performSegue(withIdentifier: "toPlayer", sender: image)
@@ -172,6 +174,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                 let reciever:SelectHandController = segue.destination as! SelectHandController
                 reciever.delegate = self
                 reciever.local_ImageCard_index = sender_index
+                reciever.local_ImageCard = ImageCard_reciever
             case "toTable":
                 let reciever:selectCardController = segue.destination as! selectCardController
                 reciever.delegate = self
