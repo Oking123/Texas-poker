@@ -172,6 +172,8 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         switch segue.identifier {
             case "toPlayer":
                 let reciever:SelectHandController = segue.destination as! SelectHandController
+                ImageCard_reciever[0] = Cards[sender_index!].image1_index
+                ImageCard_reciever[1] = Cards[sender_index!].image2_idnex
                 reciever.delegate = self
                 reciever.local_ImageCard_index = sender_index
                 reciever.local_ImageCard = ImageCard_reciever
@@ -215,7 +217,6 @@ extension tableViewController: SendTableDelegate{
 
 extension tableViewController: SendHandDelegate{
     func sendHand(message: [Any], index: Int) {
-        ImageCard_reciever = message
         let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
         let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
         
@@ -225,17 +226,21 @@ extension tableViewController: SendHandDelegate{
             card1 = Card(index:cal.transform_chj(use: message[0] as! Int))
             cal.set_playerhand(set: index, which: 0, use: card1)
             Cards[index].image1 = #imageLiteral(resourceName: (suits[card1!.suit]! + points[card1!.point]!))
+            Cards[index].image1_index = (message[0] as! Int)
         }else{
             cal.set_playerhand(set: index, which: 0, use: nil)
             Cards[index].image1 = #imageLiteral(resourceName: "cardBackground")
+            Cards[index].image1_index = -1
         }
         if(message[1] as! Int != -1){
             card2 =  Card(index:cal.transform_chj(use: message[1] as! Int))
             cal.set_playerhand(set: index, which: 1, use: card2)
             Cards[index].image2 = #imageLiteral(resourceName: (suits[card2!.suit]! + points[card2!.point]!))
+            Cards[index].image2_idnex = (message[1] as! Int)
         }else{
             cal.set_playerhand(set: index, which: 1, use: nil)
             Cards[index].image2 = #imageLiteral(resourceName: "cardBackground")
+            Cards[index].image2_idnex = -1
         }
         cal.calculate()
         print(cal.get_winrate(player_number: index))

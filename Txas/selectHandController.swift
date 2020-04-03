@@ -94,14 +94,16 @@ class SelectHandController:UIViewController{
         var temp_values: [Any]? = []
         for item in images_2
         {
-            if(someDict[item] == nil){
-                temp_values?.append(-1)
+            if(someDict[item] != nil){
+//                temp_values?.append(-1)
+                temp_values?.append(Int(someDict[item]!)!)
+                local_ImageCard = temp_values
             }
             else{
-                temp_values?.append(Int(someDict[item]!)!)
+                continue
             }
         }
-        local_ImageCard = temp_values
+//        local_ImageCard = temp_values
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
