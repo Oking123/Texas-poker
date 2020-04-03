@@ -12,11 +12,12 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-//    var hand1: Any?
-//    var hand2: Any?
-    var ImageCard_reciever: ImageCards?
+    var ImageCard_reciever: [Any] = []
     var sender_index: Int?
     var Cards: [ImageCards] = []
+    var TableCard: [Any] = []
+    let cal = Calculate()
+    
     
     @IBOutlet weak var floop1: UIImageView!
     @IBOutlet weak var floop2: UIImageView!
@@ -49,7 +50,7 @@ class tableViewController: UIViewController{
         UITap4.addTarget(self, action: #selector(tapclick))
         
         let UITap5 = UITapGestureRecognizer()
-        self.river.addGestureRecognizer(UITap1)
+        self.river.addGestureRecognizer(UITap5)
         UITap5.addTarget(self, action: #selector(tapclick))
         
         
@@ -63,8 +64,16 @@ class tableViewController: UIViewController{
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
     @IBAction func addButtonTapped(_ sender: Any) {
-        if (Cards.count <= 6){
+        if (Cards.count < 6){
             inserNewPlayer()
+            cal.addplayer()
+            cal.calculate()
+            for i in 0...(cal.get_playernumber()-1){
+                Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+                Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
+                
+            }
+            self.tableView.reloadData()
         }
         else{
             let alertTitle = "Maxmimun Player: 6."
@@ -79,15 +88,11 @@ class tableViewController: UIViewController{
     /// insert a need player in the table view list
     func inserNewPlayer(){
         let image = ImageCards(image1:#imageLiteral(resourceName: "cardBackground"), image2:#imageLiteral(resourceName: "cardBackground"), win_rate: "100%", tips: "0%")
-//        print(Cards.count)
-//        tempCard.player += 1
         Cards.append(image)
         let temp_winrate = 100/Cards.count
         
         for player in 0...Cards.count - 1{
-            
             Cards[player].win_rate = String(temp_winrate)+"%"
-//            print(Cards[player].win_rate)
         }
             
         let indexPath = IndexPath(row: Cards.count - 1, section: 0)
@@ -115,12 +120,12 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         return Cards.count
     }
     
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let Picture = Cards[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
-            cell.setImage(picture: Picture)
-            return cell
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Picture = Cards[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+        cell.setImage(picture: Picture)
+        return cell
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96.0
     }
@@ -130,12 +135,30 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
-        if editingStyle == .delete{
-            Cards.remove(at: indexPath.row)
+        if Int(indexPath.row) > 0 {
+            if editingStyle == .delete{
+                Cards.remove(at: indexPath.row)
+                
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.endUpdates()
+                cal.removeplayer(remove: indexPath.row)
+                cal.calculate()
+                for i in 0...(cal.get_playernumber()-1){
+                    Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+                    Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
+                }
+        //        let position = IndexPath(row: index, section: 0)
+                self.tableView.reloadData()
+            }
+        }
+        else{
+            let alertTitle = "Warning"
+            let message = "Can not delete last player"
             
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
@@ -150,42 +173,80 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
             case "toPlayer":
                 let reciever:SelectHandController = segue.destination as! SelectHandController
                 reciever.delegate = self
-                reciever.local_ImageCard = sender as? ImageCards
                 reciever.local_ImageCard_index = sender_index
             case "toTable":
-                print("to be implemented")
-//                let reciever:SelectCardController = segue.destination as! SelectCardController
-//                reciever.delegate = self
-//                reciever.resultCards = (sender as? [Card])!
+                let reciever:selectCardController = segue.destination as! selectCardController
+                reciever.delegate = self
          default: break
         }
        
     }
 }
 
-extension tableViewController: SendMessageDelegate{
-    func sendWord(message: ImageCards, index: Int ) {
-        print(index)
-//        print(message.image1_index,message.image2_idnex)
-        let position = IndexPath(row: index, section: 0)
-        Cards[index].image1 = #imageLiteral(resourceName: "d5")
-        Cards[index].image2 = #imageLiteral(resourceName: "d8")
-        
-        tableView.beginUpdates()
-        self.tableView.reloadRows(at: [position], with: .right)
-        tableView.endUpdates()
+extension tableViewController: SendTableDelegate{
+    func sendTable(TableCard: [Any]) {
+        let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+        let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
+        let tabledict:[Int:UIImageView] = [0: floop1, 1: floop2, 2: floop3, 3: turn, 4: river]
+        for i in 0...4{
+            var table: Card? = nil
+            
+            if(TableCard[i] as! Int != -1){
+                table = Card(index:cal.transform_chj(use: TableCard[i] as! Int))
+                cal.set_table(at: i, with: table)
+                tabledict[i]!.image = #imageLiteral(resourceName: (suits[table!.suit]! + points[table!.point]!))
+            }else{
+                cal.set_table(at: i, with: nil)
+                tabledict[i]!.image = #imageLiteral(resourceName: "cardBackground")
+            }
+        }
+        cal.calculate()
+        for i in 0...(cal.get_playernumber()-1){
+            Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+            Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
+            
+        }
+        self.tableView.reloadData()
     }
 }
 
 extension tableViewController: SendHandDelegate{
-    func sendHand(message: ImageCards, index: Int) {
-        print(message.image1_index!)
-        print(message.image2_idnex!)
-        let position = IndexPath(row: index, section: 0)
-        Cards[index].image1 = #imageLiteral(resourceName: "d5")
-        Cards[index].image2 = #imageLiteral(resourceName: "d8")
-        tableView.beginUpdates()
-        self.tableView.reloadRows(at: [position], with: .right)
-        tableView.endUpdates()
+    func sendHand(message: [Any], index: Int) {
+        let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+        let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
+        
+        var card1: Card? = nil
+        var card2: Card? = nil
+        if(message[0] as! Int != -1){
+            card1 = Card(index:cal.transform_chj(use: message[0] as! Int))
+            cal.set_playerhand(set: index, which: 0, use: card1)
+            Cards[index].image1 = #imageLiteral(resourceName: (suits[card1!.suit]! + points[card1!.point]!))
+        }else{
+            cal.set_playerhand(set: index, which: 0, use: nil)
+            Cards[index].image1 = #imageLiteral(resourceName: "cardBackground")
+        }
+        if(message[1] as! Int != -1){
+            card2 =  Card(index:cal.transform_chj(use: message[1] as! Int))
+            cal.set_playerhand(set: index, which: 1, use: card2)
+            Cards[index].image2 = #imageLiteral(resourceName: (suits[card2!.suit]! + points[card2!.point]!))
+        }else{
+            cal.set_playerhand(set: index, which: 1, use: nil)
+            Cards[index].image2 = #imageLiteral(resourceName: "cardBackground")
+        }
+        cal.calculate()
+        print(cal.get_winrate(player_number: index))
+
+        ///   - suit: an integer where [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
+        ///   - point: from 2~14
+        for i in 0...(cal.get_playernumber()-1){
+            Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+            Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
+            
+        }
+//        let position = IndexPath(row: index, section: 0)
+        self.tableView.reloadData()
+//        tableView.beginUpdates()
+//        self.tableView.reloadRows(at: [position], with: .right)
+//        tableView.endUpdates()
     }
 }
