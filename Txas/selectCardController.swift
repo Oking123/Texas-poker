@@ -92,14 +92,14 @@ class selectCardController: UIViewController {
     }
 
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Any]? = []
+        var temp_values: [Int] = []
         for item in images_5
         {
             if(someDict[item] == nil){
-                temp_values?.append(-1)
+                temp_values.append(-1)
             }
             else{
-                temp_values?.append(Int(someDict[item]!)!)
+                temp_values.append(Int(someDict[item]!)!)
             }
         }
         

@@ -72,14 +72,11 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
-        
         if(local_ImageCard![0] as! Int != -1){
-            print("hello 1")
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
             images_2[0].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
         }
         if(local_ImageCard![1] as! Int != -1){
-            print("hello 2")
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![1] as! Int))
             images_2[1].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
         }
@@ -89,14 +86,14 @@ class SelectHandController:UIViewController{
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Any]? = []
+        var temp_values: [Int] = []
         for item in images_2
         {
             if(someDict[item] == nil){
-                temp_values?.append(-1)
+                temp_values.append(-1)
             }
             else{
-                temp_values?.append(Int(someDict[item]!)!)
+                temp_values.append(Int(someDict[item]!)!)
             }
         }
         local_ImageCard = temp_values
