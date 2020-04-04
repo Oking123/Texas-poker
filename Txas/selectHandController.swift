@@ -85,13 +85,7 @@ class SelectHandController:UIViewController{
             }
         }
         local_ImageCard = temp_values
-        
-//        if (temp_values?[0] != nil){
-//            local_ImageCard!.image1_index = (temp_values![0] as! Int)
-//        }
-//        if (temp_values?[1] != nil){
-//            local_ImageCard!.image2_idnex = (temp_values![1] as! Int)
-//        }
+   
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }

@@ -30,9 +30,8 @@ class ImageCards {
         self.image1 = image1
         self.image2 = image2
         self.win_rate = win_rate
-        self.tips = tips    }
-    
-    func update_image(){
-        
+        self.tips = tips
     }
 }
+
+
