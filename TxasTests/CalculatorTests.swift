@@ -12,13 +12,13 @@ import XCTest
 
 class CalculatorTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+//    override func setUpWithError() throws {
+//        // Put setup code here. This method is called before the invocation of each test method in the class.
+//    }
+//
+//    override func tearDownWithError() throws {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    }
     
     func test_check_hands() throws{
         let che = Check()
@@ -62,6 +62,7 @@ class CalculatorTests: XCTestCase {
         
         ///AA
         let cal = Calculate()
+
         cal.set_calculatetimes(set: 251)
         cal.addplayer()
 

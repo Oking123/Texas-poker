@@ -49,9 +49,13 @@ class SelectHandController:UIViewController{
         super.viewDidLoad()
         //addPanGesture
         view.isMultipleTouchEnabled = true
-        tap_item = images_temp_2[0]
-        tap_item.alpha = 0.5
-        state = 1
+        for i in images_2
+        {
+            if someDict[i] == nil
+            {
+                someDict[i] = String(-1)
+            }
+        }
         for card in cal.get_cardpool()
         {
             if card.point != 14
@@ -107,7 +111,26 @@ class SelectHandController:UIViewController{
             let temp = "\(local_ImageCard![1])"
             someDict[a2] = temp
         }
-
+        tap_item = images_temp_2[0]
+        tap_item.alpha = 0.5
+        state = 1
+        if someDict[tap_item] != String(-1)
+        {
+            let value = Int(someDict[tap_item]!)
+            let indx = value!%100
+            let p = value! - indx
+            if p == suit*100
+            {
+                images[indx].image = tap_item.image
+            }
+            for (inx,k) in pre_card.enumerated()
+            {
+                if Int(k) == value
+                {
+                    pre_card.remove(at: inx)
+                }
+            }
+        }
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
@@ -152,6 +175,23 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
+            if someDict[tap_item] != String(-1)
+            {
+                let value = Int(someDict[tap_item]!)
+                let indx = value!%100
+                let p = value! - indx
+                if p == suit*100
+                {
+                    images[indx].image = tap_item.image
+                }
+                for (inx,k) in pre_card.enumerated()
+                {
+                    if Int(k) == value
+                    {
+                        pre_card.remove(at: inx)
+                    }
+                }
+            }
 
         case 1:
             suit = 1
@@ -171,6 +211,23 @@ class SelectHandController:UIViewController{
                     if String(suit*100+index) == card
                     {
                         item.image = nil
+                    }
+                }
+            }
+            if someDict[tap_item] != String(-1)
+            {
+                let value = Int(someDict[tap_item]!)
+                let indx = value!%100
+                let p = value! - indx
+                if p == suit*100
+                {
+                    images[indx].image = tap_item.image
+                }
+                for (inx,k) in pre_card.enumerated()
+                {
+                    if Int(k) == value
+                    {
+                        pre_card.remove(at: inx)
                     }
                 }
             }
@@ -196,6 +253,23 @@ class SelectHandController:UIViewController{
                     }
                 }
             }
+            if someDict[tap_item] != String(-1)
+            {
+                let value = Int(someDict[tap_item]!)
+                let indx = value!%100
+                let p = value! - indx
+                if p == suit*100
+                {
+                    images[indx].image = tap_item.image
+                }
+                for (inx,k) in pre_card.enumerated()
+                {
+                    if Int(k) == value
+                    {
+                        pre_card.remove(at: inx)
+                    }
+                }
+            }
 
         case 3:
             suit = 3
@@ -215,6 +289,23 @@ class SelectHandController:UIViewController{
                     if String(suit*100+index) == card
                     {
                         item.image = nil
+                    }
+                }
+            }
+            if someDict[tap_item] != String(-1)
+            {
+                let value = Int(someDict[tap_item]!)
+                let indx = value!%100
+                let p = value! - indx
+                if p == suit*100
+                {
+                    images[indx].image = tap_item.image
+                }
+                for (inx,k) in pre_card.enumerated()
+                {
+                    if Int(k) == value
+                    {
+                        pre_card.remove(at: inx)
                     }
                 }
             }
@@ -251,30 +342,43 @@ class SelectHandController:UIViewController{
                 let point = item.convert(location,from:touch.view)
                 if (point == location)
                 {
-                    choose_item = item
-                    tap_item.image = choose_item.image
-                    tap_item.alpha = 1.0
-                    choose_item.image = nil
-                    someDict[tap_item] = String(index+suit*100)
+                    if item.image != nil
+                    {
+                        choose_item = item
+                        tap_item.image = choose_item.image
+                        tap_item.alpha = 1.0
+                        choose_item.image = nil
+                        someDict[tap_item] = String(index+suit*100)
 
-                    for (ind,it) in images_temp_2.enumerated()
-                    {
-                        if tap_item == it
+                        for (ind,it) in images_temp_2.enumerated()
                         {
-                            images_temp_2.remove(at: ind)
-                            break
+                            if tap_item == it
+                            {
+                                images_temp_2.remove(at: ind)
+                                break
+                            }
                         }
+                        if images_temp_2.count != 0
+                        {
+                            tap_item = images_temp_2[0]
+                            tap_item.alpha = 0.5
+                            if someDict[tap_item] != String(-1)
+                            {
+                                let value = Int(someDict[tap_item]!)
+                                let indx = value!%100
+                                let p = value! - indx
+                                if p == suit*100
+                                {
+                                    images[indx].image = tap_item.image
+                                }
+                            }
+                        }
+                        if images_temp_2.count == 0
+                        {
+                            state = 0
+                        }
+                        break
                     }
-                    if images_temp_2.count != 0
-                    {
-                        tap_item = images_temp_2[0]
-                        tap_item.alpha = 0.5
-                    }
-                    if images_temp_2.count == 0
-                    {
-                        state = 0
-                    }
-                    break
                 }
             }
         }
