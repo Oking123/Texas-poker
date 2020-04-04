@@ -11,10 +11,10 @@
 import Foundation
 
 class Calculate{
-    var win_rate:[Float] = [1,1,1,1,1,1]
+    private var win_rate:[Float] = [1,1,1,1,1,1]
     private var draw_rate:[Float] = [0,0,0,0,0,0]
     private var player_number = 1
-    var table:[Card?] = [nil,nil,nil,nil,nil]
+    private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
     var players:[[Card?]] = []
     
