@@ -39,7 +39,6 @@ class selectCardController: UIViewController {
     //
     var local_TableCard: [Any]?
     var delegate : SendTableDelegate?
-    
     var tap_suit = 0
     
     
