@@ -29,7 +29,7 @@ class tableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cal.set_calculatetimes(set: 1000)
+        cal.set_calculatetimes(set: 101)
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
