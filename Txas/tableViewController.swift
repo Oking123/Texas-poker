@@ -28,8 +28,7 @@ class tableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showSpinner()
-        cal.set_calculatetimes(set: 500)
+        cal.set_calculatetimes(set: 1000)
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
@@ -64,7 +63,6 @@ class tableViewController: UIViewController{
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
     @IBAction func addButtonTapped(_ sender: Any) {
-        
         if (Cards.count < 6){
             self.showSpinner()
             inserNewPlayer()
@@ -86,9 +84,6 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-        
-       
-        
     }
     
     /// insert a need player in the table view list
