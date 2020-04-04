@@ -400,6 +400,7 @@ class selectCardController: UIViewController {
         for item in images_5
         {
             item.image = #imageLiteral(resourceName: "cardBackground")
+            someDict[item] = String(-1)
         }
         for (index,it) in images.enumerated()
         {

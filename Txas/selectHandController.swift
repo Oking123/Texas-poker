@@ -415,6 +415,7 @@ class SelectHandController:UIViewController{
         for item in images_2
         {
             item.image = #imageLiteral(resourceName: "cardBackground")
+            someDict[item] = String(-1)
         }
         for (index,it) in images.enumerated()
         {
