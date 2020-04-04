@@ -28,7 +28,7 @@ class tableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cal.set_calculatetimes(set: 5000)
+        cal.set_calculatetimes(set: 150)
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
@@ -63,21 +63,17 @@ class tableViewController: UIViewController{
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
     @IBAction func addButtonTapped(_ sender: Any) {
-        
         if (Cards.count < 6){
             self.showSpinner()
             self.inserNewPlayer()
             self.cal.addplayer()
-            DispatchQueue.background(background: {
-                self.cal.calculate()
-            }, completion:{
-                self.removeSpinner()
-                for i in 0...(self.cal.get_playernumber()-1){
-                    self.Cards[i].win_rate = String(format: "%.2f", self.cal.get_winrate(player_number: i) * 100) + "%"
-                    self.Cards[i].tips = String(format: "%.2f", self.cal.get_drawrate(player_number: i) * 100) + "%"
-                }
-                self.tableView.reloadData()
-            })
+            self.cal.calculate()
+            self.removeSpinner()
+            for i in 0...(self.cal.get_playernumber()-1){
+                self.Cards[i].win_rate = String(format: "%.2f", self.cal.get_winrate(player_number: i) * 100) + "%"
+                self.Cards[i].tips = String(format: "%.2f", self.cal.get_drawrate(player_number: i) * 100) + "%"
+            }
+            self.tableView.reloadData()
         }
         else{
             let alertTitle = "Maxmimun Player: 6."
@@ -116,20 +112,6 @@ class tableViewController: UIViewController{
         
         tempImage.append(image)
         return tempImage
-    }
-}
-
-
-extension DispatchQueue {
-    static func background(delay: Double = 0.0, background: (()->Void)? = nil, completion: (() -> Void)? = nil) {
-        DispatchQueue.global(qos: .background).async {
-            background?()
-            if let completion = completion {
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-                    completion()
-                })
-            }
-        }
     }
 }
 
