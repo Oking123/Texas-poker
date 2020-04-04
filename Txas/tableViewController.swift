@@ -12,10 +12,10 @@ import UIKit
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
-    var ImageCard_reciever: [Any] = []
+    var ImageCard_reciever = [Any] (repeating: -1, count: 2)
     var sender_index: Int?
     var Cards: [ImageCards] = []
-    var TableCard: [Any] = []
+    var TableCard_reciever = [Any] (repeating: -1, count: 5)
     let cal = Calculate()
     
     
@@ -64,14 +64,12 @@ class tableViewController: UIViewController{
     /// - Parameter sender: sender Any
     @IBAction func addButtonTapped(_ sender: Any) {
         if (Cards.count < 6){
-            self.showSpinner()
-            self.inserNewPlayer()
-            self.cal.addplayer()
-            self.cal.calculate()
-            self.removeSpinner()
-            for i in 0...(self.cal.get_playernumber()-1){
-                self.Cards[i].win_rate = String(format: "%.2f", self.cal.get_winrate(player_number: i) * 100) + "%"
-                self.Cards[i].tips = String(format: "%.2f", self.cal.get_drawrate(player_number: i) * 100) + "%"
+            inserNewPlayer()
+            cal.addplayer()
+            cal.calculate()
+            for i in 0...(cal.get_playernumber()-1){
+                Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+                Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
             }
             self.tableView.reloadData()
         }
@@ -135,6 +133,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         return true
     }
     
+    //delete table cell
     func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if cal.get_playernumber() > 1 {
             if editingStyle == .delete{
@@ -151,7 +150,6 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                     Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                     Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
                 }
-        //        let position = IndexPath(row: index, section: 0)
                 self.tableView.reloadData()
             }
         }
@@ -164,8 +162,9 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
             present(alert, animated: true, completion: nil)
         }
     }
+    
+    // perform segue to select hand card
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath:IndexPath){
-//        tableView.deselectRow(at: indexPath, animated: true)
         let image = Cards[indexPath.row]
         sender_index = indexPath.row
         performSegue(withIdentifier: "toPlayer", sender: image)
@@ -175,11 +174,15 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
         switch segue.identifier {
             case "toPlayer":
                 let reciever:SelectHandController = segue.destination as! SelectHandController
+                ImageCard_reciever[0] = Cards[sender_index!].image1_index
+                ImageCard_reciever[1] = Cards[sender_index!].image2_idnex
                 reciever.delegate = self
                 reciever.local_ImageCard_index = sender_index
+                reciever.local_ImageCard = ImageCard_reciever
             case "toTable":
                 let reciever:selectCardController = segue.destination as! selectCardController
                 reciever.delegate = self
+                reciever.local_TableCard = TableCard_reciever
          default: break
         }
     }
@@ -188,6 +191,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
 
 extension tableViewController: SendTableDelegate{
     func sendTable(TableCard: [Any]) {
+        TableCard_reciever = TableCard
         let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
         let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
         let tabledict:[Int:UIImageView] = [0: floop1, 1: floop2, 2: floop3, 3: turn, 4: river]
@@ -226,34 +230,32 @@ extension tableViewController: SendHandDelegate{
             card1 = Card(index:cal.transform_chj(use: message[0] as! Int))
             cal.set_playerhand(set: index, which: 0, use: card1)
             Cards[index].image1 = #imageLiteral(resourceName: (suits[card1!.suit]! + points[card1!.point]!))
+            Cards[index].image1_index = (message[0] as! Int)
         }else{
             cal.set_playerhand(set: index, which: 0, use: nil)
             Cards[index].image1 = #imageLiteral(resourceName: "cardBackground")
+            Cards[index].image1_index = -1
         }
         if(message[1] as! Int != -1){
             card2 =  Card(index:cal.transform_chj(use: message[1] as! Int))
             cal.set_playerhand(set: index, which: 1, use: card2)
             Cards[index].image2 = #imageLiteral(resourceName: (suits[card2!.suit]! + points[card2!.point]!))
+            Cards[index].image2_idnex = (message[1] as! Int)
         }else{
             cal.set_playerhand(set: index, which: 1, use: nil)
             Cards[index].image2 = #imageLiteral(resourceName: "cardBackground")
+            Cards[index].image2_idnex = -1
         }
         self.showSpinner()
         cal.calculate()
         self.removeSpinner()
 //        print(cal.get_winrate(player_number: index))
 
-        ///   - suit: an integer where [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
-        ///   - point: from 2~14
         for i in 0...(cal.get_playernumber()-1){
             Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
             Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
         }
-//        let position = IndexPath(row: index, section: 0)
         self.tableView.reloadData()
-//        tableView.beginUpdates()
-//        self.tableView.reloadRows(at: [position], with: .right)
-//        tableView.endUpdates()
     }
 }
 

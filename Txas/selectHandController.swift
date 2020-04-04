@@ -13,6 +13,9 @@ protocol SendHandDelegate{
 }
 
 class SelectHandController:UIViewController{
+    let cal = Calculate()
+    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
     
     @IBOutlet weak var a1: UIImageView!
     @IBOutlet weak var a2: UIImageView!
@@ -43,6 +46,7 @@ class SelectHandController:UIViewController{
     var tap_item:UIImageView!
     var state = 0
     var suit = 0
+    var tap_suit = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         //addPanGesture
@@ -68,24 +72,33 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
+        if(local_ImageCard![0] as! Int != -1){
+            let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
+            images_2[0].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
+            someDict[a1] = local_ImageCard![0] as? String
+        }
+        if(local_ImageCard![1] as! Int != -1){
+            let card =  Card(index:cal.transform_chj(use: local_ImageCard![1] as! Int))
+            images_2[1].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
+            someDict[a2] = local_ImageCard![1] as? String
+        }
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Any]? = []
+        var temp_values: [Int] = []
         for item in images_2
         {
             if(someDict[item] == nil){
-                temp_values?.append(-1)
+                temp_values.append(-1)
             }
             else{
-                temp_values?.append(Int(someDict[item]!)!)
+                temp_values.append(Int(someDict[item]!)!)
             }
         }
         local_ImageCard = temp_values
-   
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
@@ -176,6 +189,7 @@ class SelectHandController:UIViewController{
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
+                    tap_suit = suit
                     state = 0
                     break
                 }
@@ -191,7 +205,10 @@ class SelectHandController:UIViewController{
                     tap_item = item
                     if someDict[tap_item] != nil
                     {
-                        choose_item.image = tap_item.image
+                        if tap_suit == suit
+                        {
+                            choose_item.image = tap_item.image
+                        }
                     }
                     item.alpha = 0.5
                     state = 1

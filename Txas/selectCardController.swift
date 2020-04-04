@@ -12,6 +12,10 @@ protocol SendTableDelegate{
 }
 
 class selectCardController: UIViewController {
+    let cal = Calculate()
+    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
+    
       //variances of poker
         @IBOutlet weak var image_1: UIImageView!
         @IBOutlet weak var image_2: UIImageView!
@@ -34,8 +38,8 @@ class selectCardController: UIViewController {
         @IBOutlet weak var a5: UIImageView!
     //
     var local_TableCard: [Any]?
-    
     var delegate : SendTableDelegate?
+    var tap_suit = 0
     
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
@@ -71,6 +75,15 @@ class selectCardController: UIViewController {
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
+        for i in 0...4{
+            if(local_TableCard![i] as! Int != -1){
+                let table = Card(index:cal.transform_chj(use: local_TableCard![i] as! Int))
+                images_5[i].image = #imageLiteral(resourceName: (suits[table.suit]! + points[table.point]!))
+            }
+            else{
+                images_5[i].image = #imageLiteral(resourceName: "cardBackground")
+            }
+        }
         
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(selectCardController.back(sender:)))
         self.navigationItem.hidesBackButton = true
@@ -78,14 +91,14 @@ class selectCardController: UIViewController {
     }
 
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Any]? = []
+        var temp_values: [Int] = []
         for item in images_5
         {
             if(someDict[item] == nil){
-                temp_values?.append(-1)
+                temp_values.append(-1)
             }
             else{
-                temp_values?.append(Int(someDict[item]!)!)
+                temp_values.append(Int(someDict[item]!)!)
             }
         }
         
@@ -165,7 +178,6 @@ class selectCardController: UIViewController {
             
         }
     }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         let touch = touches.first!
         let location = touch.location(in: self.view)
@@ -182,6 +194,7 @@ class selectCardController: UIViewController {
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
+                    tap_suit = suit
                     state = 0
                     break
                 }
@@ -198,7 +211,10 @@ class selectCardController: UIViewController {
                     tap_item = item
                     if someDict[tap_item] != nil
                     {
-                        choose_item.image = tap_item.image
+                        if tap_suit == suit
+                        {
+                            choose_item.image = tap_item.image
+                        }
                     }
                     item.alpha = 0.5
                     state = 1
@@ -208,8 +224,7 @@ class selectCardController: UIViewController {
             
         }
     }
-    
-    
+
     @IBAction func ResetButton(_ sender: UIButton) {
         someDict.removeAll()
         for item in images_5
