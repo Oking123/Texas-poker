@@ -196,6 +196,10 @@ class selectCardController: UIViewController {
                 if (point == location)
                 {
                     tap_item = item
+                    if someDict[tap_item] != nil
+                    {
+                        choose_item.image = tap_item.image
+                    }
                     item.alpha = 0.5
                     state = 1
                     break
@@ -207,12 +211,30 @@ class selectCardController: UIViewController {
     
     
     @IBAction func ResetButton(_ sender: UIButton) {
-        if choose_item != nil
+        someDict.removeAll()
+        for item in images_5
         {
-            choose_item.image = tap_item.image
-            tap_item.image = #imageLiteral(resourceName: "截屏2020-01-31下午6.07.07")
-            tap_item.alpha = 0.5
-            state = 1
+            item.image = #imageLiteral(resourceName: "cardBackground")
+        }
+        for (index,it) in images.enumerated()
+        {
+            if suit == 0
+            {
+                it.image = UIImage(named: "a\(index+1)")
+            }
+            else if suit == 1
+            {
+                it.image = UIImage(named: "b\(index+1)")
+            }
+            else if suit == 2
+            {
+                it.image = UIImage(named: "c\(index+1)")
+            }
+            else if suit == 3
+            {
+                it.image = UIImage(named: "d\(index+1)")
+            }
+            
         }
     }
     
