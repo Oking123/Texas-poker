@@ -16,8 +16,8 @@ class ImageCards {
     var image2: UIImage
     var win_rate: String
     var tips: String
-    var image1_index: Int?
-    var image2_idnex: Int?
+    var image1_index: Int = -1
+    var image2_idnex: Int = -1
 //    var player: Int
     
     /// Description initialize ImageCards
@@ -30,5 +30,8 @@ class ImageCards {
         self.image1 = image1
         self.image2 = image2
         self.win_rate = win_rate
-        self.tips = tips    }
+        self.tips = tips
+    }
 }
+
+

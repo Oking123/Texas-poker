@@ -6,16 +6,17 @@
 //  Copyright © 2020 陈彦廷. All rights reserved.
 //
 
-
+//liu chj
 
 import Foundation
 
 class Calculate{
-    private var win_rate:[Float] = [0,0,0,0,0,0]
+    private var win_rate:[Float] = [1,1,1,1,1,1]
     private var draw_rate:[Float] = [0,0,0,0,0,0]
-    private var player_number = 2
+    private var player_number = 1
     private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
+
     private var players:[[Card?]] = []
     
     private var calculatetimes = 101
@@ -24,7 +25,6 @@ class Calculate{
     
     private let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     private let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
-    
     
     init() {
 //        init cardlist
@@ -41,7 +41,7 @@ class Calculate{
         let player4_hand:[Card?] = [nil,nil]
         let player5_hand:[Card?] = [nil,nil]
         self.players = [player0_hand,player1_hand,player2_hand,player3_hand,player4_hand,player5_hand]
-        self.player_number = 2
+        self.player_number = 1
     }
     
     /// set times of calculation
@@ -53,10 +53,16 @@ class Calculate{
     /// remove a player from table
     /// - Parameter number: remove which player
     func removeplayer(remove number:Int){
-        self.players[number] = [nil,nil]
-        self.player_number -= 1
-        for _ in number...4{
-            self.players[number] = self.players[number+1]
+        if (number == 5){
+            self.players[number] = [nil,nil]
+            self.player_number -= 1
+        }
+        else{
+            for i in number...4{
+                self.players[i] = self.players[i+1]
+            }
+            self.player_number -= 1
+
         }
         
     }
@@ -72,7 +78,7 @@ class Calculate{
     ///   - player: which player
     ///   - hand: wich hand
     ///   - card: the card
-    func set_playerhand(set player:Int, which hand:Int ,use card:Card){
+    func set_playerhand(set player:Int, which hand:Int ,use card:Card?){
         self.players[player][hand] = card
     }
     
@@ -80,7 +86,7 @@ class Calculate{
     /// - Parameters:
     ///   - loc: which location of the card, flop:0,1,2, turn:3, river:4
     ///   - card: the card
-    func set_table(at loc:Int, with card:Card){
+    func set_table(at loc:Int, with card:Card?){
         self.table[loc] = card
     }
     
@@ -96,17 +102,21 @@ class Calculate{
         }
     }
     
-    /// set player_number
-    /// - Parameter player_number: int
-    func set_playernumber(use player_number:Int){
-        self.player_number = player_number
+    /// get player_number
+    /// - Returns:player number
+    func get_playernumber() -> Int{
+        return self.player_number
     }
     
     /// calculate the win rate of the player given the number of players
     /// - Parameter player_number: the player number left on the table
     func calculate(){
-        
+        self.win_rate = [1,1,1,1,1,1]
+        self.draw_rate = [0,0,0,0,0,0]
 //      pick 5 from 7 cards
+        if self.player_number == 1{
+            return
+        }
         func five_in_seven(playerhand:[Card],table:[Card])->[Card]{
             var final:[Card] = table
             for i in 0...5{
@@ -223,7 +233,6 @@ class Calculate{
                     }
                 }
             }
-
         }
         
         var hasnocard:[Int] = []
@@ -253,15 +262,57 @@ class Calculate{
         
     }
     
-    
     /// get the present win_rate of the table
     func get_winrate(player_number number:Int) -> Float{
         return self.win_rate[number]
     }
     
+
+    /// get the tips of the game
+    /// - Parameter number: the number of player
+    /// - Returns: tip rate of the player
     func get_drawrate(player_number number:Int) -> Float{
         return self.draw_rate[number]
     }
     
+    /// transform the chj card index to jzx card index
+    /// - Parameter chj: chj int
+    /// - Returns: jzx int
+    func transform_chj(use chj:Int) -> Int{
+        let suit = chj / 100
+        let point = chj % 100
+        return suit*13 + point
+    }
     
+    /// get the table from calculator
+    /// - Returns: 5 card on the table, nil if not know
+    func get_table() -> [Card?]{
+        return self.table
+    }
+    
+    /// get the table from the calculator
+    /// - Returns: card from players
+    func get_playerhand() -> [[Card?]]{
+        return self.players
+    }
+    
+    /// get the cards are known
+    /// - Returns: cards have been set by user
+    func get_cardpool() -> [Card]{
+        var cardpool:[Card] = []
+        for card in self.table{
+            if card != nil{
+                cardpool.append(card!)
+            }
+        }
+        for i in 0...self.player_number-1{
+            for card in self.players[i]{
+                if card != nil{
+                    cardpool.append(card!)
+                }
+            }
+        }
+        return cardpool
+    }
+
 }
