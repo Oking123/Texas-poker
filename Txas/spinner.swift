@@ -21,10 +21,8 @@ extension UIViewController {
         mySpinner.startAnimating()
         aView?.addSubview(mySpinner)
         self.view.addSubview(aView!)
-        print("start")
-        
+
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false){ (t) in
-            print("cancel")
             self.removeSpinner()
         }
     }
@@ -33,7 +31,6 @@ extension UIViewController {
     func removeSpinner(){
         aView?.removeFromSuperview()
         aView = nil
-        print("done")
     }
 }
 

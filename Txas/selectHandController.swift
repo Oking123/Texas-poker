@@ -13,10 +13,6 @@ protocol SendHandDelegate{
 }
 
 class SelectHandController:UIViewController{
-    let cal = Calculate()
-    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
-    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
-    
     @IBOutlet weak var a1: UIImageView!
     @IBOutlet weak var a2: UIImageView!
     @IBOutlet weak var image_1: UIImageView!
@@ -39,8 +35,10 @@ class SelectHandController:UIViewController{
     var delegate : SendHandDelegate?
     
     lazy var images_2 = [UIImageView](arrayLiteral: a1,a2)
+    lazy var images_temp_2 = [UIImageView](arrayLiteral: a1,a2)
     lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
     lazy var image_poker = [UIImage]()
+    lazy var pre_card = [String]()
     var someDict:[UIImageView:String] = [:]
     var choose_item:UIImageView!
     var tap_item:UIImageView!
@@ -51,6 +49,30 @@ class SelectHandController:UIViewController{
         super.viewDidLoad()
         //addPanGesture
         view.isMultipleTouchEnabled = true
+        tap_item = images_temp_2[0]
+        tap_item.alpha = 0.5
+        state = 1
+        for card in cal.get_cardpool()
+        {
+            if card.point != 14
+            {
+                let temp = String(card.suit*100+(card.point-1))
+                if card.suit == 0
+                {
+                    images[card.point-1].image = nil
+                }
+                pre_card.append(temp)
+            }
+            if card.point == 14
+            {
+                let temp = String(card.suit*100+0)
+                if card.suit == 0
+                {
+                    images[0].image = nil
+                }
+                pre_card.append(temp)
+            }
+        }
         // Do any additional setup after loading the view
         for i in 0..<13
         {
@@ -72,30 +94,34 @@ class SelectHandController:UIViewController{
             let tempImage = UIImage(named: "d\(i+1)")!
             image_poker.append(tempImage)
         }
+
         if(local_ImageCard![0] as! Int != -1){
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
             images_2[0].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
-            someDict[a1] = local_ImageCard![0] as? String
+            let temp = "\(local_ImageCard![0])"
+            someDict[a1] = temp
         }
         if(local_ImageCard![1] as! Int != -1){
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![1] as! Int))
             images_2[1].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
-            someDict[a2] = local_ImageCard![1] as? String
+            let temp = "\(local_ImageCard![1])"
+            someDict[a2] = temp
         }
+
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Int] = []
+        var temp_values: [Any]? = []
         for item in images_2
         {
             if(someDict[item] == nil){
-                temp_values.append(-1)
+                temp_values?.append(-1)
             }
             else{
-                temp_values.append(Int(someDict[item]!)!)
+                temp_values?.append(Int(someDict[item]!)!)
             }
         }
         local_ImageCard = temp_values
@@ -118,6 +144,13 @@ class SelectHandController:UIViewController{
                         item.image = nil
                     }
                 }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        item.image = nil
+                    }
+                }
             }
 
         case 1:
@@ -129,6 +162,13 @@ class SelectHandController:UIViewController{
                 {
                     let temp = someDict[key]
                     if String(suit*100+index) == temp
+                    {
+                        item.image = nil
+                    }
+                }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
                     {
                         item.image = nil
                     }
@@ -148,6 +188,13 @@ class SelectHandController:UIViewController{
                         item.image = nil
                     }
                 }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        item.image = nil
+                    }
+                }
             }
 
         case 3:
@@ -159,6 +206,13 @@ class SelectHandController:UIViewController{
                 {
                     let temp = someDict[key]
                     if String(suit*100+index) == temp
+                    {
+                        item.image = nil
+                    }
+                }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
                     {
                         item.image = nil
                     }
@@ -176,6 +230,19 @@ class SelectHandController:UIViewController{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         let touch = touches.first!
         let location = touch.location(in: self.view)
+        for item in images_2
+        {
+            //var p = item.convert(item.frame, to: self.view)
+            if (item.frame.contains(location))
+            {
+                if tap_item != nil
+                {
+                    tap_item.alpha = 1.0
+                }
+                state = 0
+                break
+            }
+        }
         if state == 1
         {
             for (index,item) in images.enumerated()
@@ -189,8 +256,24 @@ class SelectHandController:UIViewController{
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
-                    tap_suit = suit
-                    state = 0
+
+                    for (ind,it) in images_temp_2.enumerated()
+                    {
+                        if tap_item == it
+                        {
+                            images_temp_2.remove(at: ind)
+                            break
+                        }
+                    }
+                    if images_temp_2.count != 0
+                    {
+                        tap_item = images_temp_2[0]
+                        tap_item.alpha = 0.5
+                    }
+                    if images_temp_2.count == 0
+                    {
+                        state = 0
+                    }
                     break
                 }
             }
@@ -203,11 +286,14 @@ class SelectHandController:UIViewController{
                 if (item.frame.contains(location))
                 {
                     tap_item = item
-                    if someDict[tap_item] != nil
+                    if someDict[tap_item] != String(-1)
                     {
-                        if tap_suit == suit
+                        let value = Int(someDict[tap_item]!)
+                        let indx = value!%100
+                        let p = value! - indx
+                        if p == suit*100
                         {
-                            choose_item.image = tap_item.image
+                            images[indx].image = tap_item.image
                         }
                     }
                     item.alpha = 0.5

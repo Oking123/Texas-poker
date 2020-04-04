@@ -6,7 +6,7 @@
 //  Copyright © 2020 陈彦廷. All rights reserved.
 //
 
-
+//liu chj
 
 import Foundation
 
@@ -16,7 +16,8 @@ class Calculate{
     private var player_number = 1
     private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
-    var players:[[Card?]] = []
+
+    private var players:[[Card?]] = []
     
     private var calculatetimes = 101
     
@@ -24,7 +25,6 @@ class Calculate{
     
     private let suits:[Int:String] = [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
     private let types:[Int:String] = [0: "high card", 1: "a pair", 2: "two pairs", 3: "three of a kind", 4: "straight", 5: "flush", 6: "full house", 7: "four of a kind", 8: "flush straight"]
-    
     
     init() {
 //        init cardlist
@@ -233,7 +233,6 @@ class Calculate{
                     }
                 }
             }
-
         }
         
         var hasnocard:[Int] = []
@@ -263,20 +262,57 @@ class Calculate{
         
     }
     
-    
     /// get the present win_rate of the table
     func get_winrate(player_number number:Int) -> Float{
         return self.win_rate[number]
     }
     
+
+    /// get the tips of the game
+    /// - Parameter number: the number of player
+    /// - Returns: tip rate of the player
     func get_drawrate(player_number number:Int) -> Float{
         return self.draw_rate[number]
     }
     
+    /// transform the chj card index to jzx card index
+    /// - Parameter chj: chj int
+    /// - Returns: jzx int
     func transform_chj(use chj:Int) -> Int{
         let suit = chj / 100
         let point = chj % 100
         return suit*13 + point
     }
-}
+    
+    /// get the table from calculator
+    /// - Returns: 5 card on the table, nil if not know
+    func get_table() -> [Card?]{
+        return self.table
+    }
+    
+    /// get the table from the calculator
+    /// - Returns: card from players
+    func get_playerhand() -> [[Card?]]{
+        return self.players
+    }
+    
+    /// get the cards are known
+    /// - Returns: cards have been set by user
+    func get_cardpool() -> [Card]{
+        var cardpool:[Card] = []
+        for card in self.table{
+            if card != nil{
+                cardpool.append(card!)
+            }
+        }
+        for i in 0...self.player_number-1{
+            for card in self.players[i]{
+                if card != nil{
+                    cardpool.append(card!)
+                }
+            }
+        }
+        return cardpool
+    }
 
+}

@@ -64,11 +64,14 @@ class CalculatorTests: XCTestCase {
         let cal = Calculate()
         cal.set_calculatetimes(set: 251)
         cal.addplayer()
+
         cal.set_playerhand(set: 0, which: 0, use: Card(suit: 0, point: 1))
         cal.set_playerhand(set: 0, which: 1, use: Card(suit: 1, point: 1))
         cal.calculate()
         var win_result = cal.get_winrate(player_number: 0)
+
         XCTAssert(win_result > 0.80 && win_result < 0.90)
+
         var draw_result = cal.get_drawrate(player_number: 0)
         XCTAssert(draw_result < 0.02)
         
@@ -93,15 +96,17 @@ class CalculatorTests: XCTestCase {
         let p2_win_rate = cal.get_winrate(player_number: 1)
         let p2_draw_rate = cal.get_drawrate(player_number: 1)
         XCTAssert(p1_win_rate > 0.74 && p1_win_rate < 0.84)
-        XCTAssert(p2_win_rate > 0.16 && p2_win_rate < 0.26)
+  
         XCTAssert(p1_draw_rate < 0.02 && p2_draw_rate < 0.02 && p1_draw_rate==p2_draw_rate)
     }
     
     func test_odds_6player_without_fold() throws{
         ///AK
         let cal = Calculate()
+
         cal.set_calculatetimes(set: 251)
         cal.addplayer()
+
         cal.addplayer()
         cal.addplayer()
         cal.addplayer()
@@ -111,7 +116,9 @@ class CalculatorTests: XCTestCase {
         cal.calculate()
         var p1_win = cal.get_winrate(player_number: 0)
         var p1_draw = cal.get_drawrate(player_number: 0)
+
         XCTAssert(p1_win < 0.35 && p1_win > 0.25)
+
         XCTAssert(p1_draw < 0.04)
         var p2_win = cal.get_winrate(player_number: 1)
         var p2_draw = cal.get_drawrate(player_number: 1)
@@ -135,6 +142,7 @@ class CalculatorTests: XCTestCase {
         p2_win = cal.get_winrate(player_number: 1)
         p2_draw = cal.get_drawrate(player_number: 1)
         XCTAssert(p1_win < 0.83 && p1_win > 0.73)
+
         XCTAssert(p1_draw < 0.03)
         XCTAssert(p2_win < 0.06 && p2_win > 0.03)
         XCTAssert(p2_draw < 0.03)
@@ -171,9 +179,10 @@ class CalculatorTests: XCTestCase {
         let cal = Calculate()
         cal.calculate()
         let p1_win_rate = cal.get_winrate(player_number: 0)
-        let p1_drwa_rate = cal.get_drawrate(player_number: 0)
-        XCTAssert(p1_win_rate == 1)
-        XCTAssert(p1_drwa_rate == 0)
+        let p2_win_rate = cal.get_winrate(player_number: 1)
+        XCTAssert(p1_win_rate>0.45 && p1_win_rate<0.55)
+        XCTAssert(p2_win_rate>0.45 && p2_win_rate<0.55)
+        XCTAssert(p1_win_rate==p2_win_rate)
     }
     
     
@@ -182,6 +191,7 @@ class CalculatorTests: XCTestCase {
         cal.set_calculatetimes(set: 251)
         cal.addplayer()
         cal.addplayer()
+
         cal.set_playerhand(set: 0, which: 0, use: Card(suit: 0, point: 13))
         cal.set_playerhand(set: 0, which: 1, use: Card(suit: 1, point: 13))
         cal.set_playerhand(set: 2, which: 0, use: Card(suit: 0, point: 1))

@@ -12,10 +12,6 @@ protocol SendTableDelegate{
 }
 
 class selectCardController: UIViewController {
-    let cal = Calculate()
-    let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
-    let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
-    
       //variances of poker
         @IBOutlet weak var image_1: UIImageView!
         @IBOutlet weak var image_2: UIImageView!
@@ -43,8 +39,10 @@ class selectCardController: UIViewController {
     
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
+    lazy var images_temp_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
     lazy var images = [UIImageView](arrayLiteral: image_1,image_2,image_3,image_4,image_5,image_6,image_7,image_8,image_9,image_10,image_11,image_12,image_13)
     lazy var image_poker = [UIImage]()
+    lazy var pre_card = [String]()
     var someDict:[UIImageView:String] = [:]
     var choose_item:UIImageView!
     var tap_item:UIImageView!
@@ -54,34 +52,43 @@ class selectCardController: UIViewController {
         super.viewDidLoad()
         //addPanGesture
         view.isMultipleTouchEnabled = true
-        // Do any additional setup after loading the view
-        for i in 0..<13
+        tap_item = images_temp_5[0]
+        tap_item.alpha = 0.5
+        state = 1
+        for card in cal.get_cardpool()
         {
-            let tempImage = UIImage(named: "a\(i+1)")!
-            image_poker.append(tempImage)
+            print(card.suit)
+            print(card.point)
+            if card.point != 14
+            {
+                let temp = String(card.suit*100+(card.point-1))
+                if card.suit == 0
+                {
+                    images[card.point-1].image = nil
+                }
+                pre_card.append(temp)
+            }
+            if card.point == 14
+            {
+                let temp = String(card.suit*100+0)
+                if card.suit == 0
+                {
+                    images[0].image = nil
+                }
+                pre_card.append(temp)
+            }
         }
-        for i in 0..<13
-        {
-            let tempImage = UIImage(named: "b\(i+1)")!
-            image_poker.append(tempImage)
-        }
-        for i in 0..<13
-        {
-            let tempImage = UIImage(named: "c\(i+1)")!
-            image_poker.append(tempImage)
-        }
-        for i in 0..<13
-        {
-            let tempImage = UIImage(named: "d\(i+1)")!
-            image_poker.append(tempImage)
-        }
+       
         for i in 0...4{
             if(local_TableCard![i] as! Int != -1){
                 let table = Card(index:cal.transform_chj(use: local_TableCard![i] as! Int))
                 images_5[i].image = #imageLiteral(resourceName: (suits[table.suit]! + points[table.point]!))
+                let temp = "\(local_TableCard![i])"
+                someDict[images_5[i]] = temp
             }
             else{
                 images_5[i].image = #imageLiteral(resourceName: "cardBackground")
+                someDict[images_5[i]] = String(-1)
             }
         }
         
@@ -91,14 +98,15 @@ class selectCardController: UIViewController {
     }
 
     @objc func back(sender: UIBarButtonItem) {
-        var temp_values: [Int] = []
+
+        var temp_values: [Any]? = []
         for item in images_5
         {
             if(someDict[item] == nil){
-                temp_values.append(-1)
+                temp_values?.append(-1)
             }
             else{
-                temp_values.append(Int(someDict[item]!)!)
+                temp_values?.append(Int(someDict[item]!)!)
             }
         }
         
@@ -123,6 +131,13 @@ class selectCardController: UIViewController {
                         item.image = nil
                     }
                 }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        item.image = nil
+                    }
+                }
             }
             
         case 1:
@@ -134,6 +149,13 @@ class selectCardController: UIViewController {
                 {
                     let temp = someDict[key]
                     if String(suit*100+index) == temp
+                    {
+                        item.image = nil
+                    }
+                }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
                     {
                         item.image = nil
                     }
@@ -153,6 +175,13 @@ class selectCardController: UIViewController {
                         item.image = nil
                     }
                 }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        item.image = nil
+                    }
+                }
             }
             
         case 3:
@@ -168,6 +197,13 @@ class selectCardController: UIViewController {
                         item.image = nil
                     }
                 }
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        item.image = nil
+                    }
+                }
             }
             
         default:
@@ -178,9 +214,23 @@ class selectCardController: UIViewController {
             
         }
     }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         let touch = touches.first!
         let location = touch.location(in: self.view)
+        for item in images_5
+        {
+            let point = item.convert(location,from:touch.view)
+            if (point == location)
+            {
+                if tap_item != nil
+                {
+                    tap_item.alpha = 1.0
+                }
+                state = 0
+                break
+            }
+        }
         if state == 1
         {
             for (index,item) in images.enumerated()
@@ -194,8 +244,20 @@ class selectCardController: UIViewController {
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
-                    tap_suit = suit
-                    state = 0
+
+                    for (ind,it) in images_temp_5.enumerated()
+                    {
+                        if tap_item == it
+                        {
+                            images_temp_5.remove(at: ind)
+                            break
+                        }
+                    }
+                    if images_temp_5.count != 0
+                    {
+                        tap_item = images_temp_5[0]
+                        tap_item.alpha = 0.5
+                    }
                     break
                 }
             }
@@ -209,11 +271,15 @@ class selectCardController: UIViewController {
                 if (point == location)
                 {
                     tap_item = item
-                    if someDict[tap_item] != nil
+                    if someDict[tap_item] != String(-1)
                     {
-                        if tap_suit == suit
+
+                        let value = Int(someDict[tap_item]!)
+                        let indx = value!%100
+                        let p = value! - indx
+                        if p == suit*100
                         {
-                            choose_item.image = tap_item.image
+                            images[indx].image = tap_item.image
                         }
                     }
                     item.alpha = 0.5
@@ -249,7 +315,6 @@ class selectCardController: UIViewController {
             {
                 it.image = UIImage(named: "d\(index+1)")
             }
-            
         }
     }
     

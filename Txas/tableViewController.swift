@@ -9,16 +9,16 @@
 import UIKit
 
 
-
+let cal = Calculate()
+let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
+let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
     var ImageCard_reciever = [Any] (repeating: -1, count: 2)
     var sender_index: Int?
     var Cards: [ImageCards] = []
     var TableCard_reciever = [Any] (repeating: -1, count: 5)
-    let cal = Calculate()
-    
-    
+
     @IBOutlet weak var floop1: UIImageView!
     @IBOutlet weak var floop2: UIImageView!
     @IBOutlet weak var floop3: UIImageView!
@@ -28,7 +28,7 @@ class tableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cal.set_calculatetimes(set: 150)
+        cal.set_calculatetimes(set: 100)
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
@@ -67,6 +67,7 @@ class tableViewController: UIViewController{
             inserNewPlayer()
             cal.addplayer()
             cal.calculate()
+
             for i in 0...(cal.get_playernumber()-1){
                 Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                 Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
@@ -81,6 +82,9 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+        
+       
+        
     }
     
     
@@ -143,9 +147,7 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.endUpdates()
                 cal.removeplayer(remove: indexPath.row)
-                self.showSpinner()
                 cal.calculate()
-                self.removeSpinner()
                 for i in 0...(cal.get_playernumber()-1){
                     Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                     Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
@@ -185,15 +187,13 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                 reciever.local_TableCard = TableCard_reciever
          default: break
         }
+       
     }
 }
-
 
 extension tableViewController: SendTableDelegate{
     func sendTable(TableCard: [Any]) {
         TableCard_reciever = TableCard
-        let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
-        let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
         let tabledict:[Int:UIImageView] = [0: floop1, 1: floop2, 2: floop3, 3: turn, 4: river]
         for i in 0...4{
             var table: Card? = nil
@@ -208,9 +208,7 @@ extension tableViewController: SendTableDelegate{
             }
         }
         
-        self.showSpinner()
         cal.calculate()
-        self.removeSpinner()
         for i in 0...(cal.get_playernumber()-1){
             Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
             Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
@@ -222,8 +220,7 @@ extension tableViewController: SendTableDelegate{
 
 extension tableViewController: SendHandDelegate{
     func sendHand(message: [Any], index: Int) {
-        let suits:[Int:String] = [0: "a", 1: "b", 2: "c", 3: "d"]
-        let points:[Int:String] = [14: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "10", 11: "11", 12: "12",13: "13"]
+        
         var card1: Card? = nil
         var card2: Card? = nil
         if(message[0] as! Int != -1){
@@ -246,9 +243,7 @@ extension tableViewController: SendHandDelegate{
             Cards[index].image2 = #imageLiteral(resourceName: "cardBackground")
             Cards[index].image2_idnex = -1
         }
-        self.showSpinner()
         cal.calculate()
-        self.removeSpinner()
 //        print(cal.get_winrate(player_number: index))
 
         for i in 0...(cal.get_playernumber()-1){
