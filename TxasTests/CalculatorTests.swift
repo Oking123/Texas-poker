@@ -62,7 +62,7 @@ class CalculatorTests: XCTestCase {
         
         ///AA
         let cal = Calculate()
-        cal.set_calculatetimes(set: 251)
+        cal.set_calculatetimes(set: 5000)
         cal.addplayer()
         cal.set_playerhand(set: 0, which: 0, use: Card(suit: 0, point: 1))
         cal.set_playerhand(set: 0, which: 1, use: Card(suit: 1, point: 1))
@@ -230,6 +230,63 @@ class CalculatorTests: XCTestCase {
         XCTAssert(cal.get_playernumber()==2)
         cal.removeplayer(remove: 1)
         XCTAssert(cal.get_playernumber()==1)
+        
+    }
+    
+    func test_shuffle(){
+        var test_list:[Int] = [1,2,3]
+        var result:[Int] = [0,0,0,0,0,0]
+        for _ in 1...10000{
+            test_list = [1,2,3]
+            test_list.shuffle()
+            switch test_list{
+            case [1,2,3]:
+                result[0] += 1
+            case [1,3,2]:
+                result[1] += 1
+            case [2,1,3]:
+                result[2] += 1
+            case [2,3,1]:
+                result[3] += 1
+            case [3,2,1]:
+                result[4] += 1
+            case [3,1,2]:
+                result[5] += 1
+            default:
+                break
+            }
+        }
+        XCTAssert(result[0] > 1600 && result[0] < 1716)
+        XCTAssert(result[1] > 1600 && result[1] < 1716)
+        XCTAssert(result[2] > 1600 && result[2] < 1716)
+        XCTAssert(result[3] > 1600 && result[3] < 1716)
+        XCTAssert(result[4] > 1600 && result[4] < 1716)
+        XCTAssert(result[5] > 1600 && result[5] < 1716)
+    }
+    
+    func test_get_table(){
+        let cal = Calculate()
+        cal.set_table(at: 2, with: Card(suit: 0, point: 1))
+        cal.set_table(at: 0, with: Card(suit: 1, point: 1))
+        let result = cal.get_table()
+        XCTAssert(result == [Card(suit: 1, point: 1),nil,Card(suit: 0, point: 1),nil,nil])
+    }
+    
+    func test_cardpool(){
+        let cal = Calculate()
+        cal.set_table(at: 2, with: Card(suit: 0, point: 1))
+        cal.set_table(at: 0, with: Card(suit: 1, point: 1))
+        cal.set_playerhand(set: 0, which: 0, use: Card(suit: 3, point: 3))
+        cal.addplayer()
+        cal.set_playerhand(set: 1, which: 1, use: Card(suit: 2, point: 10))
+        cal.set_playerhand(set: 2, which: 1, use: Card(suit: 2, point: 11))
+        let result = cal.get_cardpool()
+        XCTAssert(result.count == 4)
+        XCTAssert(result.contains(Card(suit: 0, point: 1)))
+        XCTAssert(result.contains(Card(suit: 1, point: 1)))
+        XCTAssert(result.contains(Card(suit: 3, point: 3)))
+        XCTAssert(result.contains(Card(suit: 2, point: 10)))
+        XCTAssertFalse(result.contains(Card(suit: 2, point: 11)))
         
     }
 }

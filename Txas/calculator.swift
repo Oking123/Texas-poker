@@ -16,7 +16,7 @@ class Calculate{
     private var player_number = 1
     private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
-    var players:[[Card?]] = []
+    private var players:[[Card?]] = []
     
     private var calculatetimes = 101
     
@@ -269,14 +269,51 @@ class Calculate{
         return self.win_rate[number]
     }
     
+    /// get the tips of the game
+    /// - Parameter number: the number of player
+    /// - Returns: tip rate of the player
     func get_drawrate(player_number number:Int) -> Float{
         return self.draw_rate[number]
     }
     
+    /// transform the chj card index to jzx card index
+    /// - Parameter chj: chj int
+    /// - Returns: jzx int
     func transform_chj(use chj:Int) -> Int{
         let suit = chj / 100
         let point = chj % 100
         return suit*13 + point
+    }
+    
+    /// get the table from calculator
+    /// - Returns: 5 card on the table, nil if not know
+    func get_table() -> [Card?]{
+        return self.table
+    }
+    
+    /// get the table from the calculator
+    /// - Returns: card from players
+    func get_playerhand() -> [[Card?]]{
+        return self.players
+    }
+    
+    /// get the cards are known
+    /// - Returns: cards have been set by user
+    func get_cardpool() -> [Card]{
+        var cardpool:[Card] = []
+        for card in self.table{
+            if card != nil{
+                cardpool.append(card!)
+            }
+        }
+        for i in 0...self.player_number-1{
+            for card in self.players[i]{
+                if card != nil{
+                    cardpool.append(card!)
+                }
+            }
+        }
+        return cardpool
     }
 }
 

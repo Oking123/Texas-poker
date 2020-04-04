@@ -9,6 +9,8 @@
 import UIKit
 
 
+let cal = Calculate()
+
 
 class tableViewController: UIViewController{
     @IBOutlet weak var tableView:UITableView!
@@ -16,7 +18,6 @@ class tableViewController: UIViewController{
     var sender_index: Int?
     var Cards: [ImageCards] = []
     var TableCard: [Any] = []
-    let cal = Calculate()
     
     
     @IBOutlet weak var floop1: UIImageView!
