@@ -75,12 +75,21 @@ class SelectHandController:UIViewController{
         if(local_ImageCard![0] as! Int != -1){
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
             images_2[0].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
-            someDict[a1] = local_ImageCard![0] as? String
+            let temp = "\(local_ImageCard![0])"
+            someDict[a1] = temp
+        }
+        else{
+            images_2[0].image = #imageLiteral(resourceName: "cardBackground")
+            someDict[a1] = String(-1)
         }
         if(local_ImageCard![1] as! Int != -1){
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![1] as! Int))
             images_2[1].image = #imageLiteral(resourceName: (suits[card.suit]! + points[card.point]!))
-            someDict[a2] = local_ImageCard![1] as? String
+            let temp = "\(local_ImageCard![1])"
+            someDict[a2] = temp
+        }else{
+            images_2[1].image = #imageLiteral(resourceName: "cardBackground")
+            someDict[a2] = String(-1)
         }
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: #selector(SelectHandController.back(sender:)))
@@ -203,7 +212,7 @@ class SelectHandController:UIViewController{
                 if (item.frame.contains(location))
                 {
                     tap_item = item
-                    if someDict[tap_item] != nil
+                    if someDict[tap_item] != String(-1)
                     {
                         if tap_suit == suit
                         {
