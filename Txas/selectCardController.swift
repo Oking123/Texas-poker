@@ -79,9 +79,12 @@ class selectCardController: UIViewController {
             if(local_TableCard![i] as! Int != -1){
                 let table = Card(index:cal.transform_chj(use: local_TableCard![i] as! Int))
                 images_5[i].image = #imageLiteral(resourceName: (suits[table.suit]! + points[table.point]!))
+                let temp = "\(local_TableCard![i])"
+                someDict[images_5[i]] = temp
             }
             else{
                 images_5[i].image = #imageLiteral(resourceName: "cardBackground")
+                someDict[images_5[i]] = String(-1)
             }
         }
         
@@ -209,7 +212,7 @@ class selectCardController: UIViewController {
                 if (point == location)
                 {
                     tap_item = item
-                    if someDict[tap_item] != nil
+                    if someDict[tap_item] != String(-1)
                     {
                         if tap_suit == suit
                         {
