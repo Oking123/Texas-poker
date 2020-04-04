@@ -38,8 +38,9 @@ class selectCardController: UIViewController {
         @IBOutlet weak var a5: UIImageView!
     //
     var local_TableCard: [Any]?
-    
     var delegate : SendTableDelegate?
+    
+    var tap_suit = 0
     
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)
@@ -178,7 +179,6 @@ class selectCardController: UIViewController {
             
         }
     }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         let touch = touches.first!
         let location = touch.location(in: self.view)
@@ -195,6 +195,7 @@ class selectCardController: UIViewController {
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
+                    tap_suit = suit
                     state = 0
                     break
                 }
@@ -211,7 +212,10 @@ class selectCardController: UIViewController {
                     tap_item = item
                     if someDict[tap_item] != nil
                     {
-                        choose_item.image = tap_item.image
+                        if tap_suit == suit
+                        {
+                            choose_item.image = tap_item.image
+                        }
                     }
                     item.alpha = 0.5
                     state = 1
@@ -221,8 +225,7 @@ class selectCardController: UIViewController {
             
         }
     }
-    
-    
+
     @IBAction func ResetButton(_ sender: UIButton) {
         someDict.removeAll()
         for item in images_5

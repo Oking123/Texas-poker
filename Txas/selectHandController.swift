@@ -46,6 +46,7 @@ class SelectHandController:UIViewController{
     var tap_item:UIImageView!
     var state = 0
     var suit = 0
+    var tap_suit = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         //addPanGesture
@@ -72,9 +73,6 @@ class SelectHandController:UIViewController{
             image_poker.append(tempImage)
         }
         
-        print(local_ImageCard![0])
-        print(local_ImageCard![1])
-        
         if(local_ImageCard![0] as! Int != -1){
             print("hello 1")
             let card =  Card(index:cal.transform_chj(use: local_ImageCard![0] as! Int))
@@ -94,16 +92,14 @@ class SelectHandController:UIViewController{
         var temp_values: [Any]? = []
         for item in images_2
         {
-            if(someDict[item] != nil){
-//                temp_values?.append(-1)
-                temp_values?.append(Int(someDict[item]!)!)
-                local_ImageCard = temp_values
+            if(someDict[item] == nil){
+                temp_values?.append(-1)
             }
             else{
-                continue
+                temp_values?.append(Int(someDict[item]!)!)
             }
         }
-//        local_ImageCard = temp_values
+        local_ImageCard = temp_values
         self.delegate?.sendHand(message: local_ImageCard!, index: local_ImageCard_index!)
         _ = navigationController?.popViewController(animated: true)
     }
@@ -194,6 +190,7 @@ class SelectHandController:UIViewController{
                     tap_item.alpha = 1.0
                     choose_item.image = nil
                     someDict[tap_item] = String(index+suit*100)
+                    tap_suit = suit
                     state = 0
                     break
                 }
@@ -209,7 +206,10 @@ class SelectHandController:UIViewController{
                     tap_item = item
                     if someDict[tap_item] != nil
                     {
-                        choose_item.image = tap_item.image
+                        if tap_suit == suit
+                        {
+                            choose_item.image = tap_item.image
+                        }
                     }
                     item.alpha = 0.5
                     state = 1
