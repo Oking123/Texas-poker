@@ -16,7 +16,7 @@ class Calculate{
     private var player_number = 1
     private var table:[Card?] = [nil,nil,nil,nil,nil]
     private var cardlist:[Card]? = nil
-    private var players:[[Card?]] = []
+    var players:[[Card?]] = []
     
     private var calculatetimes = 101
     
@@ -53,10 +53,16 @@ class Calculate{
     /// remove a player from table
     /// - Parameter number: remove which player
     func removeplayer(remove number:Int){
-        self.players[number] = [nil,nil]
-        self.player_number -= 1
-        for _ in number...4{
-            self.players[number] = self.players[number+1]
+        if (number == 5){
+            self.players[number] = [nil,nil]
+            self.player_number -= 1
+        }
+        else{
+            for i in number...4{
+                self.players[i] = self.players[i+1]
+            }
+            self.player_number -= 1
+
         }
         
     }
@@ -72,7 +78,7 @@ class Calculate{
     ///   - player: which player
     ///   - hand: wich hand
     ///   - card: the card
-    func set_playerhand(set player:Int, which hand:Int ,use card:Card){
+    func set_playerhand(set player:Int, which hand:Int ,use card:Card?){
         self.players[player][hand] = card
     }
     
@@ -80,7 +86,7 @@ class Calculate{
     /// - Parameters:
     ///   - loc: which location of the card, flop:0,1,2, turn:3, river:4
     ///   - card: the card
-    func set_table(at loc:Int, with card:Card){
+    func set_table(at loc:Int, with card:Card?){
         self.table[loc] = card
     }
     
@@ -267,5 +273,10 @@ class Calculate{
         return self.draw_rate[number]
     }
     
-    
+    func transform_chj(use chj:Int) -> Int{
+        let suit = chj / 100
+        let point = chj % 100
+        return suit*13 + point
+    }
 }
+
