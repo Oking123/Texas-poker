@@ -68,14 +68,14 @@ class tableViewController: UIViewController{
         if (Cards.count < 6){
             self.showSpinner()
             self.inserNewPlayer()
-            self.cal.addplayer()
+            cal.addplayer()
             DispatchQueue.background(background: {
-                self.cal.calculate()
+                cal.calculate()
             }, completion:{
                 self.removeSpinner()
-                for i in 0...(self.cal.get_playernumber()-1){
-                    self.Cards[i].win_rate = String(format: "%.2f", self.cal.get_winrate(player_number: i) * 100) + "%"
-                    self.Cards[i].tips = String(format: "%.2f", self.cal.get_drawrate(player_number: i) * 100) + "%"
+                for i in 0...(cal.get_playernumber()-1){
+                    self.Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
+                    self.Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
                 }
                 self.tableView.reloadData()
             })
