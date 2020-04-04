@@ -39,7 +39,7 @@ class selectCardController: UIViewController {
     //
     var local_TableCard: [Any]?
     var delegate : SendTableDelegate?
-    var tap_suit = 0
+    var tap_suit = -1
     
     
     lazy var images_5 = [UIImageView](arrayLiteral: a1,a2,a3,a4,a5)

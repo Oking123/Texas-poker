@@ -46,7 +46,7 @@ class SelectHandController:UIViewController{
     var tap_item:UIImageView!
     var state = 0
     var suit = 0
-    var tap_suit = 0
+    var tap_suit = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         //addPanGesture
