@@ -28,6 +28,7 @@ class tableViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cal.set_calculatetimes(set: 1000)
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
@@ -52,8 +53,6 @@ class tableViewController: UIViewController{
         let UITap5 = UITapGestureRecognizer()
         self.river.addGestureRecognizer(UITap5)
         UITap5.addTarget(self, action: #selector(tapclick))
-        
-        
     }
     @objc func tapclick()
     {
@@ -64,15 +63,18 @@ class tableViewController: UIViewController{
     /// Description: add new player, with a maximun of six
     /// - Parameter sender: sender Any
     @IBAction func addButtonTapped(_ sender: Any) {
+        
         if (Cards.count < 6){
+            self.showSpinner()
             inserNewPlayer()
             cal.addplayer()
             cal.calculate()
+            
             for i in 0...(cal.get_playernumber()-1){
                 Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                 Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
-                
             }
+            self.removeSpinner()
             self.tableView.reloadData()
         }
         else{
@@ -83,6 +85,9 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+        
+       
+        
     }
     
     /// insert a need player in the table view list
@@ -143,7 +148,9 @@ extension tableViewController: UITableViewDataSource, UITableViewDelegate{
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.endUpdates()
                 cal.removeplayer(remove: indexPath.row)
+                self.showSpinner()
                 cal.calculate()
+                self.removeSpinner()
                 for i in 0...(cal.get_playernumber()-1){
                     Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
                     Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
@@ -200,7 +207,10 @@ extension tableViewController: SendTableDelegate{
                 tabledict[i]!.image = #imageLiteral(resourceName: "cardBackground")
             }
         }
+        
+        self.showSpinner()
         cal.calculate()
+        self.removeSpinner()
         for i in 0...(cal.get_playernumber()-1){
             Cards[i].win_rate = String(format: "%.2f", cal.get_winrate(player_number: i) * 100) + "%"
             Cards[i].tips = String(format: "%.2f", cal.get_drawrate(player_number: i) * 100) + "%"
@@ -233,8 +243,10 @@ extension tableViewController: SendHandDelegate{
             cal.set_playerhand(set: index, which: 1, use: nil)
             Cards[index].image2 = #imageLiteral(resourceName: "cardBackground")
         }
+        self.showSpinner()
         cal.calculate()
-        print(cal.get_winrate(player_number: index))
+        self.removeSpinner()
+//        print(cal.get_winrate(player_number: index))
 
         ///   - suit: an integer where [0: "♠", 1: "♥", 2: "♣", 3: "♦"]
         ///   - point: from 2~14

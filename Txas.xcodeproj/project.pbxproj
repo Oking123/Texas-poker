@@ -20,6 +20,7 @@
 		CC1BAF9623F5F14C00899D44 /* simple_inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */; };
 		CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54F57423FB69F0001943FC /* MainViewController.swift */; };
 		CC6596E9243270150041B9A7 /* tableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6596E8243270150041B9A7 /* tableViewController.swift */; };
+		CC71D54E2437FB8700DE6EFC /* spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71D54D2437FB8700DE6EFC /* spinner.swift */; };
 		CCB6CD1E2432B67B00E3170A /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6CD1D2432B67B00E3170A /* ImageCard.swift */; };
 		CCB6CD202432B85300E3170A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6CD1F2432B85300E3170A /* ImageCell.swift */; };
 		CCB72C0723FB15FF009B04B4 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB72C0623FB15FF009B04B4 /* item.swift */; };
@@ -41,6 +42,7 @@
 		CC1BAF9523F5F14C00899D44 /* simple_inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simple_inputViewController.swift; sourceTree = "<group>"; };
 		CC54F57423FB69F0001943FC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC6596E8243270150041B9A7 /* tableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tableViewController.swift; sourceTree = "<group>"; };
+		CC71D54D2437FB8700DE6EFC /* spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spinner.swift; sourceTree = "<group>"; };
 		CCB6CD1D2432B67B00E3170A /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		CCB6CD1F2432B85300E3170A /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		CCB72C0623FB15FF009B04B4 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				CCB6CD1D2432B67B00E3170A /* ImageCard.swift */,
 				9F15F5442434457C000229AD /* selectCardController.swift */,
 				9F15F548243449A1000229AD /* selectHandController.swift */,
+				CC71D54D2437FB8700DE6EFC /* spinner.swift */,
 			);
 			path = Txas;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				9F15F549243449A1000229AD /* selectHandController.swift in Sources */,
 				CC6596E9243270150041B9A7 /* tableViewController.swift in Sources */,
 				CC1AC48E243500E200AB78D4 /* check_hands.swift in Sources */,
+				CC71D54E2437FB8700DE6EFC /* spinner.swift in Sources */,
 				5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */,
 				CC54F57523FB69F0001943FC /* MainViewController.swift in Sources */,
 			);
