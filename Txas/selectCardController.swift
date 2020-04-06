@@ -403,6 +403,7 @@ class selectCardController: UIViewController {
         for item in images_5
         {
             item.image = #imageLiteral(resourceName: "cardBackground")
+<<<<<<< HEAD
             if someDict[item] != String(-1)
             {
                 let va = Int(someDict[item]!)
@@ -415,6 +416,9 @@ class selectCardController: UIViewController {
                 }
                 someDict[item] = String(-1)
             }
+=======
+            someDict[item] = String(-1)
+>>>>>>> d21de421f07c6639a5c7eee332122ff1d7f7be03
         }
         for (index,it) in images.enumerated()
         {

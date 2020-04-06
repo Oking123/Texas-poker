@@ -412,6 +412,20 @@ class SelectHandController:UIViewController{
     
     @IBAction func resetPoker(_ sender: UIButton) {
         for item in images_2
+<<<<<<< HEAD
+=======
+        {
+            item.image = #imageLiteral(resourceName: "cardBackground")
+            someDict[item] = String(-1)
+        }
+        for (index,it) in images.enumerated()
+        {
+            if suit == 0
+            {
+                it.image = UIImage(named: "a\(index+1)")
+            }
+            else if suit == 1
+>>>>>>> d21de421f07c6639a5c7eee332122ff1d7f7be03
             {
                 item.image = #imageLiteral(resourceName: "cardBackground")
                 if someDict[item] != String(-1)
