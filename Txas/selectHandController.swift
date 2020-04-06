@@ -411,88 +411,74 @@ class SelectHandController:UIViewController{
     }
     
     @IBAction func resetPoker(_ sender: UIButton) {
-        for item in images_2
-<<<<<<< HEAD
-=======
-        {
+    for item in images_2
+    {
             item.image = #imageLiteral(resourceName: "cardBackground")
-            someDict[item] = String(-1)
+            if someDict[item] != String(-1)
+            {
+                let va = Int(someDict[item]!)
+                for (inx,k) in pre_card.enumerated()
+                {
+                    if Int(k) == va
+                    {
+                        pre_card.remove(at: inx)
+                    }
+                }
+                someDict[item] = String(-1)
+            }
         }
         for (index,it) in images.enumerated()
         {
             if suit == 0
             {
                 it.image = UIImage(named: "a\(index+1)")
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        it.image = nil
+                    }
+                }
             }
             else if suit == 1
->>>>>>> d21de421f07c6639a5c7eee332122ff1d7f7be03
             {
-                item.image = #imageLiteral(resourceName: "cardBackground")
-                if someDict[item] != String(-1)
+                it.image = UIImage(named: "b\(index+1)")
+                for card in pre_card
                 {
-                    let va = Int(someDict[item]!)
-                    for (inx,k) in pre_card.enumerated()
+                    if String(suit*100+index) == card
                     {
-                        if Int(k) == va
-                        {
-                            pre_card.remove(at: inx)
-                        }
+                        it.image = nil
                     }
-                    someDict[item] = String(-1)
                 }
             }
-            for (index,it) in images.enumerated()
+            else if suit == 2
             {
-                if suit == 0
+                it.image = UIImage(named: "c\(index+1)")
+                for card in pre_card
                 {
-                    it.image = UIImage(named: "a\(index+1)")
-                    for card in pre_card
+                    if String(suit*100+index) == card
                     {
-                        if String(suit*100+index) == card
-                        {
-                            it.image = nil
-                        }
+                        it.image = nil
                     }
                 }
-                else if suit == 1
-                {
-                    it.image = UIImage(named: "b\(index+1)")
-                    for card in pre_card
-                    {
-                        if String(suit*100+index) == card
-                        {
-                            it.image = nil
-                        }
-                    }
-                }
-                else if suit == 2
-                {
-                    it.image = UIImage(named: "c\(index+1)")
-                    for card in pre_card
-                    {
-                        if String(suit*100+index) == card
-                        {
-                            it.image = nil
-                        }
-                    }
-                }
-                else if suit == 3
-                {
-                    it.image = UIImage(named: "d\(index+1)")
-                    for card in pre_card
-                    {
-                        if String(suit*100+index) == card
-                        {
-                            it.image = nil
-                        }
-                    }
-                }
-                
             }
-            images_temp_2 = images_2
-            tap_item = images_temp_2[0]
-            tap_item.alpha = 0.5
-            state = 1
+            else if suit == 3
+            {
+                it.image = UIImage(named: "d\(index+1)")
+                for card in pre_card
+                {
+                    if String(suit*100+index) == card
+                    {
+                        it.image = nil
+                    }
+                }
+            }
+            
         }
-    
+        images_temp_2 = images_2
+        tap_item = images_temp_2[0]
+        tap_item.alpha = 0.5
+        state = 1
+    }
+
 }
