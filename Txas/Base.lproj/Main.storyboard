@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="24Y-Gt-oj2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="24Y-Gt-oj2">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,6 +18,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" id="tNx-cy-Nxi" userLabel="a1">
                                 <rect key="frame" x="165" y="203" width="50" height="98.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TableImage10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Pvb-3q-HC7"/>
                                     <constraint firstAttribute="width" constant="50" id="vQI-ow-zdo"/>
@@ -26,6 +27,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cardBackground" id="g6X-EH-hOT" userLabel="a2">
                                 <rect key="frame" x="215" y="203" width="50" height="98.666666666666657"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TableImage20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="0VJ-IF-GnD"/>
                                     <constraint firstAttribute="height" constant="100" id="sCy-aW-kgd"/>
@@ -40,42 +42,49 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a1" translatesAutoresizingMaskIntoConstraints="NO" id="gmR-Xx-j47">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="aGz-J0-U2x"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a2" translatesAutoresizingMaskIntoConstraints="NO" id="HLg-7i-G2Z">
                                                 <rect key="frame" x="50" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage2"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="hip-E3-vmV"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a3" translatesAutoresizingMaskIntoConstraints="NO" id="8NR-hR-L2H">
                                                 <rect key="frame" x="100" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="24S-2d-1iH"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a4" translatesAutoresizingMaskIntoConstraints="NO" id="Tgw-xJ-lFz">
                                                 <rect key="frame" x="150" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage4"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Zn9-fx-sD1"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a5" translatesAutoresizingMaskIntoConstraints="NO" id="jeb-LL-6k9">
                                                 <rect key="frame" x="200" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="mVq-fW-jP8"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a6" translatesAutoresizingMaskIntoConstraints="NO" id="MZA-DG-MEn">
                                                 <rect key="frame" x="250" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage6"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="kmi-kA-f3P"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a7" translatesAutoresizingMaskIntoConstraints="NO" id="jnD-bf-2iA">
                                                 <rect key="frame" x="300" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage7"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -87,33 +96,39 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a8" translatesAutoresizingMaskIntoConstraints="NO" id="Kvc-vt-Y36">
                                                 <rect key="frame" x="25" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage8"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a9" translatesAutoresizingMaskIntoConstraints="NO" id="qU3-3A-JY1">
                                                 <rect key="frame" x="75" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage9"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="e0h-Wo-dMN"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a10" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-kV-DM0">
                                                 <rect key="frame" x="125" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="G8j-l7-dmy"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a11" translatesAutoresizingMaskIntoConstraints="NO" id="YBu-de-INJ">
                                                 <rect key="frame" x="175" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="RAW-k3-VEN"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a12" translatesAutoresizingMaskIntoConstraints="NO" id="T4u-ve-2fU">
                                                 <rect key="frame" x="225" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="R4e-6Z-bOt"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a13" translatesAutoresizingMaskIntoConstraints="NO" id="NhM-HO-q42">
                                                 <rect key="frame" x="275" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="HandImage13"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="AKJ-UL-pCP"/>
                                                 </constraints>
@@ -150,6 +165,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="SelectHandView"/>
                         <constraints>
                             <constraint firstItem="11D-Ve-vtC" firstAttribute="trailing" secondItem="jnD-bf-2iA" secondAttribute="trailing" constant="24" id="9op-HG-WQj"/>
                             <constraint firstItem="Kvc-vt-Y36" firstAttribute="leading" secondItem="11D-Ve-vtC" secondAttribute="leading" constant="65" id="BFB-fL-Mge"/>
@@ -329,6 +345,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Hcz-MV-Gjl">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="BoardImage1"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="UnH-Fb-58G"/>
                                             <constraint firstAttribute="height" constant="100" id="Zho-Zd-KLo"/>
@@ -336,6 +353,7 @@
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="zON-C4-8SA">
                                         <rect key="frame" x="50" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="BoardImage2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="dnl-87-vJO"/>
                                             <constraint firstAttribute="height" constant="100" id="wR4-fn-kCu"/>
@@ -343,6 +361,7 @@
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="g2s-F1-71F">
                                         <rect key="frame" x="100" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="BoardImage3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Vs7-m8-wF0"/>
                                             <constraint firstAttribute="width" constant="50" id="dtc-Sq-oqV"/>
@@ -350,6 +369,7 @@
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5qf-eg-cij">
                                         <rect key="frame" x="150" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="BoardImage4"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="VnP-Ep-LQU"/>
                                             <constraint firstAttribute="height" constant="100" id="u7R-pg-wjm"/>
@@ -357,6 +377,7 @@
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="O8m-uu-xp3">
                                         <rect key="frame" x="200" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="BoardImage5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="9oM-Z3-jd5"/>
                                             <constraint firstAttribute="height" constant="100" id="LND-X9-dcf"/>
@@ -380,6 +401,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="TableView"/>
                         <constraints>
                             <constraint firstItem="5sp-EN-noB" firstAttribute="trailing" secondItem="ypu-6m-9ND" secondAttribute="trailing" constant="20" id="2Dr-EI-gFv"/>
                             <constraint firstItem="XVe-DP-7Wk" firstAttribute="leading" secondItem="5sp-EN-noB" secondAttribute="leading" constant="27" id="2ze-ke-7AQ"/>
@@ -421,6 +443,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poker-hand-rankings" translatesAutoresizingMaskIntoConstraints="NO" id="3Vv-w6-7PP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <accessibility key="accessibilityConfiguration" identifier="HelpImage"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="774" id="DD7-R5-uAz"/>
                                     <constraint firstAttribute="width" constant="414" id="PS4-SQ-Ki5"/>
@@ -451,7 +474,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hp8-6C-W3h">
-                                <rect key="frame" x="176" y="202" width="214" height="25"/>
+                                <rect key="frame" x="176" y="207" width="214" height="26.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -459,12 +482,12 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWj-zd-xp5">
-                                <rect key="frame" x="176" y="92" width="214" height="25"/>
+                                <rect key="frame" x="176" y="92" width="214" height="26.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4w-X4-brh">
-                                <rect key="frame" x="176" y="130" width="214" height="25"/>
+                                <rect key="frame" x="176" y="131.66666666666666" width="214" height="26.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -472,38 +495,38 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="set flop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6x-vc-A0U">
-                                <rect key="frame" x="37" y="177" width="62" height="20.666666666666657"/>
+                                <rect key="frame" x="37" y="182" width="62" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="set turn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87G-eJ-d4C">
-                                <rect key="frame" x="37" y="210" width="62" height="20.666666666666657"/>
+                                <rect key="frame" x="37" y="216.66666666666666" width="62" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="set river" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5t-Ig-Ih5">
-                                <rect key="frame" x="37" y="243" width="62" height="20.666666666666686"/>
+                                <rect key="frame" x="37" y="251.33333333333334" width="62" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uN-dG-utb">
-                                <rect key="frame" x="144" y="354" width="107" height="30"/>
+                                <rect key="frame" x="144" y="362.33333333333331" width="107" height="30"/>
                                 <state key="normal" title="Caculator"/>
                                 <connections>
                                     <action selector="Caculator:" destination="MLO-CN-7Gm" eventType="touchUpInside" id="0dK-i6-Xay"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手牌1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2L-CJ-s9N">
-                                <rect key="frame" x="37" y="96.666666666666671" width="62" height="20.333333333333329"/>
+                                <rect key="frame" x="37" y="98.333333333333329" width="62" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JYM-KQ-h6V">
-                                <rect key="frame" x="176" y="235" width="214" height="25"/>
+                                <rect key="frame" x="176" y="241.66666666666666" width="214" height="26.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -511,7 +534,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t6I-0v-tj1">
-                                <rect key="frame" x="176" y="169" width="214" height="25"/>
+                                <rect key="frame" x="176" y="172.33333333333334" width="214" height="26.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -519,14 +542,14 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGa-iz-Wvx">
-                                <rect key="frame" x="82.999999999999986" y="403" width="229.66666666666663" height="320"/>
+                                <rect key="frame" x="82.999999999999986" y="411.33333333333326" width="229.66666666666663" height="311.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手牌2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIR-8R-yM2">
-                                <rect key="frame" x="37" y="139.66666666666666" width="62" height="20.333333333333343"/>
+                                <rect key="frame" x="37" y="143" width="62" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -631,39 +654,46 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a1" translatesAutoresizingMaskIntoConstraints="NO" id="Csi-vC-GAr">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="tuD-Oa-0TP"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a2" translatesAutoresizingMaskIntoConstraints="NO" id="0ad-z2-jbn">
                                                 <rect key="frame" x="50" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image2"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Y5z-4h-XXg"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a3" translatesAutoresizingMaskIntoConstraints="NO" id="YU5-3m-sX8">
                                                 <rect key="frame" x="100" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="cJz-0y-KOw"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a4" translatesAutoresizingMaskIntoConstraints="NO" id="Fzm-Dx-45i">
                                                 <rect key="frame" x="150" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image4"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a5" translatesAutoresizingMaskIntoConstraints="NO" id="WZa-g1-cXi">
                                                 <rect key="frame" x="200" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="BA8-5j-cIg"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a6" translatesAutoresizingMaskIntoConstraints="NO" id="D0U-a0-2bq">
                                                 <rect key="frame" x="250" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image6"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="9Wu-MR-fWr"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a7" translatesAutoresizingMaskIntoConstraints="NO" id="2W1-rp-ByX">
                                                 <rect key="frame" x="300" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image7"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -675,36 +705,42 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a8" translatesAutoresizingMaskIntoConstraints="NO" id="yXQ-RL-8Un">
                                                 <rect key="frame" x="25" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image8"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Bnb-ck-yct"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a9" translatesAutoresizingMaskIntoConstraints="NO" id="faL-u1-35e">
                                                 <rect key="frame" x="75" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image9"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="njO-ck-hHo"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a10" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-mR-LAA">
                                                 <rect key="frame" x="125" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="wwU-0R-Pqc"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a11" translatesAutoresizingMaskIntoConstraints="NO" id="JQw-cs-LSe">
                                                 <rect key="frame" x="175" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image11"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="vBL-Fj-Nem"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a12" translatesAutoresizingMaskIntoConstraints="NO" id="cIv-GL-1rw">
                                                 <rect key="frame" x="225" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="aIg-c7-nmc"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a13" translatesAutoresizingMaskIntoConstraints="NO" id="PLA-gU-cGV">
                                                 <rect key="frame" x="275" y="0.0" width="50" height="100"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="Image13"/>
                                             </imageView>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="0.0" left="25" bottom="0.0" right="25"/>
@@ -721,27 +757,32 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="h6l-dy-qSQ" userLabel="a1">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TableImage1"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="DRG-tp-jze"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bR7-BW-ezs" userLabel="a2">
                                         <rect key="frame" x="50" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TableImage2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="agD-Xl-hL5"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QgU-Ua-Q1A" userLabel="a3">
                                         <rect key="frame" x="100" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TableImage3"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="hWd-8N-dLE" userLabel="a4">
                                         <rect key="frame" x="150" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TableImage4"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="t2z-ef-yvt"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="vT6-w0-mHa" userLabel="a5">
                                         <rect key="frame" x="200" y="0.0" width="50" height="100"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TableImage5"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -770,6 +811,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="SelectCardView"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Yde-vQ-Syg" firstAttribute="top" secondItem="ZTz-f1-Vns" secondAttribute="bottom" constant="148" id="8R4-Ih-46K"/>
