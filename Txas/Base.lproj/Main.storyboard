@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="24Y-Gt-oj2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="24Y-Gt-oj2">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -272,10 +272,15 @@
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e4A-9Z-8da">
                                                     <rect key="frame" x="109" y="0.0" width="60" height="82"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="82" id="5vw-uv-5Yv"/>
+                                                        <constraint firstAttribute="width" constant="60" id="kym-sB-1oV"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OEb-OT-Gko">
                                                     <rect key="frame" x="20" y="0.0" width="60" height="82"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="82" id="xIl-8d-Pai"/>
                                                         <constraint firstAttribute="width" constant="60" id="xfp-Pj-IOk"/>
                                                     </constraints>
                                                 </imageView>
@@ -311,10 +316,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="p48-DX-yeF" firstAttribute="trailing" secondItem="Nt3-dy-B33" secondAttribute="trailingMargin" id="28I-kf-S4i"/>
+                                                <constraint firstItem="OEb-OT-Gko" firstAttribute="top" secondItem="Nt3-dy-B33" secondAttribute="topMargin" constant="-11" id="4Ec-Qz-UHv"/>
                                                 <constraint firstItem="5cJ-L0-2M3" firstAttribute="bottom" secondItem="PHp-3b-1i0" secondAttribute="bottom" id="5nb-Is-sGy"/>
                                                 <constraint firstItem="PHp-3b-1i0" firstAttribute="top" secondItem="Nt3-dy-B33" secondAttribute="topMargin" constant="0.66666666666666785" id="6ke-uO-t7w"/>
                                                 <constraint firstItem="UfV-ty-rZI" firstAttribute="top" secondItem="OEb-OT-Gko" secondAttribute="top" id="8e6-un-rnZ"/>
-                                                <constraint firstItem="OEb-OT-Gko" firstAttribute="top" secondItem="Nt3-dy-B33" secondAttribute="topMargin" constant="-11" id="CsE-tN-CMe"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PHp-3b-1i0" secondAttribute="trailing" constant="1.3333333333333144" id="En9-B9-tU3"/>
                                                 <constraint firstItem="p48-DX-yeF" firstAttribute="leading" secondItem="tKA-jU-la0" secondAttribute="trailing" constant="31" id="Fz2-rl-wqF"/>
                                                 <constraint firstItem="UfV-ty-rZI" firstAttribute="leading" secondItem="Nt3-dy-B33" secondAttribute="leadingMargin" id="Nus-P0-k1c"/>
@@ -323,6 +328,7 @@
                                                 <constraint firstItem="5cJ-L0-2M3" firstAttribute="leading" secondItem="e4A-9Z-8da" secondAttribute="trailing" constant="29" id="RqR-nJ-zmW"/>
                                                 <constraint firstItem="5cJ-L0-2M3" firstAttribute="centerY" secondItem="PHp-3b-1i0" secondAttribute="centerY" id="Tva-F9-BX2"/>
                                                 <constraint firstItem="tKA-jU-la0" firstAttribute="baseline" secondItem="p48-DX-yeF" secondAttribute="baseline" id="UEz-ye-QtY"/>
+                                                <constraint firstItem="OEb-OT-Gko" firstAttribute="leading" secondItem="Nt3-dy-B33" secondAttribute="leading" constant="20" id="UJX-iL-RoB"/>
                                                 <constraint firstItem="tKA-jU-la0" firstAttribute="leading" secondItem="e4A-9Z-8da" secondAttribute="trailing" constant="47" id="UWW-kl-lfc"/>
                                                 <constraint firstItem="OEb-OT-Gko" firstAttribute="bottom" secondItem="UfV-ty-rZI" secondAttribute="bottom" id="W7I-i9-nLH"/>
                                                 <constraint firstItem="OEb-OT-Gko" firstAttribute="trailing" secondItem="UfV-ty-rZI" secondAttribute="trailing" id="luQ-IL-bIf"/>
@@ -382,7 +388,6 @@
                                         <rect key="frame" x="100" y="0.0" width="50" height="100"/>
                                         <accessibility key="accessibilityConfiguration" identifier="BoardImage3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Vs7-m8-wF0"/>
                                             <constraint firstAttribute="width" constant="50" id="dtc-Sq-oqV"/>
                                         </constraints>
                                     </imageView>
