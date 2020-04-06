@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08456B5A243941A000FE9A8E /* TableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B59243941A000FE9A8E /* TableViewUITests.swift */; };
+		08456B622439497F00FE9A8E /* TxasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B612439497F00FE9A8E /* TxasUITests.swift */; };
+		08456B6A243949A800FE9A8E /* TxasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B69243949A800FE9A8E /* TxasUITests.swift */; };
+		08456B7224394DD100FE9A8E /* SelectCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B7124394DD100FE9A8E /* SelectCardTests.swift */; };
+		08456B74243B125100FE9A8E /* SelectHandCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */; };
+		08456B76243BB33500FE9A8E /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B75243BB33500FE9A8E /* IntegrationTests.swift */; };
 		5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB623F3916100DB2AA4 /* card.swift */; };
 		5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB823F391BA00DB2AA4 /* calculator.swift */; };
 		5BEDF0FF243525710080E2CB /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDF0FE243525710080E2CB /* CalculatorTests.swift */; };
@@ -28,6 +34,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		08456B5C243941A000FE9A8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F2C964123D39F8A006A5B63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F2C964823D39F8A006A5B63;
+			remoteInfo = Txas;
+		};
+		08456B6C243949A800FE9A8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F2C964123D39F8A006A5B63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F2C964823D39F8A006A5B63;
+			remoteInfo = Txas;
+		};
 		5BEDF0F9243525350080E2CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F2C964123D39F8A006A5B63 /* Project object */;
@@ -38,6 +58,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08456B522439410700FE9A8E /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		08456B57243941A000FE9A8E /* TableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08456B59243941A000FE9A8E /* TableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewUITests.swift; sourceTree = "<group>"; };
+		08456B5B243941A000FE9A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08456B612439497F00FE9A8E /* TxasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxasUITests.swift; sourceTree = "<group>"; };
+		08456B67243949A800FE9A8E /* TxasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TxasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		08456B69243949A800FE9A8E /* TxasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxasUITests.swift; sourceTree = "<group>"; };
+		08456B6B243949A800FE9A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08456B7124394DD100FE9A8E /* SelectCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardTests.swift; sourceTree = "<group>"; };
+		08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHandCardUITests.swift; sourceTree = "<group>"; };
+		08456B75243BB33500FE9A8E /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		5B2DBDB623F3916100DB2AA4 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		5B2DBDB823F391BA00DB2AA4 /* calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculator.swift; sourceTree = "<group>"; };
 		5BEDF0F4243525350080E2CB /* TxasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TxasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +94,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		08456B54243941A000FE9A8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08456B64243949A800FE9A8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEDF0F1243525350080E2CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,9 +125,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08456B58243941A000FE9A8E /* TableViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				08456B612439497F00FE9A8E /* TxasUITests.swift */,
+				08456B59243941A000FE9A8E /* TableViewUITests.swift */,
+				08456B5B243941A000FE9A8E /* Info.plist */,
+			);
+			path = TableViewUITests;
+			sourceTree = "<group>";
+		};
+		08456B68243949A800FE9A8E /* TxasUITests */ = {
+			isa = PBXGroup;
+			children = (
+				08456B75243BB33500FE9A8E /* IntegrationTests.swift */,
+				08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */,
+				08456B7124394DD100FE9A8E /* SelectCardTests.swift */,
+				08456B69243949A800FE9A8E /* TxasUITests.swift */,
+				08456B6B243949A800FE9A8E /* Info.plist */,
+			);
+			path = TxasUITests;
+			sourceTree = "<group>";
+		};
 		5BEDF0F5243525350080E2CB /* TxasTests */ = {
 			isa = PBXGroup;
 			children = (
+				08456B522439410700FE9A8E /* TestPlan.xctestplan */,
 				5BEDF102243526170080E2CB /* CardTests.swift */,
 				5BEDF0FE243525710080E2CB /* CalculatorTests.swift */,
 				5BEDF0F8243525350080E2CB /* Info.plist */,
@@ -95,6 +163,8 @@
 			children = (
 				9F2C964B23D39F8A006A5B63 /* Txas */,
 				5BEDF0F5243525350080E2CB /* TxasTests */,
+				08456B58243941A000FE9A8E /* TableViewUITests */,
+				08456B68243949A800FE9A8E /* TxasUITests */,
 				9F2C964A23D39F8A006A5B63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +174,8 @@
 			children = (
 				9F2C964923D39F8A006A5B63 /* Txas.app */,
 				5BEDF0F4243525350080E2CB /* TxasTests.xctest */,
+				08456B57243941A000FE9A8E /* TableViewUITests.xctest */,
+				08456B67243949A800FE9A8E /* TxasUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +207,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		08456B56243941A000FE9A8E /* TableViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08456B5E243941A000FE9A8E /* Build configuration list for PBXNativeTarget "TableViewUITests" */;
+			buildPhases = (
+				08456B53243941A000FE9A8E /* Sources */,
+				08456B54243941A000FE9A8E /* Frameworks */,
+				08456B55243941A000FE9A8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08456B5D243941A000FE9A8E /* PBXTargetDependency */,
+			);
+			name = TableViewUITests;
+			productName = TableViewUITests;
+			productReference = 08456B57243941A000FE9A8E /* TableViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		08456B66243949A800FE9A8E /* TxasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08456B6E243949A800FE9A8E /* Build configuration list for PBXNativeTarget "TxasUITests" */;
+			buildPhases = (
+				08456B63243949A800FE9A8E /* Sources */,
+				08456B64243949A800FE9A8E /* Frameworks */,
+				08456B65243949A800FE9A8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				08456B6D243949A800FE9A8E /* PBXTargetDependency */,
+			);
+			name = TxasUITests;
+			productName = TxasUITests;
+			productReference = 08456B67243949A800FE9A8E /* TxasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5BEDF0F3243525350080E2CB /* TxasTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BEDF0FD243525350080E2CB /* Build configuration list for PBXNativeTarget "TxasTests" */;
@@ -180,6 +288,14 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "陈彦廷";
 				TargetAttributes = {
+					08456B56243941A000FE9A8E = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 9F2C964823D39F8A006A5B63;
+					};
+					08456B66243949A800FE9A8E = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 9F2C964823D39F8A006A5B63;
+					};
 					5BEDF0F3243525350080E2CB = {
 						CreatedOnToolsVersion = 11.4;
 						TestTargetID = 9F2C964823D39F8A006A5B63;
@@ -204,11 +320,27 @@
 			targets = (
 				9F2C964823D39F8A006A5B63 /* Txas */,
 				5BEDF0F3243525350080E2CB /* TxasTests */,
+				08456B56243941A000FE9A8E /* TableViewUITests */,
+				08456B66243949A800FE9A8E /* TxasUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		08456B55243941A000FE9A8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08456B65243949A800FE9A8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEDF0F2243525350080E2CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +361,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		08456B53243941A000FE9A8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08456B5A243941A000FE9A8E /* TableViewUITests.swift in Sources */,
+				08456B622439497F00FE9A8E /* TxasUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		08456B63243949A800FE9A8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08456B76243BB33500FE9A8E /* IntegrationTests.swift in Sources */,
+				08456B6A243949A800FE9A8E /* TxasUITests.swift in Sources */,
+				08456B74243B125100FE9A8E /* SelectHandCardUITests.swift in Sources */,
+				08456B7224394DD100FE9A8E /* SelectCardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BEDF0F0243525350080E2CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,6 +413,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		08456B5D243941A000FE9A8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F2C964823D39F8A006A5B63 /* Txas */;
+			targetProxy = 08456B5C243941A000FE9A8E /* PBXContainerItemProxy */;
+		};
+		08456B6D243949A800FE9A8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F2C964823D39F8A006A5B63 /* Txas */;
+			targetProxy = 08456B6C243949A800FE9A8E /* PBXContainerItemProxy */;
+		};
 		5BEDF0FA243525350080E2CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9F2C964823D39F8A006A5B63 /* Txas */;
@@ -288,6 +450,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		08456B5F243941A000FE9A8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TableViewUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Txas;
+			};
+			name = Debug;
+		};
+		08456B60243941A000FE9A8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TableViewUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Txas;
+			};
+			name = Release;
+		};
+		08456B6F243949A800FE9A8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TxasUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TxasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Txas;
+			};
+			name = Debug;
+		};
+		08456B70243949A800FE9A8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TxasUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TxasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Txas;
+			};
+			name = Release;
+		};
 		5BEDF0FB243525350080E2CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -485,6 +723,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		08456B5E243941A000FE9A8E /* Build configuration list for PBXNativeTarget "TableViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08456B5F243941A000FE9A8E /* Debug */,
+				08456B60243941A000FE9A8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08456B6E243949A800FE9A8E /* Build configuration list for PBXNativeTarget "TxasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08456B6F243949A800FE9A8E /* Debug */,
+				08456B70243949A800FE9A8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5BEDF0FD243525350080E2CB /* Build configuration list for PBXNativeTarget "TxasTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
