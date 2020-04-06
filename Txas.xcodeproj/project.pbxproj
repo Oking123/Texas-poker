@@ -12,6 +12,7 @@
 		08456B6A243949A800FE9A8E /* TxasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B69243949A800FE9A8E /* TxasUITests.swift */; };
 		08456B7224394DD100FE9A8E /* SelectCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B7124394DD100FE9A8E /* SelectCardTests.swift */; };
 		08456B74243B125100FE9A8E /* SelectHandCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */; };
+		08456B76243BB33500FE9A8E /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08456B75243BB33500FE9A8E /* IntegrationTests.swift */; };
 		5B2DBDB723F3916100DB2AA4 /* card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB623F3916100DB2AA4 /* card.swift */; };
 		5B2DBDB923F391BA00DB2AA4 /* calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2DBDB823F391BA00DB2AA4 /* calculator.swift */; };
 		5BEDF0FF243525710080E2CB /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDF0FE243525710080E2CB /* CalculatorTests.swift */; };
@@ -68,6 +69,7 @@
 		08456B6B243949A800FE9A8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08456B7124394DD100FE9A8E /* SelectCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardTests.swift; sourceTree = "<group>"; };
 		08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHandCardUITests.swift; sourceTree = "<group>"; };
+		08456B75243BB33500FE9A8E /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		5B2DBDB623F3916100DB2AA4 /* card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card.swift; sourceTree = "<group>"; };
 		5B2DBDB823F391BA00DB2AA4 /* calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculator.swift; sourceTree = "<group>"; };
 		5BEDF0F4243525350080E2CB /* TxasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TxasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 		08456B68243949A800FE9A8E /* TxasUITests */ = {
 			isa = PBXGroup;
 			children = (
+				08456B75243BB33500FE9A8E /* IntegrationTests.swift */,
 				08456B73243B125100FE9A8E /* SelectHandCardUITests.swift */,
 				08456B7124394DD100FE9A8E /* SelectCardTests.swift */,
 				08456B69243949A800FE9A8E /* TxasUITests.swift */,
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08456B76243BB33500FE9A8E /* IntegrationTests.swift in Sources */,
 				08456B6A243949A800FE9A8E /* TxasUITests.swift in Sources */,
 				08456B74243B125100FE9A8E /* SelectHandCardUITests.swift in Sources */,
 				08456B7224394DD100FE9A8E /* SelectCardTests.swift in Sources */,

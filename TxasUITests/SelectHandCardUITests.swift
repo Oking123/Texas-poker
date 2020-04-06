@@ -65,7 +65,7 @@ class SelectHandCardUITests: XCTestCase {
         //app.navigationBars["Txas.SelectHand"].buttons["Done"].tap()
     }
     
-    func testSelectCard() throws{
+    func testSelectHandCard() throws{
         // go to HandCard Page
         app.tables.element(boundBy: 0).cells.element(boundBy: 0).tap()
         
