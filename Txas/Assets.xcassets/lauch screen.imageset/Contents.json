@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "IMG_2921.JPG",
       "idiom" : "universal",
-      "filename" : "lauch screen.png",
       "scale" : "1x"
     },
     {
+      "filename" : "IMG_2921-1.JPG",
       "idiom" : "universal",
-      "filename" : "lauch screen-1.png",
       "scale" : "2x"
     },
     {
+      "filename" : "IMG_2921-2.JPG",
       "idiom" : "universal",
-      "filename" : "lauch screen-2.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

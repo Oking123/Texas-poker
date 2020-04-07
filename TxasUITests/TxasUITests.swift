@@ -92,7 +92,7 @@ class TableViewUITests: XCTestCase {
         app.navigationBars["Txas.SelectHand"].buttons["Done"].tap()
         
         // Navigate to help
-        let helpButton = app.buttons["Help"]
+        let helpButton = app.buttons["HELP"]
         helpButton.tap()
         let helpImage = app.images["HelpImage"]
         XCTAssertTrue(helpImage.exists)

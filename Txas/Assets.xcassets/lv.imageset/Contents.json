@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Outdoor-Casino-Layouts-OUTDOOR_POKER_TABLE_MAT_96_GREEN.png",
+      "filename" : "lv.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Outdoor-Casino-Layouts-OUTDOOR_POKER_TABLE_MAT_96_GREEN-1.png",
+      "filename" : "lv-1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Outdoor-Casino-Layouts-OUTDOOR_POKER_TABLE_MAT_96_GREEN-2.png",
+      "filename" : "lv-2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
