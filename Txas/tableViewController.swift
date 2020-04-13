@@ -25,10 +25,11 @@ class tableViewController: UIViewController{
     @IBOutlet weak var turn: UIImageView!
     @IBOutlet weak var river: UIImageView!
     
+    lazy var tableCard = [UIImageView](arrayLiteral: floop1,floop2,floop3,turn,river)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cal.set_calculatetimes(set: 251)
+//        cal.set_calculatetimes(set: 251mn )
         Cards = createArray()
         tableView.tableFooterView = UIView.init(frame: .zero)
         tableView.dataSource = self
@@ -82,8 +83,26 @@ class tableViewController: UIViewController{
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
-        
-       
+    }
+    
+    
+    @IBAction func RESET(_ sender: Any) {
+        cal.reset()
+        cal.calculate()
+        for item in tableCard
+        {
+            item.image = #imageLiteral(resourceName: "cardBackground")
+            TableCard_reciever = [Any] (repeating: -1, count: 5)
+        }
+        for player in 0...Cards.count - 1{
+            Cards[player].image1 = #imageLiteral(resourceName: "cardBackground")
+            Cards[player].image2 = #imageLiteral(resourceName: "cardBackground")
+            Cards[player].image1_index = -1
+            Cards[player].image2_idnex = -1
+            Cards[player].win_rate = String(format: "%.2f", cal.get_winrate(player_number: player) * 100) + "%"
+            Cards[player].tips = String(format: "%.2f", cal.get_drawrate(player_number: player) * 100) + "%"
+        }
+        self.tableView.reloadData()
         
     }
     
